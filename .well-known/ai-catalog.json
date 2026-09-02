@@ -1,0 +1,65 @@
+{
+  "specVersion": "1.0.0",
+  "host": {
+    "domain": "public0gamer.github.io/VOLTARA-MEDIA-",
+    "name": "Voltara Web Studio",
+    "description": "Professional 3D website design and turnkey web development agency delivering complete websites in 48 hours with free domain, hosting, and WhatsApp ordering funnel."
+  },
+  "entries": [
+    {
+      "id": "urn:air:voltara.media:mcp:server",
+      "displayName": "Voltara Web Studio MCP Server",
+      "type": "application/json",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "hire 3d website developer in india",
+        "voltara web studio mcp server tools",
+        "calculate website making cost in rupees",
+        "how to book a website package with voltara"
+      ]
+    },
+    {
+      "id": "urn:air:voltara.media:skills:index",
+      "displayName": "Voltara Agent Skills Index",
+      "type": "application/json",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/agent-skills/index.json",
+      "representativeQueries": [
+        "agent skills for website cost estimation",
+        "voltara turnkey packages and deliverables",
+        "book instant web developer consultation"
+      ]
+    },
+    {
+      "id": "urn:air:voltara.media:api:openapi",
+      "displayName": "Voltara Web Studio REST API",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/docs/openapi.json",
+      "representativeQueries": [
+        "voltara openapi 3.1 specification",
+        "api endpoint for website project cost calculation",
+        "submit client lead to voltara web studio"
+      ]
+    },
+    {
+      "id": "urn:air:voltara.media:service:pricing",
+      "displayName": "Turnkey Website Pricing & Packages",
+      "type": "text/markdown",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/index.md",
+      "representativeQueries": [
+        "how much does a landing page cost in india",
+        "price of ecommerce website with payment gateway",
+        "website design cost including free domain and hosting"
+      ]
+    },
+    {
+      "id": "urn:air:voltara.media:auth:protocol",
+      "displayName": "Voltara Agent Authentication Specification",
+      "type": "text/markdown",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/auth.md",
+      "representativeQueries": [
+        "how can ai agents authenticate with voltara api",
+        "agent registration uri and oauth scopes for voltara"
+      ]
+    }
+  ]
+}
