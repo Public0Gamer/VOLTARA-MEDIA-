@@ -7,6 +7,7 @@
   },
   "entries": [
     {
+      "identifier": "urn:air:voltara.media:mcp:server",
       "id": "urn:air:voltara.media:mcp:server",
       "displayName": "Voltara Web Studio MCP Server",
       "type": "application/json",
@@ -19,6 +20,7 @@
       ]
     },
     {
+      "identifier": "urn:air:voltara.media:skills:index",
       "id": "urn:air:voltara.media:skills:index",
       "displayName": "Voltara Agent Skills Index",
       "type": "application/json",
@@ -30,6 +32,7 @@
       ]
     },
     {
+      "identifier": "urn:air:voltara.media:api:openapi",
       "id": "urn:air:voltara.media:api:openapi",
       "displayName": "Voltara Web Studio REST API",
       "type": "application/vnd.oai.openapi+json",
@@ -41,6 +44,7 @@
       ]
     },
     {
+      "identifier": "urn:air:voltara.media:service:pricing",
       "id": "urn:air:voltara.media:service:pricing",
       "displayName": "Turnkey Website Pricing & Packages",
       "type": "text/markdown",
@@ -52,6 +56,7 @@
       ]
     },
     {
+      "identifier": "urn:air:voltara.media:auth:protocol",
       "id": "urn:air:voltara.media:auth:protocol",
       "displayName": "Voltara Agent Authentication Specification",
       "type": "text/markdown",
