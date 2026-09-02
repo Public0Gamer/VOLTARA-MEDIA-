@@ -1,0 +1,38 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/sep-1649/server-card.json",
+  "serverInfo": {
+    "name": "voltara-web-studio-mcp",
+    "version": "1.0.0",
+    "description": "Official Model Context Protocol (MCP) server for Voltara Web Studio — real-time 3D website cost estimations, package querying, and instant consultation dispatch.",
+    "homepage": "https://public0gamer.github.io/VOLTARA-MEDIA-/",
+    "documentation": "https://public0gamer.github.io/VOLTARA-MEDIA-/docs/api.html",
+    "vendor": "Voltara Media"
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://public0gamer.github.io/VOLTARA-MEDIA-/api/mcp/sse",
+    "headers": {
+      "Accept": "text/event-stream"
+    }
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "calculate_project_estimate",
+        "description": "Calculate exact turnkey website package pricing in INR based on tier, speed multiplier, and custom domain inclusion.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "packageKey": { "type": "string", "enum": ["landing", "business", "ecommerce", "saas"] }
+          },
+          "required": ["packageKey"]
+        }
+      },
+      {
+        "name": "get_services_catalog",
+        "description": "Retrieve comprehensive breakdown of Voltara Web Studio's development services and tech stack.",
+        "inputSchema": { "type": "object", "properties": {} }
+      }
+    ]
+  }
+}
