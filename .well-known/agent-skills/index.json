@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/discovery.json",
+  "version": "0.2.0",
+  "name": "Voltara Web Studio Agent Skills",
+  "description": "Skills for automated consultation, real-time website package estimation, and portfolio discovery.",
+  "skills": [
+    {
+      "name": "calculate-website-estimate",
+      "type": "calculation",
+      "description": "Calculates turnkey website pricing for Voltara Web Studio packages with free domain, hosting, SSL, and speed multiplier.",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/index.md",
+      "sha256": "96edf3a8d209d6b44e73de801194c0aef90b558de358ac870a8af8b3d36d020b"
+    }
+  ]
+}
