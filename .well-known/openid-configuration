@@ -1,0 +1,9 @@
+{
+  "issuer": "https://public0gamer.github.io/VOLTARA-MEDIA-",
+  "authorization_endpoint": "https://public0gamer.github.io/VOLTARA-MEDIA-/api/v1/oauth/authorize",
+  "token_endpoint": "https://public0gamer.github.io/VOLTARA-MEDIA-/api/v1/oauth/token",
+  "jwks_uri": "https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/jwks.json",
+  "response_types_supported": ["code", "token"],
+  "scopes_supported": ["openid", "voltara:read", "voltara:estimate", "voltara:lead"],
+  "grant_types_supported": ["client_credentials", "authorization_code"]
+}
