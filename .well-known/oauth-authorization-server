@@ -1,0 +1,12 @@
+{
+  "issuer": "https://public0gamer.github.io/VOLTARA-MEDIA-",
+  "authorization_endpoint": "https://public0gamer.github.io/VOLTARA-MEDIA-/api/v1/oauth/authorize",
+  "token_endpoint": "https://public0gamer.github.io/VOLTARA-MEDIA-/api/v1/oauth/token",
+  "grant_types_supported": ["client_credentials", "authorization_code"],
+  "scopes_supported": ["voltara:read", "voltara:estimate", "voltara:lead"],
+  "agent_auth": {
+    "register_uri": "https://public0gamer.github.io/VOLTARA-MEDIA-/api/v1/agents/register",
+    "supported_identity_types": ["did:key", "uri:https", "email"],
+    "supported_credential_types": ["api_key", "oauth2_client_credentials"]
+  }
+}
