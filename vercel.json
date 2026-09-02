@@ -1,8 +1,14 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      },
+      "continue": true
+    },
+    {
+      "src": "/$",
       "has": [
         {
           "type": "header",
@@ -10,10 +16,10 @@
           "value": ".*text/markdown.*"
         }
       ],
-      "destination": "/api/markdown"
+      "dest": "/api/markdown"
     },
     {
-      "source": "/index.html",
+      "src": "/index(\\.html)?$",
       "has": [
         {
           "type": "header",
@@ -21,93 +27,62 @@
           "value": ".*text/markdown.*"
         }
       ],
-      "destination": "/api/markdown"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
+      "dest": "/api/markdown"
     },
     {
-      "source": "/",
-      "headers": [
-        {
-          "key": "Vary",
-          "value": "Accept"
-        },
-        {
-          "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </docs/api.html>; rel=\"service-doc\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/oauth-protected-resource>; rel=\"oauth-protected-resource\", </auth.md>; rel=\"author-md\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
-        }
-      ]
+      "src": "/$",
+      "headers": {
+        "Vary": "Accept",
+        "Link": "</.well-known/api-catalog>; rel=\"api-catalog\", </docs/api.html>; rel=\"service-doc\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/oauth-protected-resource>; rel=\"oauth-protected-resource\", </auth.md>; rel=\"author-md\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
+      },
+      "continue": true
     },
     {
-      "source": "/index.html",
-      "headers": [
-        {
-          "key": "Vary",
-          "value": "Accept"
-        },
-        {
-          "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </docs/api.html>; rel=\"service-doc\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/oauth-protected-resource>; rel=\"oauth-protected-resource\", </auth.md>; rel=\"author-md\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
-        }
-      ]
+      "src": "/index(\\.html)?$",
+      "headers": {
+        "Vary": "Accept",
+        "Link": "</.well-known/api-catalog>; rel=\"api-catalog\", </docs/api.html>; rel=\"service-doc\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/oauth-protected-resource>; rel=\"oauth-protected-resource\", </auth.md>; rel=\"author-md\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
+      },
+      "continue": true
     },
     {
-      "source": "/.well-known/api-catalog",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/linkset+json; charset=utf-8"
-        }
-      ]
+      "src": "/\\.well-known/api-catalog",
+      "headers": {
+        "Content-Type": "application/linkset+json; charset=utf-8"
+      },
+      "continue": true
     },
     {
-      "source": "/.well-known/oauth-protected-resource",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        }
-      ]
+      "src": "/\\.well-known/oauth-protected-resource",
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "continue": true
     },
     {
-      "source": "/.well-known/openid-configuration",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        }
-      ]
+      "src": "/\\.well-known/openid-configuration",
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "continue": true
     },
     {
-      "source": "/.well-known/oauth-authorization-server",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json; charset=utf-8"
-        }
-      ]
+      "src": "/\\.well-known/oauth-authorization-server",
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "continue": true
     },
     {
-      "source": "/index.md",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/markdown; charset=utf-8"
-        },
-        {
-          "key": "x-markdown-tokens",
-          "value": "1450"
-        }
-      ]
+      "src": "/index\\.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "x-markdown-tokens": "1450"
+      },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
     }
   ]
 }
