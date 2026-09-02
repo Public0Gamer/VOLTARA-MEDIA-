@@ -1,0 +1,28 @@
+{
+  "name": "voltara-web-studio-agent",
+  "version": "1.0.0",
+  "description": "Official AI Agent for Voltara Web Studio — automated 3D web development pricing, consultation dispatch, and client onboarding.",
+  "supportedInterfaces": [
+    {
+      "url": "https://voltara-media.vercel.app/api/a2a",
+      "protocol": "JSON-RPC"
+    }
+  ],
+  "capabilities": [
+    "turnkey-website-estimation",
+    "services-catalog-query",
+    "instant-consultation-booking"
+  ],
+  "skills": [
+    {
+      "id": "calculate-website-estimate",
+      "name": "calculate-website-estimate",
+      "description": "Calculates exact turnkey website package pricing in INR with free domain, hosting, and SSL."
+    },
+    {
+      "id": "get-services-catalog",
+      "name": "get-services-catalog",
+      "description": "Returns full specifications of Voltara Web Studio deliverables."
+    }
+  ]
+}
