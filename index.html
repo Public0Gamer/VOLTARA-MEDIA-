@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Voltara Web Studio — Professional Website Making & Development Agency</title>
+  
+  <!-- RFC 8288 & Agent Discovery Relations -->
+  <link rel="api-catalog" type="application/linkset+json" href="./.well-known/api-catalog">
+  <link rel="ai-catalog" type="application/json" href="./.well-known/ai-catalog.json">
+  <link rel="service-doc" type="text/html" href="./docs/api.html">
+  <link rel="service-desc" type="application/vnd.oai.openapi+json" href="./docs/openapi.json">
+  <link rel="agent-skills" type="application/json" href="./.well-known/agent-skills/index.json">
+  <link rel="mcp-server-card" type="application/json" href="./.well-known/mcp/server-card.json">
+  <link rel="oauth-protected-resource" type="application/json" href="./.well-known/oauth-protected-resource">
+  <link rel="alternate" type="text/markdown" href="./index.md">
+  <link rel="author-md" type="text/markdown" href="./auth.md">
+  
+  <!-- Markdown for Agents client-side negotiation fallback -->
+  <script>
+    if (new URLSearchParams(window.location.search).get('format') === 'markdown') {
+      window.location.href = './index.md';
+    }
+  </script>
+
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    body {
+      background: #FAFAFD;
+      color: #0F172A;
+      overflow-x: hidden;
+      background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+    }
+
+    /* Desktop Custom Cursor */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+      .desktop-cursor-visible { display: block !important; }
+    }
+    @media (hover: none) or (pointer: coarse) {
+      .desktop-cursor-visible { display: none !important; }
+    }
+
+    /* Luxury Crystal Glassmorphism */
+    .crystal-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.9);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @media (hover: hover) {
+      .crystal-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 50px -12px rgba(99, 102, 241, 0.18), 0 0 0 1px rgba(99, 102, 241, 0.4);
+        border-color: rgba(99, 102, 241, 0.4);
+      }
+    }
+
+    .crystal-card:active, button:active, a:active {
+      transform: scale(0.98);
+    }
+
+    /* Luxury Gradient Text */
+    .text-gradient-aurora {
+      background: linear-gradient(135deg, #0284C7, #4F46E5, #EC4899, #8B5CF6);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Keyframes */
+    @keyframes floatA {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .animate-float-1 { animation: floatA 4s ease-in-out infinite; }
+
+    @keyframes floatB {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .animate-float-2 { animation: floatB 4.5s ease-in-out infinite 0.5s; }
+
+    /* Shimmer Light */
+    @keyframes shimmerSweep {
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(150%); }
+    }
+    .shimmer-active {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-active::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      animation: shimmerSweep 3s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes arrowShift {
+      0%, 100% { transform: translateX(0px); }
+      50% { transform: translateX(5px); }
+    }
+    .animate-arrow {
+      display: inline-block;
+      animation: arrowShift 1.8s ease-in-out infinite;
+    }
+
+    .btn-premium {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      box-shadow: 0 12px 25px -6px rgba(15, 23, 42, 0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-premium:hover {
+      background: linear-gradient(135deg, #1E293B 0%, #312E81 100%);
+      box-shadow: 0 16px 35px -6px rgba(79, 70, 229, 0.45);
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Cursor Elements (Desktop) */
+    #cursorDot {
+      position: fixed;
+      top: 0; left: 0;
+      width: 8px; height: 8px;
+      background: #4F46E5;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 12px rgba(79, 70, 229, 0.9);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+    }
+
+    #cursorRing {
+      position: fixed;
+      top: 0; left: 0;
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(99, 102, 241, 0.65);
+      background: rgba(99, 102, 241, 0.06);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s;
+    }
+
+    .cursor-hover #cursorRing {
+      width: 55px; height: 55px;
+      border-color: rgba(236, 72, 153, 0.9);
+      background: rgba(236, 72, 153, 0.12);
+      box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+    }
+
+    .cursor-hover #cursorDot {
+      background: #EC4899;
+      width: 6px; height: 6px;
+    }
+
+    #cursorSpotlight {
+      position: fixed;
+      top: 0; left: 0;
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, rgba(165, 180, 252, 0.15) 0%, rgba(244, 114, 182, 0.06) 35%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    #cursorParticleCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 99997;
+    }
+
+    /* Shizuku Avatar Animation */
+    @keyframes shizukuFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1.5deg); }
+    }
+    .shizuku-anim {
+      animation: shizukuFloat 3.5s ease-in-out infinite;
+    }
+
+    .chat-scroll::-webkit-scrollbar { width: 4px; }
+    .chat-scroll::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+
+    #interactive3DCanvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- DESKTOP INTERACTIVE CURSOR -->
+  <div id="cursorDot" class="desktop-cursor-visible hidden"></div>
+  <div id="cursorRing" class="desktop-cursor-visible hidden"></div>
+  <div id="cursorSpotlight" class="desktop-cursor-visible hidden"></div>
+  <canvas id="cursorParticleCanvas"></canvas>
+
+  <!-- Ambient Light Mesh Background -->
+  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-32 -left-20 w-[450px] sm:w-[700px] h-[450px] sm:h-[700px] rounded-full bg-gradient-to-tr from-indigo-200/40 via-sky-200/30 to-transparent blur-[100px] animate-pulse"></div>
+    <div class="absolute top-1/4 -right-28 w-[400px] sm:w-[650px] h-[400px] sm:h-[650px] rounded-full bg-gradient-to-br from-pink-200/35 via-purple-200/25 to-transparent blur-[100px] animate-pulse" style="animation-delay: 1.5s;"></div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="relative z-40 w-full px-4 sm:px-8 py-3 border-b border-slate-200/60 bg-white/90 backdrop-blur-xl sticky top-0 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logo & Service Definition -->
+      <div class="flex items-center gap-2.5 cursor-pointer group hover-target" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-slate-950 via-indigo-600 to-cyan-400 p-[1.5px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
+            <svg class="w-5 h-5 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+        </div>
+        <div>
+          <span class="font-display text-base sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-1.5">
+            VOLTARA <span class="text-indigo-600 font-bold text-[9px] sm:text-[10px] tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 border border-indigo-100">WEB AGENCY</span>
+          </span>
+          <p class="text-[8px] sm:text-[9px] text-emerald-600 font-bold uppercase tracking-wider">● We Make Websites For Businesses</p>
+        </div>
+      </div>
+
+      <!-- Action Desk -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        
+        <!-- Live Calling Desk -->
+        <a href="tel:+919555838550" class="hover-target hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all">
+          <span>📞 95558 38550</span>
+        </a>
+
+        <!-- WhatsApp CTA -->
+        <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20to%20get%20a%20website%20made%20for%20my%20business." target="_blank" class="hover-target flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold hover:bg-emerald-100 transition-all shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>WhatsApp Us</span>
+        </a>
+
+        <!-- Pricing Link -->
+        <a href="#website-packages" class="hover-target px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl btn-premium font-black text-xs tracking-wide flex items-center gap-1 shadow-md shimmer-active">
+          <span>💰 View ₹7,999 Plan</span>
+        </a>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- HERO SECTION -->
+  <!-- ======================================================== -->
+  <section class="relative z-20 w-full min-h-[520px] sm:min-h-[600px] flex items-center justify-center px-4 sm:px-8 pt-6 pb-12 overflow-hidden">
+    
+    <!-- 3D Canvas Background Layer -->
+    <canvas id="interactive3DCanvas"></canvas>
+
+    <div class="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- LEFT COLUMN: CRYSTAL CLEAR SERVICE OFFERING -->
+      <div class="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
+        
+        <!-- Trust Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-indigo-100 text-xs font-black text-slate-800 shadow-sm hover-target animate-float-1">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>✨ Professional Website Design & Making Service • Ready in 48 Hours</span>
+        </div>
+
+        <!-- Direct Clear Headline -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.15]">
+          Get A Modern Website <br/>
+          <span class="text-gradient-aurora font-display">Built For Your Business.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed font-medium max-w-xl">
+          Want more clients, calls, and orders? We design and build complete websites for <strong class="text-slate-900 font-bold">Doctors, Shops, Companies, Real Estate & Startups</strong>. Everything is included: Free Domain, Fast Cloud Hosting, SSL & WhatsApp Ordering.
+        </p>
+
+        <!-- Trust Metric Strip -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-2.5 max-w-md pt-1">
+          <div class="crystal-card p-2.5 sm:p-3 rounded-xl hover-target text-center border-b-2 border-indigo-500">
+            <div class="text-base sm:text-xl font-black font-display text-indigo-600">⚡ 48 Hours</div>
+            <div class="text-[9px] text-slate-500 font-bold uppercase">Fast Delivery</div>
+          </div>
+          <div class="crystal-card p-2.5 sm:p-3 rounded-xl hover-target text-center border-b-2 border-sky-500">
+            <div class="text-base sm:text-xl font-black font-display text-sky-600">🎁 Free Domain</div>
+            <div class="text-[9px] text-slate-500 font-bold uppercase">+ NVMe Hosting</div>
+          </div>
+          <div class="crystal-card p-2.5 sm:p-3 rounded-xl hover-target text-center border-b-2 border-emerald-500">
+            <div class="text-base sm:text-xl font-black font-display text-emerald-600">₹7,999</div>
+            <div class="text-[9px] text-slate-500 font-bold uppercase">Starting Price</div>
+          </div>
+        </div>
+
+        <!-- Primary Action CTAs -->
+        <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
+          
+          <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20to%20get%20a%20website%20built%20for%20my%20business%20at%20₹7,999.%20Please%20guide%20me." target="_blank" class="hover-target flex-1 sm:flex-none px-6 sm:px-8 py-3.5 rounded-2xl btn-premium font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl hover:scale-105 active:scale-95 transition-all shimmer-active">
+            <span>🚀 Get My Website Made on WhatsApp</span>
+            <span class="animate-arrow">→</span>
+          </a>
+
+          <a href="#instant-calculator" class="hover-target flex-1 sm:flex-none px-5 sm:px-6 py-3.5 rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 text-slate-800 font-black text-xs sm:text-sm transition-all shadow-sm flex items-center justify-center gap-2 hover:scale-105 active:scale-95">
+            <span>⚡ Calculate Cost in 60s</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: VISUAL MOCKUP -->
+      <div class="lg:col-span-5">
+        <div class="crystal-card rounded-3xl p-5 border border-indigo-100 shadow-2xl space-y-4 hover-target text-left">
+          
+          <!-- Mockup Window Header -->
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2.5">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-400 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>
+              <span class="text-[11px] font-bold text-slate-700 ml-2">What We Build For You</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black">100% Mobile & PC Ready</span>
+          </div>
+
+          <!-- Real Website Samples Preview Card -->
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 border border-indigo-100 space-y-3">
+            <div class="text-[10px] uppercase font-bold text-indigo-700 tracking-wider">Example Business Types We Make:</div>
+            
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-2">
+                <span class="text-base">🏥</span>
+                <div>
+                  <div class="font-bold text-slate-900">Clinic & Doctors</div>
+                  <div class="text-[10px] text-slate-500">Appointment booking</div>
+                </div>
+              </div>
+
+              <div class="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-2">
+                <span class="text-base">🛍️</span>
+                <div>
+                  <div class="font-bold text-slate-900">Online Store (E-Com)</div>
+                  <div class="text-[10px] text-slate-500">Products & UPI payment</div>
+                </div>
+              </div>
+
+              <div class="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-2">
+                <span class="text-base">🏢</span>
+                <div>
+                  <div class="font-bold text-slate-900">Company & Agency</div>
+                  <div class="text-[10px] text-slate-500">Corporate reputation</div>
+                </div>
+              </div>
+
+              <div class="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-sm flex items-center gap-2">
+                <span class="text-base">⚡</span>
+                <div>
+                  <div class="font-bold text-slate-900">Ad Landing Page</div>
+                  <div class="text-[10px] text-slate-500">High leads in 48 hours</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/90 p-3 rounded-xl border border-indigo-100 text-[11px] text-slate-700 space-y-1">
+              <div class="font-bold text-slate-900 flex items-center gap-1">
+                <span class="text-emerald-500">✔</span> Zero Technical Knowledge Needed:
+              </div>
+              <p class="text-[10px] text-slate-500">
+                You just give us your business details on WhatsApp, and we create, write, design, and host the complete website for you!
+              </p>
+            </div>
+          </div>
+
+          <!-- Direct Kickoff Strip -->
+          <div class="flex items-center justify-between bg-white p-3 rounded-2xl border border-slate-200 text-xs">
+            <div>
+              <div class="text-[10px] text-slate-500 font-bold uppercase">Have questions?</div>
+              <div class="font-black text-slate-900">Talk to Lead Developer directly</div>
+            </div>
+            <a href="tel:+919555838550" class="px-3 py-1.5 rounded-xl bg-emerald-500 text-white text-[11px] font-black hover:scale-105 active:scale-95 transition-all">
+              Call 95558 38550
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION: HOW IT WORKS -->
+  <!-- ======================================================== -->
+  <section class="relative z-20 max-w-6xl mx-auto px-4 sm:px-8 py-10">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-black uppercase tracking-wider mb-2">
+        ⚡ How It Works
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        Get Your Business Online In <span class="text-gradient-aurora font-display">3 Simple Steps</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+      <div class="crystal-card p-5 rounded-2xl text-left border-t-4 border-indigo-500">
+        <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-black text-lg mb-3">
+          1
+        </div>
+        <h3 class="text-base font-extrabold text-slate-900 mb-1">Choose Your Website Type</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Select from a Landing Page (₹7,999), Business Site (₹19,999), or Online Store (₹29,999) based on your goals.
+        </p>
+      </div>
+
+      <div class="crystal-card p-5 rounded-2xl text-left border-t-4 border-sky-500">
+        <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-black text-lg mb-3">
+          2
+        </div>
+        <h3 class="text-base font-extrabold text-slate-900 mb-1">Share Details on WhatsApp</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Send your business name, photos, and services to our WhatsApp (`95558 38550`). We handle design, writing & hosting.
+        </p>
+      </div>
+
+      <div class="crystal-card p-5 rounded-2xl text-left border-t-4 border-emerald-500">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-lg mb-3">
+          3
+        </div>
+        <h3 class="text-base font-extrabold text-slate-900 mb-1">Website Live in 48 Hours</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Your modern 3D website goes live on your custom domain, ready to accept calls and customer orders immediately!
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION: 4 CLEAR WEBSITE PACKAGES (₹7,999 TO ₹49,999) -->
+  <!-- ======================================================== -->
+  <section id="website-packages" class="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 py-10">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+      <div class="text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-black uppercase tracking-wider mb-2">
+          💰 Transparent Turnkey Pricing
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+          Website Packages Built <span class="text-gradient-aurora font-display">For Real Business Growth</span>
+        </h2>
+      </div>
+      <p class="text-slate-500 text-xs sm:text-sm max-w-md mt-2 md:mt-0 text-left md:text-right">
+        All-inclusive complete prices with Free Domain, High-Speed Hosting, SSL, and Custom 3D Development ready to launch.
+      </p>
+    </div>
+
+    <!-- 4 Clear Pricing Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+      
+      <!-- Tier 1: 3D Landing Page (Updated to ₹7,999) -->
+      <div class="crystal-card p-5 sm:p-6 rounded-3xl flex flex-col justify-between group hover-target text-left border-l-4 border-cyan-500">
+        <div>
+          <div class="relative w-full rounded-2xl bg-gradient-to-tr from-slate-950 via-cyan-950 to-slate-900 overflow-hidden p-4 sm:p-5 text-white shadow-inner">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-cyan-500/80 backdrop-blur-md text-[10px] font-black uppercase tracking-wider">
+                ⚡ 48-Hour Delivery
+              </span>
+              <span class="text-xs font-bold text-cyan-300">Complete Package</span>
+            </div>
+            
+            <div class="mt-3.5 sm:mt-4">
+              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹7,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <p class="text-xs text-cyan-200 font-semibold mt-0.5">3D High-Converting Landing Page</p>
+            </div>
+          </div>
+
+          <!-- Included Features List -->
+          <div class="mt-3.5 sm:mt-4 space-y-2 bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200/80 text-xs">
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Free .com / .in Domain Included (1 Year)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Ultra-Fast Cloud Hosting + Free SSL Certificate</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>High-Converting 3D Hero & Smooth Scroll Animations</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Direct WhatsApp & Call Lead Capture Buttons</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>100% Mobile Responsive & Google Speed Optimized</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-500 mt-2.5 sm:mt-3 leading-relaxed">
+            Best for advertising campaigns, lead generation, coaches, and single service businesses.
+          </p>
+        </div>
+
+        <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-600">⚡ 48h Sprint</span>
+          <button onclick="setCalculatorTier('landing')" class="hover-target px-4 py-2 rounded-xl bg-cyan-50 hover:bg-cyan-600 hover:text-white text-cyan-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
+            Order at ₹7,999 <span class="animate-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tier 2: Multi-Page Business Site -->
+      <div class="crystal-card p-5 sm:p-6 rounded-3xl flex flex-col justify-between group hover-target text-left border-l-4 border-indigo-500">
+        <div>
+          <div class="relative w-full rounded-2xl bg-gradient-to-tr from-slate-950 via-indigo-950 to-slate-900 overflow-hidden p-4 sm:p-5 text-white shadow-inner">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-indigo-500/80 backdrop-blur-md text-[10px] font-black uppercase tracking-wider">
+                🏢 Most Popular
+              </span>
+              <span class="text-xs font-bold text-indigo-300">Complete Package</span>
+            </div>
+            
+            <div class="mt-3.5 sm:mt-4">
+              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹19,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <p class="text-xs text-indigo-200 font-semibold mt-0.5">Multi-Page Corporate Business Website</p>
+            </div>
+          </div>
+
+          <!-- Included Features List -->
+          <div class="mt-3.5 sm:mt-4 space-y-2 bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200/80 text-xs">
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Free .com / .in Domain Included (1 Year)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Premium NVMe Cloud Server + SSL + 5 Business Emails</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>5 to 8 Custom Designed Pages (Home, About, Services, Contact)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Google Search (SEO) & Google Maps Business Ranking</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Easy Admin Panel + 1 Year Free Technical Support</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-500 mt-2.5 sm:mt-3 leading-relaxed">
+            Full digital presence for companies, clinics, builders, and agencies wanting high corporate reputation.
+          </p>
+        </div>
+
+        <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-600">⚡ 5-7 Days Delivery</span>
+          <button onclick="setCalculatorTier('business')" class="hover-target px-4 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
+            Order This Website <span class="animate-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tier 3: 3D E-Commerce Online Store -->
+      <div class="crystal-card p-5 sm:p-6 rounded-3xl flex flex-col justify-between group hover-target text-left border-l-4 border-pink-500">
+        <div>
+          <div class="relative w-full rounded-2xl bg-gradient-to-tr from-slate-950 via-pink-950 to-slate-900 overflow-hidden p-4 sm:p-5 text-white shadow-inner">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-pink-500/80 backdrop-blur-md text-[10px] font-black uppercase tracking-wider">
+                🛍️ E-Commerce & D2C
+              </span>
+              <span class="text-xs font-bold text-pink-300">Complete Package</span>
+            </div>
+            
+            <div class="mt-3.5 sm:mt-4">
+              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹29,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <p class="text-xs text-pink-200 font-semibold mt-0.5">Modern 3D E-Commerce Online Store</p>
+            </div>
+          </div>
+
+          <!-- Included Features List -->
+          <div class="mt-3.5 sm:mt-4 space-y-2 bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200/80 text-xs">
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Free .com / .in Domain Included (1 Year)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>High-Traffic E-Com Cloud Server + SSL Certificate</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Razorpay / UPI / Card Payment Gateway Integration</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Product Inventory, Shopping Cart & 3D Previews</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Automated WhatsApp Order Alerts & Invoicing</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-500 mt-2.5 sm:mt-3 leading-relaxed">
+            Ready-to-sell online store with fast checkout, payment gateway, and automated order tracking.
+          </p>
+        </div>
+
+        <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-600">⚡ 7-10 Days Delivery</span>
+          <button onclick="setCalculatorTier('ecommerce')" class="hover-target px-4 py-2 rounded-xl bg-pink-50 hover:bg-pink-600 hover:text-white text-pink-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
+            Order This Website <span class="animate-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tier 4: Custom SaaS Platform / Web Application -->
+      <div class="crystal-card p-5 sm:p-6 rounded-3xl flex flex-col justify-between group hover-target text-left border-l-4 border-purple-500">
+        <div>
+          <div class="relative w-full rounded-2xl bg-gradient-to-tr from-slate-950 via-purple-950 to-slate-900 overflow-hidden p-4 sm:p-5 text-white shadow-inner">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-purple-500/80 backdrop-blur-md text-[10px] font-black uppercase tracking-wider">
+                🚀 Full-Stack Web App
+              </span>
+              <span class="text-xs font-bold text-purple-300">Complete Package</span>
+            </div>
+            
+            <div class="mt-3.5 sm:mt-4">
+              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹49,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <p class="text-xs text-purple-200 font-semibold mt-0.5">Custom Web App & SaaS Platform</p>
+            </div>
+          </div>
+
+          <!-- Included Features List -->
+          <div class="mt-3.5 sm:mt-4 space-y-2 bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200/80 text-xs">
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Free Custom Domain + Dedicated Cloud Cluster</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>User Authentication (Sign Up/Login) + Role Permissions</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Custom Managed Database (PostgreSQL / MongoDB)</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Dynamic Admin Analytics Dashboard & API Integrations</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-700 font-semibold">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span>Enterprise-Grade Security & Scalable Codebase</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-500 mt-2.5 sm:mt-3 leading-relaxed">
+            Complex custom web portals, SaaS platforms, and internal business management software.
+          </p>
+        </div>
+
+        <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-600">⚡ Custom Sprint</span>
+          <button onclick="setCalculatorTier('saas')" class="hover-target px-4 py-2 rounded-xl bg-purple-50 hover:bg-purple-600 hover:text-white text-purple-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
+            Order This Website <span class="animate-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION: 60-SECOND INSTANT CALCULATOR -->
+  <!-- ======================================================== -->
+  <section id="instant-calculator" class="relative z-20 max-w-5xl mx-auto px-4 sm:px-8 py-8 sm:py-10 text-left">
+    
+    <div class="text-center mb-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-black uppercase tracking-wider mb-2">
+        ⚡ 60-Second Instant Website Cost Estimator & Order Desk
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+        Customize Your Website & <span class="text-gradient-aurora font-display">Order Directly On WhatsApp</span>
+      </h2>
+      <p class="text-slate-500 text-xs sm:text-sm mt-1">
+        All-inclusive turnkey pricing. Select your options below to see the instant live invoice.
+      </p>
+    </div>
+
+    <div class="crystal-card p-4 sm:p-8 rounded-3xl border border-indigo-100 shadow-2xl">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-center">
+        
+        <!-- Left Options Panel -->
+        <div class="md:col-span-7 space-y-3.5 sm:space-y-4">
+          
+          <div>
+            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+              1. Choose Website Architecture
+            </label>
+            <div class="grid grid-cols-2 gap-2" id="serviceOptions">
+              
+              <button type="button" onclick="selectService('landing')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border-2 border-indigo-500 bg-indigo-50/80 text-left transition-all hover:scale-[1.02] active:scale-95">
+                <div class="text-xs font-black text-slate-900">⚡ 3D Landing Page</div>
+                <div class="text-[10px] text-indigo-700 font-bold">₹7,999 (Complete Setup)</div>
+              </button>
+
+              <button type="button" onclick="selectService('business')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all hover:scale-[1.02] active:scale-95">
+                <div class="text-xs font-black text-slate-900">🏢 Corporate Website</div>
+                <div class="text-[10px] text-slate-500 font-bold">₹19,999 (5-8 Pages + SEO)</div>
+              </button>
+
+              <button type="button" onclick="selectService('ecommerce')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all hover:scale-[1.02] active:scale-95">
+                <div class="text-xs font-black text-slate-900">🛍️ 3D Online Store</div>
+                <div class="text-[10px] text-slate-500 font-bold">₹29,999 (Store & Pay)</div>
+              </button>
+
+              <button type="button" onclick="selectService('saas')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all hover:scale-[1.02] active:scale-95">
+                <div class="text-xs font-black text-slate-900">🚀 Custom SaaS Platform</div>
+                <div class="text-[10px] text-slate-500 font-bold">₹49,999 (Full-Stack Dev)</div>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- Free Domain Selector -->
+          <div>
+            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+              2. Free Domain (1 Year Included)
+            </label>
+            <div class="grid grid-cols-4 gap-2 text-center text-xs">
+              <button type="button" onclick="selectCalcDomain('.com')" class="calc-domain-btn p-2 rounded-xl border-2 border-indigo-500 bg-indigo-50 font-bold text-indigo-700 hover-target hover:scale-105 active:scale-95 transition-all">.com</button>
+              <button type="button" onclick="selectCalcDomain('.in')" class="calc-domain-btn p-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold hover-target hover:scale-105 active:scale-95 transition-all">.in</button>
+              <button type="button" onclick="selectCalcDomain('.co')" class="calc-domain-btn p-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold hover-target hover:scale-105 active:scale-95 transition-all">.co</button>
+              <button type="button" onclick="selectCalcDomain('Own Domain')" class="calc-domain-btn p-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold hover-target hover:scale-105 active:scale-95 transition-all">Own</button>
+            </div>
+          </div>
+
+          <!-- Delivery Speed -->
+          <div>
+            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+              3. Delivery Timeline
+            </label>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" onclick="selectSpeed('express', 1.0, '⚡ Express 48 Hours Sprint')" class="hover-target speed-card p-2 rounded-xl border-2 border-indigo-500 bg-indigo-50 text-center transition-all hover:scale-105 active:scale-95">
+                <div class="text-xs font-bold text-indigo-700">⚡ 48 Hours</div>
+                <div class="text-[9px] text-slate-500">Express Sprint</div>
+              </button>
+              <button type="button" onclick="selectSpeed('standard', 1.0, '🚀 Standard (5-7 Days)')" class="hover-target speed-card p-2 rounded-xl border border-slate-200 bg-white text-center transition-all hover:scale-105 active:scale-95">
+                <div class="text-xs font-bold text-slate-700">🚀 Standard</div>
+                <div class="text-[9px] text-slate-500">Regular Pace</div>
+              </button>
+              <button type="button" onclick="selectSpeed('care', 0.9, '🛠️ Annual Web Care Package')" class="hover-target speed-card p-2 rounded-xl border border-slate-200 bg-white text-center transition-all hover:scale-105 active:scale-95">
+                <div class="text-xs font-bold text-slate-700">🛠️ With Care</div>
+                <div class="text-[9px] text-emerald-600 font-bold">10% Off</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact input -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+            <input type="text" id="clientName" placeholder="Your Name or Business Name" class="hover-target w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-indigo-500 shadow-sm" />
+            <input type="tel" id="clientPhone" placeholder="WhatsApp / Phone Number" class="hover-target w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-indigo-500 shadow-sm" />
+          </div>
+
+        </div>
+
+        <!-- Right Summary Invoice Panel -->
+        <div class="md:col-span-5 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-50/95 via-purple-50/85 to-pink-50/95 border border-indigo-100 flex flex-col justify-between h-full space-y-3 sm:space-y-4 shadow-lg">
+          
+          <div>
+            <div class="flex items-center justify-between border-b border-indigo-100 pb-2">
+              <span class="text-[10px] uppercase font-black text-indigo-700 tracking-wider">Live Invoice Summary</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black">20% Deal Applied</span>
+            </div>
+
+            <div class="py-2.5 space-y-2">
+              <div>
+                <div class="text-[10px] text-slate-500 font-bold uppercase">Selected Website:</div>
+                <div class="text-xs font-black text-slate-900" id="summaryService">3D High-Converting Landing Page</div>
+              </div>
+
+              <!-- Included Turnkey Deliverables Badge -->
+              <div class="bg-white/95 p-2.5 sm:p-3 rounded-xl border border-indigo-100/90 space-y-1 text-[11px] text-slate-700 shadow-sm">
+                <div class="flex items-center gap-1.5 font-bold">
+                  <span class="text-emerald-500 font-black">✓</span> Free <span id="summaryDomainText">.com</span> Domain Included (1 Year)
+                </div>
+                <div class="flex items-center gap-1.5 font-bold">
+                  <span class="text-emerald-500 font-black">✓</span> NVMe Cloud Server + Free SSL
+                </div>
+                <div class="flex items-center gap-1.5 font-bold">
+                  <span class="text-emerald-500 font-black">✓</span> Full 3D Design & WhatsApp Capture
+                </div>
+              </div>
+
+              <div>
+                <div class="text-[10px] text-slate-500 font-bold uppercase">Delivery Sprint:</div>
+                <div class="text-xs font-bold text-indigo-700" id="summarySpeed">⚡ Express 48 Hours Sprint</div>
+              </div>
+            </div>
+
+            <div class="pt-2.5 border-t border-indigo-100 flex items-baseline justify-between">
+              <span class="text-xs text-slate-700 font-bold">Total Turnkey Cost:</span>
+              <div class="text-right">
+                <span class="text-xs text-slate-400 line-through mr-1" id="originalPrice">₹9,999</span>
+                <span class="text-2xl font-black font-display text-indigo-700" id="finalPrice">₹7,999</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <button onclick="submitInstantDeal()" class="hover-target w-full py-3.5 rounded-xl btn-premium font-black text-xs flex items-center justify-center gap-2 shadow-xl hover:scale-105 active:scale-95 transition-all shimmer-active">
+              <span>⚡ Send Order to WhatsApp (95558 38550)</span>
+            </button>
+            <p class="text-[10px] text-center text-slate-500">
+              🔒 Direct chat with Voltara Web Agency Lead Developer
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION: DIRECT CONTACT HUB -->
+  <section class="relative z-20 max-w-4xl mx-auto px-4 sm:px-8 py-8 sm:py-10 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 text-left">
+    
+    <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara%20Web%20Studio!%20I%20want%20to%20get%20a%20website%20built." target="_blank" class="hover-target crystal-card p-4 sm:p-5 rounded-2xl group cursor-pointer hover:border-emerald-300 hover:scale-105 active:scale-95 transition-all">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg sm:text-xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
+        💬
+      </div>
+      <h3 class="text-sm font-bold text-slate-900">Direct WhatsApp</h3>
+      <p class="text-[11px] text-slate-500 mb-1.5">Order quote & project kickoff.</p>
+      <div class="text-xs font-extrabold text-emerald-600">+91 95558 38550 <span class="animate-arrow">→</span></div>
+    </a>
+
+    <a href="tel:+919555838550" class="hover-target crystal-card p-4 sm:p-5 rounded-2xl group cursor-pointer hover:border-sky-300 hover:scale-105 active:scale-95 transition-all">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-lg sm:text-xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
+        📞
+      </div>
+      <h3 class="text-sm font-bold text-slate-900">Direct Calling Desk</h3>
+      <p class="text-[11px] text-slate-500 mb-1.5">Discuss your website requirements.</p>
+      <div class="text-xs font-extrabold text-sky-600">95558 38550 <span class="animate-arrow">→</span></div>
+    </a>
+
+    <a href="mailto:voltaramedia@gmail.com" class="hover-target crystal-card p-4 sm:p-5 rounded-2xl group cursor-pointer hover:border-purple-300 hover:scale-105 active:scale-95 transition-all">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg sm:text-xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
+        ✉️
+      </div>
+      <h3 class="text-sm font-bold text-slate-900">Official Email</h3>
+      <p class="text-[11px] text-slate-500 mb-1.5">Send design references & briefs.</p>
+      <div class="text-xs font-extrabold text-purple-600">voltaramedia@gmail.com <span class="animate-arrow">→</span></div>
+    </a>
+
+  </section>
+
+  <!-- SHIZUKU AI ASSISTANT -->
+  <aside class="fixed bottom-16 sm:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end pointer-events-auto">
+    <div id="shizukuBubble" class="hover-target mb-2.5 max-w-xs bg-white/95 backdrop-blur-xl p-3 sm:p-3.5 rounded-2xl rounded-br-sm shadow-xl border border-pink-200 text-slate-800 text-xs font-medium cursor-pointer transition-all duration-300 hover:scale-105" onclick="toggleShizukuChat()">
+      <div class="flex items-center justify-between gap-2 mb-1">
+        <span class="text-[10px] font-black text-pink-600 uppercase tracking-wider flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-pink-500 animate-ping"></span>
+          Shizuku (AI Guide)
+        </span>
+        <span class="text-[10px] text-slate-400">Click to chat ✨</span>
+      </div>
+      <p id="shizukuSpeechText" class="text-slate-700 leading-snug text-left">
+        Konnichiwa! 👋 Need a website made for your business? Normal 3D site starts at just ₹7,999!
+      </p>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara%20Web%20Studio!%20I%20want%20to%20get%20a%20website%20built." target="_blank" class="hover-target hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs shadow-lg hover:scale-105 active:scale-95 transition-all">
+        <span>WhatsApp: 95558 38550</span>
+      </a>
+
+      <button onclick="toggleShizukuChat()" class="hover-target relative group shizuku-anim rounded-full p-1 bg-gradient-to-tr from-pink-500 via-purple-500 to-cyan-400 focus:outline-none transition-transform hover:scale-110 active:scale-95 shadow-lg shadow-pink-500/30" title="Chat with Shizuku AI Assistant">
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white overflow-hidden p-0.5 relative flex items-center justify-center">
+          <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 50C20 28 35 15 50 15C65 15 80 28 80 50C80 72 82 85 82 85C82 85 68 88 50 88C32 88 18 85 18 85C18 85 20 72 20 50Z" fill="#38BDF8"/>
+            <ellipse cx="50" cy="56" rx="26" ry="24" fill="#FFE4E6"/>
+            <circle cx="36" cy="62" r="5" fill="#FDA4AF" opacity="0.6"/>
+            <circle cx="64" cy="62" r="5" fill="#FDA4AF" opacity="0.6"/>
+            <ellipse cx="38" cy="53" rx="4.5" ry="6.5" fill="#1E293B"/>
+            <ellipse cx="62" cy="53" rx="4.5" ry="6.5" fill="#1E293B"/>
+            <circle cx="39.5" cy="50.5" r="2" fill="white"/>
+            <circle cx="63.5" cy="50.5" r="2" fill="white"/>
+            <path d="M46 64Q50 67 54 64" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 45C26 28 40 20 50 20C60 20 74 28 78 45C72 38 64 36 50 36C36 36 28 38 22 45Z" fill="#0284C7"/>
+            <circle cx="23" cy="54" r="5" fill="#EC4899"/>
+            <circle cx="77" cy="54" r="5" fill="#EC4899"/>
+          </svg>
+          <div class="absolute bottom-0 right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-emerald-500 border-2 border-white"></div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Chat Drawer -->
+    <div id="shizukuChatDrawer" class="hidden fixed bottom-20 sm:bottom-24 right-4 sm:right-6 w-96 max-w-[calc(100vw-2rem)] crystal-card rounded-3xl p-4 sm:p-5 border border-pink-200/80 shadow-2xl flex-col z-50 transition-all duration-300">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-2.5 mb-2.5">
+        <div class="flex items-center gap-2">
+          <span class="text-sm">🌸</span>
+          <div class="text-left">
+            <div class="text-xs font-black text-slate-900">Shizuku (雫) • Assistant</div>
+            <p class="text-[10px] text-slate-500 font-medium">Voltara Web Agency</p>
+          </div>
+        </div>
+        <button onclick="toggleShizukuChat()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 font-bold text-xs">✕</button>
+      </div>
+
+      <div id="chatMessages" class="chat-scroll space-y-2.5 h-60 sm:h-64 overflow-y-auto pr-1 text-xs">
+        <div class="bg-pink-50 border border-pink-200 p-3 rounded-2xl text-slate-800 leading-relaxed text-left">
+          Konnichiwa! I am **Shizuku** ✨<br/><br/>
+          Our normal 3D Landing Page is now just **₹7,999** (Domain + Cloud Server included)! Ask me anything.
+        </div>
+      </div>
+
+      <div class="py-2 flex flex-wrap gap-1.5 border-t border-slate-200 mt-2">
+        <button onclick="sendQuickPrompt('How much does a website cost?')" class="px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 text-[10px] font-bold">💰 ₹7,999 Package</button>
+        <button onclick="sendQuickPrompt('How many days to make my website?')" class="px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-700 text-[10px] font-bold">⚡ 48 Hours</button>
+        <button onclick="sendQuickPrompt('Connect me with Developer on WhatsApp')" class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold">💬 WhatsApp</button>
+      </div>
+
+      <div class="flex items-center gap-2 pt-2 border-t border-slate-200">
+        <input type="text" id="shizukuInput" placeholder="Ask about getting a website..." class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs" onkeydown="if(event.key==='Enter') handleUserMessage()" />
+        <button onclick="handleUserMessage()" class="px-3 py-2 rounded-xl btn-premium text-white text-xs font-bold shrink-0">Send</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white py-8 px-6 text-center text-slate-500 text-xs mb-14 sm:mb-0">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-black text-slate-800">VOLTARA WEB STUDIO</span>
+        <span>• © 2026 Professional Website Design & Making Agency</span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-6 text-slate-500 font-medium">
+        <a href="https://api.whatsapp.com/send?phone=919555838550" target="_blank" class="hover-target hover:text-emerald-600 transition-colors">📞 +91 95558 38550</a>
+        <a href="mailto:voltaramedia@gmail.com" class="hover-target hover:text-indigo-600 transition-colors">✉️ voltaramedia@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY BOTTOM QUICK ACTION BAR -->
+  <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200 p-2.5 px-4 flex items-center justify-between shadow-2xl">
+    <div class="text-left">
+      <div class="text-[9px] text-slate-500 font-bold uppercase">Website Making</div>
+      <div class="text-xs font-black text-indigo-700">₹7,999 • 48h Sprint</div>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="tel:+919555838550" class="px-3 py-2 rounded-xl bg-slate-100 text-slate-900 font-bold text-xs">
+        📞 Call
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20to%20get%20a%20website%20made%20for%20my%20business%20at%20₹7,999." target="_blank" class="px-4 py-2 rounded-xl bg-emerald-500 text-white font-extrabold text-xs flex items-center gap-1 shadow-md">
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CODE -->
+  <script>
+    // 1. CURSOR & TOUCH PARTICLES
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    const cursorSpotlight = document.getElementById('cursorSpotlight');
+    const particleCanvas = document.getElementById('cursorParticleCanvas');
+    const pCtx = particleCanvas.getContext('2d');
+
+    let currentCursorX = window.innerWidth / 2;
+    let currentCursorY = window.innerHeight / 2;
+    let targetCursorX = window.innerWidth / 2;
+    let targetCursorY = window.innerHeight / 2;
+
+    function resizeParticleCanvas() {
+      particleCanvas.width = window.innerWidth;
+      particleCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeParticleCanvas);
+    resizeParticleCanvas();
+
+    const cursorSparks = [];
+    const sparkColors = ['#6366F1', '#38BDF8', '#EC4899', '#A855F7', '#10B981'];
+
+    function createSpark(x, y, count = 1, speedMult = 1) {
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = (Math.random() * 2.5 + 1.2) * speedMult;
+        cursorSparks.push({
+          x: x, y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 0.2,
+          size: Math.random() * 3.2 + 1.2,
+          color: sparkColors[Math.floor(Math.random() * sparkColors.length)],
+          life: 1.0,
+          decay: Math.random() * 0.03 + 0.02
+        });
+      }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      targetCursorX = e.clientX;
+      targetCursorY = e.clientY;
+      if (cursorDot) {
+        cursorDot.style.left = `${e.clientX}px`;
+        cursorDot.style.top = `${e.clientY}px`;
+      }
+      if (cursorSpotlight) {
+        cursorSpotlight.style.left = `${e.clientX}px`;
+        cursorSpotlight.style.top = `${e.clientY}px`;
+      }
+      if (Math.random() < 0.6) createSpark(e.clientX, e.clientY, 1, 0.7);
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        targetCursorX = touch.clientX;
+        targetCursorY = touch.clientY;
+        if (Math.random() < 0.6) createSpark(touch.clientX, touch.clientY, 2, 1.2);
+      }
+    }, { passive: true });
+
+    window.addEventListener('click', (e) => createSpark(e.clientX, e.clientY, 14, 2.0));
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) createSpark(e.touches[0].clientX, e.touches[0].clientY, 8, 1.5);
+    }, { passive: true });
+
+    function initHoverTargets() {
+      document.querySelectorAll('.hover-target, button, a, input, .crystal-card').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+    initHoverTargets();
+
+    function animateCursorAndSparks() {
+      if (cursorRing) {
+        currentCursorX += (targetCursorX - currentCursorX) * 0.18;
+        currentCursorY += (targetCursorY - currentCursorY) * 0.18;
+        cursorRing.style.left = `${currentCursorX}px`;
+        cursorRing.style.top = `${currentCursorY}px`;
+      }
+
+      pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+      for (let i = cursorSparks.length - 1; i >= 0; i--) {
+        const s = cursorSparks[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life -= s.decay;
+        if (s.life <= 0) {
+          cursorSparks.splice(i, 1);
+          continue;
+        }
+        pCtx.beginPath();
+        pCtx.arc(s.x, s.y, s.size * s.life, 0, Math.PI * 2);
+        pCtx.fillStyle = s.color;
+        pCtx.globalAlpha = s.life * 0.85;
+        pCtx.fill();
+      }
+      pCtx.globalAlpha = 1;
+      requestAnimationFrame(animateCursorAndSparks);
+    }
+    requestAnimationFrame(animateCursorAndSparks);
+
+    // 2. PROCEDURAL 3D CANVAS
+    const canvas = document.getElementById('interactive3DCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = 0, height = 0, mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+
+    function resizeCanvas() {
+      width = canvas.parentElement.clientWidth;
+      height = canvas.parentElement.clientHeight;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const icosahedronVertices = [
+      [-1, phi, 0], [1, phi, 0], [-1, -phi, 0], [1, -phi, 0],
+      [0, -1, phi], [0, 1, phi], [0, -1, -phi], [0, 1, -phi],
+      [phi, 0, -1], [phi, 0, 1], [-phi, 0, -1], [-phi, 0, 1]
+    ];
+    const icosahedronFaces = [
+      [0, 11, 5], [0, 5, 1], [0, 1, 7], [0, 7, 10], [0, 10, 11],
+      [1, 5, 9], [5, 11, 4], [11, 10, 2], [10, 7, 6], [7, 1, 8],
+      [3, 9, 4], [3, 4, 2], [3, 2, 6], [3, 6, 8], [3, 8, 9],
+      [4, 9, 5], [2, 4, 11], [6, 2, 10], [8, 6, 7], [9, 8, 1]
+    ];
+
+    const objects3D = [
+      { x: -260, y: -50, z: 0, size: 48, rx: 0, ry: 0, rz: 0, vx: 0.009, vy: 0.013, color: ['#0284C7', '#6366F1', '#EC4899'] },
+      { x: 300, y: 40, z: 50, size: 60, rx: 0.5, ry: 0.2, rz: 0, vx: -0.008, vy: 0.01, color: ['#8B5CF6', '#3B82F6', '#06B6D4'] },
+      { x: 220, y: -130, z: -80, size: 30, rx: 0.2, ry: 0.8, rz: 0, vx: 0.011, vy: -0.009, color: ['#F43F5E', '#FB923C', '#FBBF24'] },
+      { x: -220, y: 110, z: -40, size: 34, rx: 0.8, ry: 0.3, rz: 0, vx: -0.01, vy: -0.012, color: ['#10B981', '#06B6D4', '#6366F1'] }
+    ];
+
+    const particles = [];
+    for (let i = 0; i < 30; i++) {
+      particles.push({
+        x: (Math.random() - 0.5) * 800,
+        y: (Math.random() - 0.5) * 500,
+        z: (Math.random() - 0.5) * 350,
+        size: Math.random() * 2.0 + 1.0,
+        color: ['rgba(99, 102, 241, 0.4)', 'rgba(6, 182, 212, 0.4)', 'rgba(236, 72, 153, 0.4)'][Math.floor(Math.random() * 3)]
+      });
+    }
+
+    let time = 0;
+    function render3DScene() {
+      time += 0.02;
+      ctx.clearRect(0, 0, width, height);
+      const autoOrbitX = Math.sin(time * 0.7) * 70;
+      const autoOrbitY = Math.cos(time * 0.5) * 45;
+      mouseX += (targetMouseX + autoOrbitX - mouseX) * 0.05;
+      mouseY += (targetMouseY + autoOrbitY - mouseY) * 0.05;
+
+      const fov = 480;
+      const centerX = width / 2;
+      const centerY = height / 2;
+
+      function project(x, y, z) {
+        let tiltX = mouseY * 0.0003;
+        let tiltY = mouseX * 0.0003;
+        let cosY = Math.cos(tiltY), sinY = Math.sin(tiltY);
+        let x1 = x * cosY - z * sinY, z1 = x * sinY + z * cosY;
+        let cosX = Math.cos(tiltX), sinX = Math.sin(tiltX);
+        let y2 = y * cosX - z1 * sinX, z2 = y * sinX + z1 * cosX;
+        let scale = fov / (fov + z2 + 300);
+        return { x: centerX + x1 * scale, y: centerY + y2 * scale, z: z2, scale: scale };
+      }
+
+      particles.forEach(p => {
+        let proj = project(p.x, p.y + Math.sin(time + p.x) * 0.25, p.z);
+        ctx.beginPath();
+        ctx.arc(proj.x, proj.y, p.size * proj.scale, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      });
+
+      objects3D.forEach((obj, idx) => {
+        obj.rx += obj.vx; obj.ry += obj.vy;
+        let floatY = obj.y + Math.sin(time * 1.3 + idx) * 14;
+        let floatX = obj.x + Math.cos(time * 0.9 + idx) * 9;
+
+        let rotatedVertices = icosahedronVertices.map(v => {
+          let x = v[0] * obj.size, y = v[1] * obj.size, z = v[2] * obj.size;
+          let cosX = Math.cos(obj.rx), sinX = Math.sin(obj.rx);
+          let y1 = y * cosX - z * sinX, z1 = y * sinX + z * cosX;
+          let cosY = Math.cos(obj.ry), sinY = Math.sin(obj.ry);
+          let x2 = x * cosY - z1 * sinY, z2 = x * sinY + z1 * cosY;
+          let cosZ = Math.cos(obj.rz), sinZ = Math.sin(obj.rz);
+          let x3 = x2 * cosZ - y1 * sinZ, y3 = x2 * sinZ + y1 * cosZ;
+          return project(x3 + floatX, y3 + floatY, z2 + obj.z);
+        });
+
+        let facesWithDepth = icosahedronFaces.map(face => {
+          let v0 = rotatedVertices[face[0]], v1 = rotatedVertices[face[1]], v2 = rotatedVertices[face[2]];
+          let avgZ = (v0.z + v1.z + v2.z) / 3;
+          let nx = (v1.x - v0.x) * (v2.y - v0.y) - (v1.y - v0.y) * (v2.x - v0.x);
+          return { face, avgZ, isFront: nx > 0, v0, v1, v2 };
+        }).sort((a, b) => b.avgZ - a.avgZ);
+
+        facesWithDepth.forEach(item => {
+          if (!item.isFront) return;
+          ctx.beginPath();
+          ctx.moveTo(item.v0.x, item.v0.y);
+          ctx.lineTo(item.v1.x, item.v1.y);
+          ctx.lineTo(item.v2.x, item.v2.y);
+          ctx.closePath();
+          let grad = ctx.createLinearGradient(item.v0.x, item.v0.y, item.v2.x, item.v2.y);
+          grad.addColorStop(0, obj.color[0] + '33');
+          grad.addColorStop(0.5, obj.color[1] + '44');
+          grad.addColorStop(1, obj.color[2] + '22');
+          ctx.fillStyle = grad;
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+          ctx.lineWidth = 1.0 * item.v0.scale;
+          ctx.stroke();
+        });
+      });
+
+      requestAnimationFrame(render3DScene);
+    }
+    requestAnimationFrame(render3DScene);
+
+    // 3. CALCULATOR ENGINE (Updated baseTotal to 7999)
+    const websiteTiers = {
+      landing: { name: "3D High-Converting Landing Page", baseTotal: 7999 },
+      business: { name: "Multi-Page Corporate Business Website", baseTotal: 19999 },
+      ecommerce: { name: "Modern 3D E-Commerce Online Store", baseTotal: 29999 },
+      saas: { name: "Custom SaaS Platform / Web Application", baseTotal: 49999 }
+    };
+
+    let currentTierKey = 'landing';
+    let selectedMultiplier = 1.0;
+    let selectedSpeedName = "⚡ Express 48 Hours Sprint";
+    let selectedDomainName = ".com";
+
+    function selectService(key) {
+      currentTierKey = key;
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(c => {
+        c.className = 'hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all hover:scale-[1.02] active:scale-95';
+      });
+      event.currentTarget.className = 'hover-target service-card p-2.5 sm:p-3 rounded-2xl border-2 border-indigo-500 bg-indigo-50/80 text-left transition-all hover:scale-[1.02] active:scale-95 shadow-md';
+      updateCalculation();
+    }
+
+    function setCalculatorTier(key) {
+      currentTierKey = key;
+      const calcSection = document.getElementById('instant-calculator');
+      calcSection.scrollIntoView({ behavior: 'smooth' });
+      
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(c => {
+        c.className = 'hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all';
+      });
+      
+      const indexMap = { landing: 0, business: 1, ecommerce: 2, saas: 3 };
+      if (cards[indexMap[key]]) {
+        cards[indexMap[key]].className = 'hover-target service-card p-2.5 sm:p-3 rounded-2xl border-2 border-indigo-500 bg-indigo-50/80 text-left transition-all shadow-md';
+      }
+      updateCalculation();
+    }
+
+    function selectCalcDomain(dom) {
+      selectedDomainName = dom;
+      const buttons = document.querySelectorAll('.calc-domain-btn');
+      buttons.forEach(b => {
+        b.className = 'calc-domain-btn p-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold hover-target hover:scale-105 active:scale-95 transition-all';
+      });
+      event.currentTarget.className = 'calc-domain-btn p-2 rounded-xl border-2 border-indigo-500 bg-indigo-50 font-bold text-indigo-700 hover-target hover:scale-105 active:scale-95 transition-all shadow-sm';
+      document.getElementById('summaryDomainText').innerText = dom;
+    }
+
+    function selectSpeed(id, multiplier, name) {
+      selectedMultiplier = multiplier;
+      selectedSpeedName = name;
+      const cards = document.querySelectorAll('.speed-card');
+      cards.forEach(c => {
+        c.className = 'hover-target speed-card p-2 rounded-xl border border-slate-200 bg-white text-center transition-all hover:scale-105 active:scale-95';
+      });
+      event.currentTarget.className = 'hover-target speed-card p-2 rounded-xl border-2 border-indigo-500 bg-indigo-50 text-center transition-all hover:scale-105 active:scale-95 shadow-sm';
+      updateCalculation();
+    }
+
+    function updateCalculation() {
+      const tier = websiteTiers[currentTierKey];
+      let rawTotal = Math.round(tier.baseTotal * 1.25);
+      let discountedTotal = Math.round(tier.baseTotal * selectedMultiplier);
+
+      document.getElementById('summaryService').innerText = tier.name;
+      document.getElementById('summarySpeed').innerText = selectedSpeedName;
+      document.getElementById('originalPrice').innerText = '₹' + rawTotal.toLocaleString('en-IN');
+      document.getElementById('finalPrice').innerText = '₹' + discountedTotal.toLocaleString('en-IN');
+    }
+
+    function submitInstantDeal() {
+      const tier = websiteTiers[currentTierKey];
+      const name = document.getElementById('clientName').value.trim() || 'Valued Client';
+      const phone = document.getElementById('clientPhone').value.trim() || '';
+      const finalPrice = document.getElementById('finalPrice').innerText;
+
+      const message = `Hello Voltara Web Agency! 👋%0A%0AI want to get a complete website built for my business:%0A- *Client / Business:* ${encodeURIComponent(name)}%0A- *Website Package:* ${encodeURIComponent(tier.name)} (Turnkey Complete)%0A- *Free Domain:* ${encodeURIComponent(selectedDomainName)} Included%0A- *Delivery Timeline:* ${encodeURIComponent(selectedSpeedName)}%0A- *All-Inclusive Cost:* ${encodeURIComponent(finalPrice)}%0A- *My WhatsApp / Phone:* ${encodeURIComponent(phone)}%0A%0APlease connect with me to start building my website!`;
+
+      const whatsappURL = `https://api.whatsapp.com/send?phone=919555838550&text=${message}`;
+      window.open(whatsappURL, '_blank');
+    }
+
+    // 4. SHIZUKU AI
+    function toggleShizukuChat() {
+      const drawer = document.getElementById('shizukuChatDrawer');
+      const bubble = document.getElementById('shizukuBubble');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        drawer.classList.add('flex');
+        bubble.classList.add('hidden');
+      } else {
+        drawer.classList.add('hidden');
+        drawer.classList.remove('flex');
+        bubble.classList.remove('hidden');
+      }
+    }
+
+    function sendQuickPrompt(promptText) {
+      addUserMessage(promptText);
+      simulateShizukuResponse(promptText);
+    }
+
+    function handleUserMessage() {
+      const input = document.getElementById('shizukuInput');
+      const text = input.value.trim();
+      if (!text) return;
+      addUserMessage(text);
+      input.value = '';
+      simulateShizukuResponse(text);
+    }
+
+    function addUserMessage(text) {
+      const chat = document.getElementById('chatMessages');
+      const msg = document.createElement('div');
+      msg.className = "flex items-end justify-end gap-2";
+      msg.innerHTML = `<div class="bg-indigo-600 text-white p-3 rounded-2xl rounded-tr-sm text-right leading-relaxed shadow-sm max-w-[85%]">${text}</div>`;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function addShizukuBotMessage(text) {
+      const chat = document.getElementById('chatMessages');
+      const msg = document.createElement('div');
+      msg.className = "flex items-start gap-2";
+      msg.innerHTML = `<div class="w-6 h-6 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xs shrink-0">🌸</div><div class="bg-pink-50 border border-pink-200 p-3 rounded-2xl rounded-tl-sm text-slate-800 leading-relaxed shadow-sm max-w-[85%] text-left">${text}</div>`;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function simulateShizukuResponse(query) {
+      const lower = query.toLowerCase();
+      let reply = "";
+      if (lower.includes("price") || lower.includes("cost") || lower.includes("paisa") || lower.includes("kitna")) {
+        reply = "Here are our complete website making packages:<br/>• **3D Landing Page:** ₹7,999 (48h)<br/>• **Business Website (5-8p):** ₹19,999<br/>• **Online Store (E-Com):** ₹29,999<br/><br/>👉 All packages include Free .com/.in Domain + NVMe Cloud Hosting + SSL!";
+      } else if (lower.includes("day") || lower.includes("time") || lower.includes("fast") || lower.includes("48")) {
+        reply = "⚡ We deliver your complete website in just **48 Hours**! Zero delay. You can start getting customer calls immediately.";
+      } else {
+        reply = "We can build the exact website your business needs! You can directly chat or call our Lead Developer on WhatsApp: <br/><br/>📱 **+91 95558 38550**<br/><br/><a href='https://api.whatsapp.com/send?phone=919555838550&text=Hi!%20I%20want%20to%20get%20a%20website%20made%20at%20₹7,999.' target='_blank' class='inline-block mt-1 px-3 py-1.5 rounded-xl bg-emerald-500 text-white font-bold text-[11px] shadow'>Chat on WhatsApp Now →</a>";
+      }
+      setTimeout(() => addShizukuBotMessage(reply), 450);
+    }
+
+    updateCalculation();
+
+    // =========================================================================
+    // 5. WEBMCP IMPLEMENTATION (W3C Web Machine Learning / SEP-1649)
+    // Exposes site tools to in-browser AI agents and automated testing runners
+    // =========================================================================
+    (function initWebMCP() {
+      const voltaraWebMCPTools = [
+        {
+          name: "calculate_project_estimate",
+          description: "Calculates the real-time turnkey cost estimate for a Voltara website package including 3D effects, domain, hosting, and timeline.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              packageKey: {
+                type: "string",
+                enum: ["landing", "business", "ecommerce", "saas"],
+                description: "Website package tier: 'landing' (₹7,999), 'business' (₹19,999), 'ecommerce' (₹29,999), 'saas' (₹49,999)"
+              },
+              speed: {
+                type: "string",
+                enum: ["standard", "express", "economy"],
+                description: "Turnaround speed: 'express' (48h rush, 1.15x), 'standard' (regular, 1.0x), 'economy' (relaxed, 0.95x)"
+              },
+              domain: {
+                type: "string",
+                enum: [".com", ".in", ".co", "Own Domain"],
+                description: "Included 1-year domain extension"
+              }
+            },
+            required: ["packageKey"]
+          },
+          execute: async function(args) {
+            const key = (args && args.packageKey) || "landing";
+            const speed = (args && args.speed) || "standard";
+            const domain = (args && args.domain) || ".com";
+
+            const multiplierMap = { standard: 1.0, express: 1.15, economy: 0.95 };
+            const speedNameMap = { standard: "Standard (3-5 Days)", express: "48 Hours Express", economy: "7+ Days Relaxed" };
+
+            const tier = websiteTiers[key] || websiteTiers.landing;
+            const mult = multiplierMap[speed] || 1.0;
+            const finalPrice = Math.round(tier.baseTotal * mult);
+
+            // Also synchronize UI calculator if called interactively
+            if (typeof selectTier === 'function') selectTier(key);
+            if (typeof selectSpeed === 'function') selectSpeed(null, mult, speedNameMap[speed] || speed);
+            if (typeof selectCalcDomain === 'function') selectCalcDomain(domain);
+
+            return {
+              status: "success",
+              tierKey: key,
+              tierName: tier.name,
+              basePriceINR: tier.baseTotal,
+              finalPriceINR: finalPrice,
+              speed: speedNameMap[speed] || speed,
+              domainIncluded: domain,
+              freeInclusions: [
+                `Free ${domain} Domain (1 Year)`,
+                "NVMe Cloud Hosting + SSL Certificate",
+                "3D WebGL Canvas Physics",
+                "1-Click WhatsApp Instant Funnel",
+                "Admin Handover & Full Source Ownership"
+              ],
+              bookingUrl: `https://api.whatsapp.com/send?phone=919555838550&text=${encodeURIComponent(`Hi Voltara! I want to order the ${tier.name} package at ₹${finalPrice.toLocaleString('en-IN')}.`)}`
+            };
+          }
+        },
+        {
+          name: "get_services_catalog",
+          description: "Returns the full catalog of Voltara Web Studio's website packages, pricing tiers, and turnkey features.",
+          inputSchema: {
+            type: "object",
+            properties: {}
+          },
+          execute: async function() {
+            return {
+              status: "success",
+              agency: "Voltara Web Studio",
+              guarantee: "48-Hour Live Deployment Guarantee",
+              tiers: [
+                {
+                  key: "landing",
+                  name: "High-Converting 3D Landing Page",
+                  priceINR: 7999,
+                  timeline: "48 Hours",
+                  deliverables: ["Single High-Converting Page", "3D Hero Physics", "Free .com/.in Domain", "WhatsApp Order Funnel"]
+                },
+                {
+                  key: "business",
+                  name: "Complete Business Website",
+                  priceINR: 19999,
+                  timeline: "3 to 5 Days",
+                  deliverables: ["5 to 8 Custom Pages", "CMS & Blog", "SEO Setup & Google Map", "Free Domain & Hosting"]
+                },
+                {
+                  key: "ecommerce",
+                  name: "Full E-Commerce Store",
+                  priceINR: 29999,
+                  timeline: "5 to 7 Days",
+                  deliverables: ["Unlimited Products", "Razorpay/Stripe Gateway", "WhatsApp Order Alerts", "Inventory Dashboard"]
+                },
+                {
+                  key: "saas",
+                  name: "Custom Web App / SaaS MVP",
+                  priceINR: 49999,
+                  timeline: "10 to 14 Days",
+                  deliverables: ["User Auth & Database", "Interactive Dashboard", "API Integrations", "Scalable Cloud Setup"]
+                }
+              ]
+            };
+          }
+        },
+        {
+          name: "book_consultation",
+          description: "Generates a direct booking link and populates consultation details for Voltara Web Studio lead developer.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              clientName: { type: "string", description: "Client or company name" },
+              clientPhone: { type: "string", description: "WhatsApp or phone number" },
+              packageKey: {
+                type: "string",
+                enum: ["landing", "business", "ecommerce", "saas"],
+                description: "Interested package key"
+              },
+              projectBrief: { type: "string", description: "Optional notes about the project" }
+            },
+            required: ["clientName", "clientPhone", "packageKey"]
+          },
+          execute: async function(args) {
+            const name = (args && args.clientName) || "Valued Client";
+            const phone = (args && args.clientPhone) || "";
+            const key = (args && args.packageKey) || "landing";
+            const brief = (args && args.projectBrief) || "Turnkey website development inquiry";
+
+            const tier = websiteTiers[key] || websiteTiers.landing;
+            const message = `Hello Voltara Web Agency! 👋%0A%0AI want to get a complete website built for my business:%0A- *Client / Business:* ${encodeURIComponent(name)}%0A- *Website Package:* ${encodeURIComponent(tier.name)}%0A- *Client Phone:* ${encodeURIComponent(phone)}%0A- *Project Brief:* ${encodeURIComponent(brief)}%0A%0APlease connect with me to start building!`;
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=919555838550&text=${message}`;
+
+            return {
+              status: "dispatched",
+              whatsappUrl: whatsappUrl,
+              directCallNumber: "+919555838550",
+              confirmation: `Booking prepared for ${name} (${tier.name}). Connect directly via WhatsApp.`
+            };
+          }
+        },
+        {
+          name: "get_agency_info",
+          description: "Provides official Voltara contact coordinates, lead developer contacts, turnaround guarantee, and location.",
+          inputSchema: {
+            type: "object",
+            properties: {}
+          },
+          execute: async function() {
+            return {
+              agencyName: "Voltara Web Studio (Voltara Media)",
+              headline: "Professional Website Making & 3D Development Agency",
+              phone: "+91 95558 38550",
+              whatsapp: "https://api.whatsapp.com/send?phone=919555838550",
+              email: "contact@voltara.studio",
+              address: "Delhi NCR, India (Global Remote Service)",
+              turnaroundGuarantee: "48-Hour Express Launch on Custom Domain",
+              inclusionsInAllPlans: ["Free 1-Year .com/.in Domain", "High-Speed NVMe Cloud Hosting", "SSL Certificate", "100% Mobile & PC Responsive"]
+            };
+          }
+        }
+      ];
+
+      // Expose globally for browser agent inspection
+      window.__WEBMCP_TOOLS__ = voltaraWebMCPTools;
+
+      // Register with navigator.modelContext if supported, or provide polyfill
+      if (typeof navigator !== 'undefined') {
+        if (!navigator.modelContext) {
+          navigator.modelContext = {
+            provideContext: function(ctx) {
+              window.__WEBMCP_CONTEXT__ = ctx;
+              return true;
+            },
+            tools: voltaraWebMCPTools
+          };
+        }
+        
+        if (typeof navigator.modelContext.provideContext === 'function') {
+          try {
+            navigator.modelContext.provideContext({
+              tools: voltaraWebMCPTools,
+              resources: [
+                {
+                  uri: "voltara://services/catalog",
+                  name: "Voltara Services Catalog",
+                  mimeType: "application/json"
+                }
+              ]
+            });
+            console.log("[WebMCP] Voltara Web Studio agent tools registered successfully.");
+          } catch (e) {
+            console.warn("[WebMCP] provideContext invocation notice:", e);
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+# ==============================================================================
+# Voltara Web Studio — robots.txt
+# RFC 9309 Compliant Crawler & AI Agent Directives
+# ==============================================================================
+
+# Default Crawlers
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /index.md
+Allow: /auth.md
+Allow: /sitemap.xml
+Allow: /docs/
+Allow: /.well-known/
+Disallow: /private/
+Disallow: /admin/
+
+# OpenAI Crawlers
+User-agent: GPTBot
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# Anthropic Crawlers
+User-agent: Claude-Web
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# Google AI Crawler
+User-agent: Google-Extended
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# Perplexity AI Crawler
+User-agent: PerplexityBot
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# Apple AI Crawler
+User-agent: Applebot-Extended
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# Meta AI Crawler
+User-agent: meta-externalagent
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# ByteDance AI Crawler
+User-agent: Bytespider
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# Cohere AI Crawler
+User-agent: cohere-ai
+Allow: /
+Allow: /index.md
+Allow: /.well-known/
+Allow: /docs/
+
+# ------------------------------------------------------------------------------
+# Content Signals (https://contentsignals.org / draft-romm-aipref-contentsignals)
+# ------------------------------------------------------------------------------
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
+# ------------------------------------------------------------------------------
+# Sitemaps
+# ------------------------------------------------------------------------------
+Sitemap: https://public0gamer.github.io/VOLTARA-MEDIA-/sitemap.xml
+Sitemap: https://public0gamer.github.io/sitemap.xml
+Sitemap: /sitemap.xml
+Sitemap: /VOLTARA-MEDIA-/sitemap.xml

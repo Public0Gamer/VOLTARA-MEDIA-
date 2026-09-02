@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage -->
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/index.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Markdown for AI Agents -->
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/index.md</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Agent Authentication & Instructions -->
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/auth.md</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Interactive API Documentation -->
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/docs/api.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/docs/openapi.json</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/docs/dns-aid.md</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Well-Known Agent Discovery Endpoints -->
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/api-catalog</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/ai-catalog.json</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/mcp/server-card.json</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/agent-skills/index.json</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/oauth-protected-resource</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/openid-configuration</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/oauth-authorization-server</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

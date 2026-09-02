@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voltara Web Studio — Official API Documentation</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="alternate" type="application/vnd.oai.openapi+json" href="/docs/openapi.json">
+  <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f19; color: #f1f5f9; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="p-4 sm:p-8 max-w-5xl mx-auto">
+  <!-- Header -->
+  <header class="border-b border-slate-800 pb-6 mb-8 flex flex-wrap items-center justify-between gap-4">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 font-bold uppercase tracking-wider">REST API v1.0</span>
+        <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">RFC 9727 Ready</span>
+      </div>
+      <h1 class="text-3xl font-black tracking-tight text-white">Voltara Web Studio API</h1>
+      <p class="text-slate-400 text-sm mt-1">Automated endpoints for AI agents, developers, and autonomous procurement bots.</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="/" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all">← Back to Site</a>
+      <a href="/docs/openapi.json" target="_blank" class="px-4 py-2 text-xs font-bold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg transition-all">OpenAPI 3.1 Spec ↓</a>
+    </div>
+  </header>
+
+  <!-- Agent Protocols Nav -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+    <a href="/.well-known/api-catalog" class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all block">
+      <div class="text-xs text-indigo-400 font-bold">RFC 9727</div>
+      <div class="text-sm font-bold text-white mt-0.5">API Catalog</div>
+    </a>
+    <a href="/.well-known/mcp/server-card.json" class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all block">
+      <div class="text-xs text-purple-400 font-bold">SEP-1649</div>
+      <div class="text-sm font-bold text-white mt-0.5">MCP Server Card</div>
+    </a>
+    <a href="/.well-known/agent-skills/index.json" class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all block">
+      <div class="text-xs text-emerald-400 font-bold">RFC v0.2.0</div>
+      <div class="text-sm font-bold text-white mt-0.5">Agent Skills</div>
+    </a>
+    <a href="/auth.md" class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all block">
+      <div class="text-xs text-amber-400 font-bold">WorkOS Auth</div>
+      <div class="text-sm font-bold text-white mt-0.5">Agent Auth.md</div>
+    </a>
+  </div>
+
+  <!-- Endpoints Section -->
+  <div class="space-y-6">
+    <!-- GET /api/health -->
+    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-xs">GET</span>
+        <span class="text-sm font-bold font-mono text-slate-200">/api/health</span>
+      </div>
+      <p class="text-xs text-slate-400 mb-3">Check system health and latency.</p>
+      <pre class="bg-slate-950 p-3 rounded-xl text-xs text-slate-300 border border-slate-800/80 overflow-x-auto"><code>{
+  "status": "ok",
+  "timestamp": "2026-09-02T18:15:00.000Z"
+}</code></pre>
+    </div>
+
+    <!-- POST /api/estimate -->
+    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-400 font-bold text-xs">POST</span>
+        <span class="text-sm font-bold font-mono text-slate-200">/api/estimate</span>
+      </div>
+      <p class="text-xs text-slate-400 mb-3">Calculate turnkey development cost in INR including 3D effects, free domain, and hosting.</p>
+      <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Request Body (JSON)</div>
+      <pre class="bg-slate-950 p-3 rounded-xl text-xs text-slate-300 border border-slate-800/80 overflow-x-auto mb-3"><code>{
+  "packageKey": "landing",   // "landing" | "business" | "ecommerce" | "saas"
+  "speed": "express",        // "standard" (1.0x) | "express" (1.15x) | "economy" (0.95x)
+  "domain": ".com"           // ".com" | ".in" | ".co" | "own"
+}</code></pre>
+      <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Response (200 OK)</div>
+      <pre class="bg-slate-950 p-3 rounded-xl text-xs text-emerald-300 border border-slate-800/80 overflow-x-auto"><code>{
+  "package": "3D Conversion Landing Page",
+  "basePriceINR": 7999,
+  "discountedPriceINR": 9199,
+  "speedMultiplier": 1.15,
+  "timeline": "48 Hours Express",
+  "freeInclusions": [
+    "Free .com Domain (1 Year)",
+    "High-Speed NVMe Cloud Hosting + SSL",
+    "3D WebGL Canvas Physics",
+    "1-Click WhatsApp Instant Funnel"
+  ],
+  "directWhatsAppUrl": "https://api.whatsapp.com/send?phone=919555838550&text=..."
+}</code></pre>
+    </div>
+
+    <!-- GET /api/services -->
+    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-xs">GET</span>
+        <span class="text-sm font-bold font-mono text-slate-200">/api/services</span>
+      </div>
+      <p class="text-xs text-slate-400 mb-3">Retrieve active service tiers and turnkey packages with deliverables.</p>
+    </div>
+
+    <!-- POST /api/leads -->
+    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-400 font-bold text-xs">POST</span>
+        <span class="text-sm font-bold font-mono text-slate-200">/api/leads</span>
+        <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Requires Bearer Token</span>
+      </div>
+      <p class="text-xs text-slate-400 mb-3">Submit verified client inquiry directly to Voltara Web Studio dispatch queue.</p>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-800 mt-12 pt-6 text-center text-xs text-slate-500">
+    © 2026 Voltara Web Studio. Autonomous Agent Discovery Endpoints configured per IETF & W3C Agentic Web specifications.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+; ==============================================================================
+; DNS for AI Discovery (DNS-AID) Zone File
+; Specification: draft-mozleywilliams-dnsop-dnsaid / RFC 9460 (SVCB/HTTPS)
+; Domain: voltara.studio / voltaraindia.com
+; ==============================================================================
+
+$ORIGIN voltara.studio.
+$TTL 3600
+
+; Primary Discovery Index Entrypoint for AI Agents
+; Points autonomous agents to the ARD manifest and discovery catalog
+_index._agents    IN HTTPS 1 voltara.studio. (
+                          alpn="h2,h3"
+                          port=443
+                          key65301="/.well-known/ai-catalog.json"
+                          )
+
+; Agent-to-Agent (A2A) Communication Entrypoint
+_a2a._agents      IN HTTPS 1 voltara.studio. (
+                          alpn="h2,h3"
+                          port=443
+                          key65301="/api/v1/agents"
+                          )
+
+; MCP (Model Context Protocol) Server Discovery Entrypoint
+_mcp._agents      IN HTTPS 1 voltara.studio. (
+                          alpn="h2,h3"
+                          port=443
+                          key65301="/.well-known/mcp/server-card.json"
+                          )
+
+; RFC 9727 API Catalog Entrypoint
+_api._agents      IN HTTPS 1 voltara.studio. (
+                          alpn="h2,h3"
+                          port=443
+                          key65301="/.well-known/api-catalog"
+                          )
+
+; TXT Record verification for discovery validation
+_agents           IN TXT   "v=aid1; card=/.well-known/mcp/server-card.json; ard=/.well-known/ai-catalog.json; skills=/.well-known/agent-skills/index.json"

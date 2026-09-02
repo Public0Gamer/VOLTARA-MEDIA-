@@ -1,0 +1,195 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Voltara Web Studio API",
+    "version": "1.0.0",
+    "description": "Official programmatic API for Voltara Web Studio — automated website cost estimates, service tier information, client inquiry dispatch, and system health.",
+    "contact": {
+      "name": "Voltara Web Studio Lead Support",
+      "url": "https://voltara.studio",
+      "email": "contact@voltara.studio"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://voltara.studio/api",
+      "description": "Production Server"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Check API availability and status.",
+        "responses": {
+          "200": {
+            "description": "System healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" },
+                    "timestamp": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/estimate": {
+      "post": {
+        "summary": "Calculate Website Cost Estimate",
+        "description": "Calculates real-time turnkey website development pricing in INR based on package tier, turnaround speed, and domain choice.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "packageKey": {
+                    "type": "string",
+                    "enum": ["landing", "business", "ecommerce", "saas"],
+                    "example": "landing"
+                  },
+                  "speed": {
+                    "type": "string",
+                    "enum": ["standard", "express", "economy"],
+                    "default": "standard"
+                  },
+                  "domain": {
+                    "type": "string",
+                    "default": ".com"
+                  }
+                },
+                "required": ["packageKey"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Calculation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "package": { "type": "string" },
+                    "basePriceINR": { "type": "number" },
+                    "discountedPriceINR": { "type": "number" },
+                    "speedMultiplier": { "type": "number" },
+                    "timeline": { "type": "string" },
+                    "freeInclusions": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "directWhatsAppUrl": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services": {
+      "get": {
+        "summary": "List Website Packages",
+        "description": "Returns full list of turnkey website packages, turnaround times, and feature inclusions.",
+        "responses": {
+          "200": {
+            "description": "List of packages",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tiers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "name": { "type": "string" },
+                          "basePriceINR": { "type": "number" },
+                          "turnaround": { "type": "string" },
+                          "features": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/leads": {
+      "post": {
+        "summary": "Submit Client Lead",
+        "description": "Registers client interest and returns instant WhatsApp direct link formatted for transmission to Voltara team.",
+        "security": [
+          { "OAuth2": ["voltara:lead"] }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientName": { "type": "string", "example": "Dr. Sharma" },
+                  "clientPhone": { "type": "string", "example": "+919876543210" },
+                  "packageKey": { "type": "string", "example": "business" },
+                  "notes": { "type": "string", "example": "Need dental clinic website with appointment booking" }
+                },
+                "required": ["clientName", "clientPhone", "packageKey"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Lead registered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "leadId": { "type": "string" },
+                    "status": { "type": "string" },
+                    "whatsappDirectUrl": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://voltara.studio/api/v1/oauth/token",
+            "scopes": {
+              "voltara:estimate": "Execute calculation algorithms",
+              "voltara:lead": "Submit client leads"
+            }
+          }
+        }
+      }
+    }
+  }
+}
