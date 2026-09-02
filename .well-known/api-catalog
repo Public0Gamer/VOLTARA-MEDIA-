@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://public0gamer.github.io/VOLTARA-MEDIA-/api",
+      "service-desc": [
+        {
+          "href": "https://public0gamer.github.io/VOLTARA-MEDIA-/docs/openapi.json",
+          "type": "application/vnd.oai.openapi+json;version=3.1.0"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://public0gamer.github.io/VOLTARA-MEDIA-/docs/api.html",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://public0gamer.github.io/VOLTARA-MEDIA-/api/health",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}
