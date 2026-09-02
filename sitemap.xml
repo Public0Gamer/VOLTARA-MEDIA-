@@ -5,13 +5,13 @@
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- Homepage -->
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/</loc>
+    <loc>https://voltara-media.vercel.app/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/index.html</loc>
+    <loc>https://voltara-media.vercel.app/index.html</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -19,7 +19,7 @@
 
   <!-- Markdown for AI Agents -->
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/index.md</loc>
+    <loc>https://voltara-media.vercel.app/index.md</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -27,7 +27,7 @@
 
   <!-- Agent Authentication & Instructions -->
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/auth.md</loc>
+    <loc>https://voltara-media.vercel.app/auth.md</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -35,19 +35,19 @@
 
   <!-- Interactive API Documentation -->
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/docs/api.html</loc>
+    <loc>https://voltara-media.vercel.app/docs/api.html</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/docs/openapi.json</loc>
+    <loc>https://voltara-media.vercel.app/docs/openapi.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/docs/dns-aid.md</loc>
+    <loc>https://voltara-media.vercel.app/docs/dns-aid.md</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -55,43 +55,49 @@
 
   <!-- Well-Known Agent Discovery Endpoints -->
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/api-catalog</loc>
+    <loc>https://voltara-media.vercel.app/.well-known/api-catalog</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/ai-catalog.json</loc>
+    <loc>https://voltara-media.vercel.app/.well-known/ai-catalog.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/mcp/server-card.json</loc>
+    <loc>https://voltara-media.vercel.app/.well-known/mcp/server-card.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/agent-skills/index.json</loc>
+    <loc>https://voltara-media.vercel.app/.well-known/agent-skills/index.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/oauth-protected-resource</loc>
+    <loc>https://voltara-media.vercel.app/.well-known/agent-card.json</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voltara-media.vercel.app/.well-known/oauth-protected-resource</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/openid-configuration</loc>
+    <loc>https://voltara-media.vercel.app/.well-known/openid-configuration</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/oauth-authorization-server</loc>
+    <loc>https://voltara-media.vercel.app/.well-known/oauth-authorization-server</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
