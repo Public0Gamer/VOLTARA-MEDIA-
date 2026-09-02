@@ -1,7 +1,7 @@
 {
-  "resource": "https://public0gamer.github.io/VOLTARA-MEDIA-/api",
+  "resource": "https://voltara-media.vercel.app/api",
   "authorization_servers": [
-    "https://public0gamer.github.io/VOLTARA-MEDIA-"
+    "https://voltara-media.vercel.app"
   ],
   "scopes_supported": [
     "voltara:read",
@@ -10,5 +10,6 @@
   ],
   "bearer_methods_supported": [
     "header"
-  ]
+  ],
+  "resource_documentation": "https://voltara-media.vercel.app/docs/api.html"
 }
