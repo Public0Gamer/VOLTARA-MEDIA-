@@ -1,0 +1,14 @@
+{
+  "resource": "https://public0gamer.github.io/VOLTARA-MEDIA-/api",
+  "authorization_servers": [
+    "https://public0gamer.github.io/VOLTARA-MEDIA-"
+  ],
+  "scopes_supported": [
+    "voltara:read",
+    "voltara:estimate",
+    "voltara:lead"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ]
+}
