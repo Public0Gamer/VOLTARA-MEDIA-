@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AuraDerma Clinic — Kanpur's Premier Skin, Hair & Laser Aesthetic Center</title>
+  <meta name="description" content="US-FDA approved clinical skin, hair, and laser treatments by certified MD dermatologists in Swaroop Nagar, Kanpur. Book your consultation today.">
+  
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      user-select: none;
+    }
+    .slider-image-before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+    }
+    .slider-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: white;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      color: #0f172a;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-rose-500/30 selection:text-rose-200">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-rose-950 via-slate-900 to-rose-950 border-b border-rose-500/20 py-2 px-4 text-center text-xs text-rose-200 flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+    <span><strong>Special Kanpur Resident Offer:</strong> Get Free 3D Skin Analysis with First Consultation</span>
+    <span class="hidden md:inline text-rose-400">• Swaroop Nagar, Kanpur</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-300 p-0.5 shadow-lg shadow-rose-500/20">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <span class="text-rose-400 text-xl font-serif">✦</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-serif text-lg md:text-xl font-bold tracking-tight text-white block leading-none">AuraDerma</span>
+          <span class="text-[10px] text-rose-400 tracking-wider font-semibold uppercase">Skin, Hair & Aesthetics</span>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center gap-6 text-xs text-slate-300 font-medium">
+        <a href="#treatments" class="hover:text-rose-400 transition-colors">Treatments</a>
+        <a href="#results" class="hover:text-rose-400 transition-colors">Real Results</a>
+        <a href="#doctors" class="hover:text-rose-400 transition-colors">MD Dermatologist</a>
+        <a href="#reviews" class="hover:text-rose-400 transition-colors">Reviews</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="#book" class="bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-semibold text-xs px-4 py-2 rounded-xl shadow-lg shadow-rose-500/25 flex items-center gap-1.5 transition-all transform active:scale-95">
+          <span>Book Appointment</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-rose-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-semibold">
+            <span class="text-rose-400">★ ★ ★ ★ ★</span>
+            <span>Kanpur's Highest Rated Dermatology Center</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.15]">
+            Flawless Skin & Healthy Hair, Guided by <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-rose-200 to-amber-200 italic">Certified Doctors.</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            No temporary parlor fixes. Experience US-FDA approved clinical lasers, customized acne scar treatments, and advanced GFC hair restoration in Swaroop Nagar, Kanpur.
+          </p>
+
+          <!-- Key Trust Bullets -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-4 max-w-md mx-auto lg:mx-0 pt-2">
+            <div class="bg-slate-900/80 border border-slate-800/80 p-3 rounded-xl text-center">
+              <div class="text-rose-400 font-bold text-lg sm:text-xl">15,000+</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">Patients Treated</div>
+            </div>
+            <div class="bg-slate-900/80 border border-slate-800/80 p-3 rounded-xl text-center">
+              <div class="text-amber-400 font-bold text-lg sm:text-xl">US-FDA</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">Gold Standard Tech</div>
+            </div>
+            <div class="bg-slate-900/80 border border-slate-800/80 p-3 rounded-xl text-center">
+              <div class="text-emerald-400 font-bold text-lg sm:text-xl">4.9 ★</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">Google Verified</div>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-3">
+            <a href="#book" class="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 hover:from-rose-600 hover:to-rose-800 text-white font-bold text-sm px-7 py-3.5 rounded-xl shadow-xl shadow-rose-500/25 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+              <span>Book Doctor Consultation</span>
+              <span>📅</span>
+            </a>
+            <a href="https://wa.me/919457544774?text=Hi%20AuraDerma%20Kanpur,%20I%20want%20to%20consult%20Dr.%20about%20skin/hair%20treatment" target="_blank" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+              <span>Chat on WhatsApp</span>
+              <span>💬</span>
+            </a>
+          </div>
+
+          <div class="flex items-center justify-center lg:justify-start gap-2 text-xs text-slate-400 pt-1">
+            <span class="text-emerald-400 font-bold">✓</span>
+            <span>Zero Wait Time with Scheduled Slot</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-emerald-400 font-bold">✓</span>
+            <span>100% Confidential</span>
+          </div>
+
+        </div>
+
+        <!-- Right Visual Card (Doctor Booking Card) -->
+        <div class="lg:col-span-5">
+          <div class="relative mx-auto max-w-md">
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-rose-500/40 via-amber-500/30 to-rose-500/40 blur-xl opacity-75"></div>
+            
+            <div class="relative bg-slate-900/90 border border-slate-700/80 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-5">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-rose-400 to-amber-200 p-0.5">
+                    <div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-2xl">👩‍⚕️</div>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-white text-sm">Dr. Radhika Singhania</h3>
+                    <p class="text-[11px] text-rose-300 font-medium">MBBS, MD (Dermatology, Venereology)</p>
+                    <p class="text-[10px] text-slate-400">12+ Yrs Experience • Ex-Apollo Fellow</p>
+                  </div>
+                </div>
+                <span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/20">Available Today</span>
+              </div>
+
+              <!-- Quick Symptom Selector -->
+              <div class="space-y-2">
+                <label class="text-xs font-semibold text-slate-300">Select Your Concern:</label>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <button type="button" onclick="selectConcern(this, 'Active Acne & Scars')" class="concern-btn p-2.5 rounded-lg border border-slate-800 bg-slate-800/60 hover:border-rose-500/50 text-left transition-all active-concern border-rose-500 bg-rose-500/10 text-white font-medium">
+                    ✨ Acne & Scars
+                  </button>
+                  <button type="button" onclick="selectConcern(this, 'Laser Hair Removal')" class="concern-btn p-2.5 rounded-lg border border-slate-800 bg-slate-800/60 hover:border-rose-500/50 text-left transition-all text-slate-300">
+                    ⚡ Laser Hair Removal
+                  </button>
+                  <button type="button" onclick="selectConcern(this, 'Hair Fall & Thinning')" class="concern-btn p-2.5 rounded-lg border border-slate-800 bg-slate-800/60 hover:border-rose-500/50 text-left transition-all text-slate-300">
+                    💇 Hair Loss & PRP
+                  </button>
+                  <button type="button" onclick="selectConcern(this, 'HydraFacial Glow')" class="concern-btn p-2.5 rounded-lg border border-slate-800 bg-slate-800/60 hover:border-rose-500/50 text-left transition-all text-slate-300">
+                    💧 HydraFacial Glow
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mini Booking Form -->
+              <form id="heroBookingForm" onsubmit="handleHeroSubmit(event)" class="space-y-3 pt-1">
+                <input type="text" id="patientName" required placeholder="Your Full Name" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-500 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none transition-colors">
+                <input type="tel" id="patientPhone" required placeholder="WhatsApp Mobile Number (e.g. 9876543210)" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-500 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 outline-none transition-colors">
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-slate-950 font-extrabold text-xs py-3 rounded-xl shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all">
+                  <span>Confirm WhatsApp Booking</span>
+                  <span>⚡</span>
+                </button>
+              </form>
+
+              <div class="text-[10px] text-center text-slate-500">
+                🔒 Your medical details are strictly confidential.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Before / After Clinical Results -->
+  <section id="results" class="py-16 overflow-hidden bg-slate-900/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+      
+      <div class="text-center space-y-3">
+        <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Documented Transformations</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white">Interactive Before & After Result</h2>
+        <p class="text-xs sm:text-sm text-slate-400">Drag the white slider horizontally to reveal real patient progress.</p>
+      </div>
+
+      <!-- Interactive Slider Box -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-6 shadow-2xl">
+        
+        <div class="flex items-center justify-center gap-2 flex-wrap">
+          <button onclick="setCase('acne')" id="tab-acne" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-500 text-white shadow-lg transition-all">
+            Acne Scar Revision (4 Sessions)
+          </button>
+          <button onclick="setCase('hair')" id="tab-hair" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+            PRP Hair Density (3 Months)
+          </button>
+          <button onclick="setCase('laser')" id="tab-laser" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+            Laser Hair Reduction (6 Sessions)
+          </button>
+        </div>
+
+        <!-- The Comparison Visualizer -->
+        <div class="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-2xl overflow-hidden border border-slate-700 slider-container" id="sliderContainer">
+          
+          <!-- AFTER -->
+          <div id="afterImage" class="w-full h-full bg-gradient-to-tr from-emerald-950 via-slate-900 to-slate-800 flex flex-col items-center justify-center p-6 text-center">
+            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30 mb-2">AFTER (Smooth & Clear)</span>
+            <div class="w-24 h-24 rounded-full bg-emerald-500/10 border-2 border-emerald-400/40 flex items-center justify-center text-4xl my-2">✨</div>
+            <div class="text-sm font-bold text-white mt-1" id="afterTitle">85% Scar Texture Reduction</div>
+            <p class="text-xs text-slate-400 max-w-xs mt-1" id="afterDesc">Even skin tone with reconstructed collagen foundation.</p>
+          </div>
+
+          <!-- BEFORE -->
+          <div id="beforeImage" class="slider-image-before bg-gradient-to-tr from-red-950 via-slate-950 to-slate-900 flex flex-col items-center justify-center p-6 text-center border-r border-white">
+            <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 text-xs font-bold border border-red-500/30 mb-2">BEFORE (Session 1)</span>
+            <div class="w-24 h-24 rounded-full bg-red-500/10 border-2 border-red-400/40 flex items-center justify-center text-4xl my-2">🔴</div>
+            <div class="text-sm font-bold text-white mt-1" id="beforeTitle">Active Cystic Acne & Pits</div>
+            <p class="text-xs text-slate-400 max-w-xs mt-1" id="beforeDesc">Severe inflammation and deep hyperpigmented scars.</p>
+          </div>
+
+          <!-- Slider Bar & Handle -->
+          <div class="slider-handle" id="sliderHandle">
+            <div class="slider-button">↔</div>
+          </div>
+
+          <!-- Range Slider overlay -->
+          <input type="range" min="0" max="100" value="50" class="absolute inset-0 opacity-0 cursor-ew-resize w-full h-full z-30" id="rangeSlider" oninput="updateSlider(this.value)">
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-400 max-w-xl mx-auto px-2">
+          <span>👈 Drag left for 'After'</span>
+          <span class="text-emerald-400 font-semibold">100% Genuine Clinical Photos</span>
+          <span>Drag right for 'Before' 👉</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Popular Treatments Grid -->
+  <section id="treatments" class="py-16 bg-slate-900/50 border-y border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <div class="text-xs uppercase tracking-widest text-rose-400 font-bold">Clinical Solutions</div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white">Signature Treatments & Transparent Pricing</h2>
+        <p class="text-xs sm:text-sm text-slate-400">Customized protocols backed by science and US-FDA medical equipment.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl">💧</div>
+          <div>
+            <div class="text-[10px] text-rose-400 font-bold uppercase tracking-wider">Instant Glow & Hydration</div>
+            <h3 class="text-base font-bold text-white mt-1">Medical HydraFacial MD</h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Deep pore extraction, glycolic exfoliation, and antioxidant peptide infusion.</p>
+          </div>
+          <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Starting at</span>
+            <span class="font-bold text-white text-sm">₹1,999</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl">⚡</div>
+          <div>
+            <div class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Triple-Wavelength Diode</div>
+            <h3 class="text-base font-bold text-white mt-1">Laser Hair Reduction</h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Cooling-tip laser technology for permanent reduction with zero burns.</p>
+          </div>
+          <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Starting at</span>
+            <span class="font-bold text-white text-sm">₹2,499</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl">✨</div>
+          <div>
+            <div class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Targeted Scar Revision</div>
+            <h3 class="text-base font-bold text-white mt-1">Acne Scar Laser & Peels</h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">CO2 fractional laser and subcision to rebuild collagen and smooth deep pits.</p>
+          </div>
+          <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Starting at</span>
+            <span class="font-bold text-white text-sm">₹2,999</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl">💇</div>
+          <div>
+            <div class="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Growth Factor Therapy</div>
+            <h3 class="text-base font-bold text-white mt-1">GFC & PRP Hair Regrowth</h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Concentrated platelet growth factors to stop hair fall and trigger follicles.</p>
+          </div>
+          <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Starting at</span>
+            <span class="font-bold text-white text-sm">₹3,499</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Verified Reviews -->
+  <section id="reviews" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Verified Kanpur Patients</span>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white">4.9 Star Google Rating (1,450+ Reviews)</h2>
+        </div>
+        <div class="text-xs text-slate-400">
+          <span class="text-amber-400 text-base">★ ★ ★ ★ ★</span> Google Verified
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-3">
+          <div class="text-amber-400 text-xs">★ ★ ★ ★ ★</div>
+          <p class="text-xs text-slate-300">"Severe acne scars for 5 years. Dr. Radhika's 4 sessions of fractional laser gave me 80% improvement. Best clinic in Swaroop Nagar!"</p>
+          <div class="text-xs font-bold text-white pt-2 border-t border-slate-800">Ananya Tandon • Kanpur</div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-3">
+          <div class="text-amber-400 text-xs">★ ★ ★ ★ ★</div>
+          <p class="text-xs text-slate-300">"Painless cooling diode laser hair reduction! Polite staff, high clinical hygiene. Worth every single rupee."</p>
+          <div class="text-xs font-bold text-white pt-2 border-t border-slate-800">Shruti Srivastava • Civil Lines</div>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-3">
+          <div class="text-amber-400 text-xs">★ ★ ★ ★ ★</div>
+          <p class="text-xs text-slate-300">"Hair fall completely stopped in just 2 GFC sessions. The doctor explained everything scientifically on screen."</p>
+          <div class="text-xs font-bold text-white pt-2 border-t border-slate-800">Vikas Agnihotri • Kakadeo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Appointment Booking Section -->
+  <section id="book" class="py-16 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-block px-3 py-1 rounded-full bg-rose-500/10 text-rose-300 text-xs font-bold">⚡ Limited Daily Consultations</div>
+      <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white">Schedule Doctor Consultation</h2>
+      
+      <form onsubmit="handleFinalBooking(event)" class="space-y-3.5 text-left bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
+          <input type="text" id="finalName" required placeholder="e.g. Priya Sharma" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">WhatsApp Mobile Number</label>
+          <input type="tel" id="finalPhone" required placeholder="e.g. 9876543210" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Primary Concern</label>
+          <select id="finalTreatment" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none">
+            <option value="Acne & Scars Treatment">Acne, Pits & Scars Laser</option>
+            <option value="Laser Hair Reduction">Painless Laser Hair Removal</option>
+            <option value="Hair Fall & PRP Therapy">Hair Fall, Thinning & PRP Regrowth</option>
+            <option value="HydraFacial Glow">HydraFacial MD Instant Skin Glow</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-rose-500 to-rose-700 text-white font-bold text-xs py-3.5 rounded-xl shadow-xl flex items-center justify-center gap-2">
+          <span>Book Priority Slot on WhatsApp</span>
+          <span>💬</span>
+        </button>
+      </form>
+
+      <div class="text-xs text-slate-400">
+        📍 <strong>Location:</strong> 112/240, Swaroop Nagar, Near Emerald Garden, Kanpur, UP 208002
+      </div>
+    </div>
+  </section>
+
+  <!-- Agency White-Label Demo Bar -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-6 px-4 text-center text-xs text-slate-500">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[11px] text-slate-400">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span>Agency Demo Concept Prepared for <strong>Digital King Partner Network</strong></span>
+    </div>
+    <p class="text-[10px] text-slate-600 mt-2">
+      Engineered for maximum Meta Ads conversions • 48-Hour Deployment by <strong>Voltara Web Studio</strong>.
+    </p>
+  </footer>
+
+  <!-- Floating Sticky WhatsApp Button -->
+  <div class="fixed bottom-4 right-4 z-50">
+    <a href="https://wa.me/919457544774?text=Hi%20AuraDerma%20Kanpur,%20I%20want%20to%20book%20a%20skin/hair%20consultation" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 border-2 border-emerald-400">
+      <span class="text-lg">💬</span>
+      <span class="text-xs font-bold">Book on WhatsApp</span>
+    </a>
+  </div>
+
+  <script>
+    let currentConcern = 'Active Acne & Scars';
+
+    function selectConcern(btn, name) {
+      document.querySelectorAll('.concern-btn').forEach(b => {
+        b.classList.remove('active-concern', 'border-rose-500', 'bg-rose-500/10', 'text-white');
+        b.classList.add('border-slate-800', 'text-slate-300');
+      });
+      btn.classList.add('active-concern', 'border-rose-500', 'bg-rose-500/10', 'text-white');
+      btn.classList.remove('border-slate-800', 'text-slate-300');
+      currentConcern = name;
+    }
+
+    function handleHeroSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('patientName').value.trim();
+      const phone = document.getElementById('patientPhone').value.trim();
+      const msg = `Hi AuraDerma Kanpur, I want to book an appointment.\nName: ${name}\nPhone: ${phone}\nConcern: ${currentConcern}`;
+      window.open(`https://wa.me/919457544774?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function handleFinalBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('finalName').value.trim();
+      const phone = document.getElementById('finalPhone').value.trim();
+      const tr = document.getElementById('finalTreatment').value;
+      const msg = `Hi AuraDerma Kanpur, I want to book Consultation.\nName: ${name}\nPhone: ${phone}\nTreatment: ${tr}`;
+      window.open(`https://wa.me/919457544774?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function updateSlider(val) {
+      document.getElementById('beforeImage').style.width = val + '%';
+      document.getElementById('sliderHandle').style.left = val + '%';
+    }
+
+    function setCase(type) {
+      const tabs = ['acne', 'hair', 'laser'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        btn.className = (t === type) 
+          ? 'px-4 py-2 rounded-xl text-xs font-bold bg-rose-500 text-white shadow-lg transition-all'
+          : 'px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all';
+      });
+
+      const beforeTitle = document.getElementById('beforeTitle');
+      const beforeDesc = document.getElementById('beforeDesc');
+      const afterTitle = document.getElementById('afterTitle');
+      const afterDesc = document.getElementById('afterDesc');
+
+      if (type === 'acne') {
+        beforeTitle.innerText = "Active Cystic Acne & Pits";
+        beforeDesc.innerText = "Severe inflammation and deep hyperpigmented scars.";
+        afterTitle.innerText = "85% Scar Texture Reduction";
+        afterDesc.innerText = "Smooth skin tone with reconstructed collagen foundation.";
+      } else if (type === 'hair') {
+        beforeTitle.innerText = "Stage 3 Receding & Thinning";
+        beforeDesc.innerText = "Scalp visible at crown, excessive daily hair fall.";
+        afterTitle.innerText = "Restored Follicle Density";
+        afterDesc.innerText = "Natural thick hairline growth with 3 GFC sessions.";
+      } else if (type === 'laser') {
+        beforeTitle.innerText = "Coarse Facial & Chin Hair";
+        beforeDesc.innerText = "Frequent threading rashes and ingrown hair.";
+        afterTitle.innerText = "100% Smooth Hair-Free Skin";
+        afterDesc.innerText = "Zero ingrowns and painless diode laser maintenance.";
+      }
+
+      document.getElementById('rangeSlider').value = 50;
+      updateSlider(50);
+    }
+  </script>
+</body>
+</html>
