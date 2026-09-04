@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Adityam Jewellers — Kanpur's Destination for 22K Hallmarked Gold, Polki & Diamonds</title>
+  <meta name="description" content="Kanpur's most trusted luxury jewellery house. Explore handcrafted bridal gold sets, certified diamond solitaires, heritage Jadau Polki, and antique temple jewellery.">
+  
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-cinzel {
+      font-family: 'Cinzel', Georgia, serif;
+    }
+    .font-cormorant {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.55;
+      z-index: 1;
+    }
+
+    .jewel-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .jewel-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -15px rgba(212, 175, 55, 0.25);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #996515 0%, #D4AF37 40%, #F3E5AB 60%, #B8860B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#FCFAF6] text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- Top Live Kanpur Gold Rate Bar -->
+  <div class="bg-gradient-to-r from-[#241D12] via-[#382C18] to-[#241D12] text-amber-200 py-2.5 px-4 text-xs font-cinzel border-b border-amber-500/20 shadow-sm flex items-center justify-between">
+    <div class="flex items-center gap-2 max-w-7xl mx-auto w-full justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-bold tracking-wider text-white">TODAY'S KANPUR GOLD RATE (LIVE):</span>
+        <span class="hidden sm:inline text-amber-300">24K 99.9% Pure: <strong>₹74,800/10g</strong></span>
+        <span class="hidden md:inline text-zinc-400">|</span>
+        <span class="hidden md:inline text-amber-400">22K 916 Hallmarked: <strong>₹68,600/10g</strong></span>
+        <span class="hidden lg:inline text-zinc-400">|</span>
+        <span class="hidden lg:inline text-slate-300">Silver 999: <strong>₹88,500/kg</strong></span>
+      </div>
+      <a href="#rates" class="text-[11px] text-amber-300 hover:text-white font-bold tracking-widest uppercase transition-colors underline">
+        Calculate Rate →
+      </a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-[#FCFAF6]/95 backdrop-blur-xl border-b border-[#EFE7D8] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-4 group">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#B8860B] via-[#D4AF37] to-[#F9E79F] p-0.5 shadow-lg shadow-[#B8860B]/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#FFFDF9] rounded-[14px] flex items-center justify-center border border-[#EFE7D8]">
+            <span class="text-[#B8860B] text-2xl font-cinzel font-extrabold">👑</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-cinzel text-2xl sm:text-3xl font-extrabold tracking-wider text-[#241D12] block leading-none">
+            ADITYAM
+          </span>
+          <span class="text-[11px] text-[#B8860B] tracking-[0.25em] font-bold uppercase mt-1.5 block font-cinzel">
+            JEWELLERS • BIRHANA ROAD, KANPUR
+          </span>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8 text-xs text-[#5C4F38] font-bold tracking-wider uppercase">
+        <a href="#bridal" class="hover:text-[#B8860B] transition-colors">Bridal Sets</a>
+        <a href="#polki" class="hover:text-[#B8860B] transition-colors">Jadau Polki</a>
+        <a href="#diamonds" class="hover:text-[#B8860B] transition-colors">Solitaires & Diamonds</a>
+        <a href="#gold" class="hover:text-[#B8860B] transition-colors">Daily Wear 22K</a>
+        <a href="#purity" class="hover:text-[#B8860B] transition-colors">BIS Hallmarking</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+919876543210" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-[#E2D2B8] bg-white hover:bg-[#F9F4EB] text-xs text-[#73551D] font-bold transition-all shadow-sm">
+          <span>📞 Showroom</span>
+        </a>
+        <a href="#rates" class="bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] hover:from-[#996515] text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg shadow-[#B8860B]/25 flex items-center gap-1.5 transition-all transform active:scale-95">
+          <span>Book VIP Appointment</span>
+          <span>✨</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EC] to-[#FCFAF6]">
+    <canvas id="canvas3d"></canvas>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#D4AF37]/15 blur-[160px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center space-y-7">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF5EC] border border-[#E2D2B8] text-[#8C6D23] text-xs font-bold tracking-widest shadow-sm">
+        <span class="text-[#B8860B]">✦</span>
+        <span>100% BIS 916 Hallmarked Gold • IGI Certified Natural Diamonds</span>
+        <span class="text-[#B8860B]">✦</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-cinzel font-extrabold text-[#241D12] tracking-tight leading-[1.15]">
+        Crafted for Royalty. <br>
+        <span class="italic font-cormorant gold-gradient-text">Cherished for Generations.</span>
+      </h1>
+
+      <p class="text-sm sm:text-base text-[#615440] max-w-2xl mx-auto leading-relaxed font-normal">
+        Kanpur's most revered fine jewellery house. From handcrafted heirloom bridal gold chokers to certified solitaires and royal Jadau Kundan, experience purity without compromise at <strong>Adityam Jewellers</strong>.
+      </p>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto pt-1">
+        <div class="bg-white/90 backdrop-blur-md border border-[#EADDC9] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#8C6D23] font-bold text-xl sm:text-2xl">100%</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">BIS Hallmarked</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#EADDC9] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#B8860B] font-bold text-xl sm:text-2xl">0%</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Hidden Deduction</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#EADDC9] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#8C6D23] font-bold text-xl sm:text-2xl">50,000+</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Kanpur Families</div>
+        </div>
+      </div>
+
+      <!-- Live Rate Calculator & Inquiry Bar -->
+      <div class="max-w-4xl mx-auto bg-white border border-[#E2D2B8] p-5 rounded-3xl shadow-xl shadow-[#B8860B]/10 space-y-3 mt-4 text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+          <div>
+            <label class="block text-[11px] font-bold text-[#73551D] uppercase tracking-wider mb-1">Jewellery Category</label>
+            <select id="calcCategory" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none font-medium">
+              <option value="Bridal Gold Choker & Haar Set">Bridal Gold Choker & Haar Set</option>
+              <option value="Heritage Jadau Polki Set">Heritage Jadau Polki Set</option>
+              <option value="Certified Diamond Solitaire Ring">Certified Diamond Solitaire Ring</option>
+              <option value="22K Gold Bangles & Kadas">22K Gold Bangles & Kadas</option>
+              <option value="Lightweight Daily Wear Gold">Lightweight Daily Wear Gold</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-[#73551D] uppercase tracking-wider mb-1">Approx Budget / Grams</label>
+            <select id="calcWeight" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none font-medium">
+              <option value="₹50,000 to ₹1.5 Lakh">₹50,000 to ₹1.5 Lakh</option>
+              <option value="₹2 Lakh to ₹5 Lakh (Bridal)">₹2 Lakh to ₹5 Lakh (Bridal)</option>
+              <option value="₹5 Lakh+ (Royal Trousseau)">₹5 Lakh+ (Royal Trousseau)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-[#73551D] uppercase tracking-wider mb-1">Purity</label>
+            <select id="calcPurity" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none font-medium">
+              <option value="22K (916 BIS Hallmark)">22K (916 BIS Hallmark)</option>
+              <option value="18K (Diamond Jewellery)">18K (Diamond Jewellery)</option>
+              <option value="24K (Pure Gold Coins & Bars)">24K (Pure Gold Coins & Bars)</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button onclick="handleJewelleryInquiry()" class="w-full bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] hover:from-[#996515] text-white font-bold text-xs py-2.5 rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all transform active:scale-95 h-[42px]">
+              <span>Check Live Price on WA</span>
+              <span>💬</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 1: Royal Bridal Gold Jewellery -->
+  <section id="bridal" class="py-16 md:py-24 bg-[#FFFDF9] border-t border-[#EFE7D8]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">The Bridal Trousseau</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#241D12]">Royal Bridal Gold Sets</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">Crafted in 22K 916 BIS Hallmarked gold with antique nakshi work, kundan embellishments, and real pearls.</p>
+        </div>
+        <a href="#rates" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>Inquire Complete Bridal Catalogue →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1611591475879-114420a32d16?auto=format&fit=crop&w=800&q=80" alt="Royal Nakshi Antique Bridal Set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">22K BIS 916</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#241D12]">The Rajwada Bridal Haar</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">Approx 68 Grams</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Elaborate temple nakshi work with Goddess Lakshmi motif, layered jhumkas, and matching maang tikka.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ 100% 916 BIS Laser Hallmarked</div>
+                <div>✓ Complete Choker + Long Haar + Jhumkas</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquireJewellery('The Rajwada Bridal Haar', 'Bridal Gold')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Check Price & Making Charges 💬</button>
+          </div>
+        </div>
+
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Zambian Emerald Choker" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Bespoke Design</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#241D12]">Zambian Emerald Choker</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">Approx 54 Grams</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Hand-carved Russian emerald beads flanked by 22K yellow gold filigree and delicate South Sea pearls.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Natural Certified Gemstones</div>
+                <div>✓ Adjustable Royal Dori Fitting</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquireJewellery('Zambian Emerald Choker', 'Bridal Gold')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Check Price & Making Charges 💬</button>
+          </div>
+        </div>
+
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80" alt="Mughal Chandbali Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Heirloom Edition</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#241D12]">Mughal Chandbali Suite</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">Approx 42 Grams</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Crescent moon Chandbali earrings with multi-tiered pearl tassels and matching statement choker.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Weight Customization Available</div>
+                <div>✓ Lifetime Polish & Repair Free</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquireJewellery('Mughal Chandbali Suite', 'Bridal Gold')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Check Price & Making Charges 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 2: Certified Solitaires & Diamonds -->
+  <section id="diamonds" class="py-16 md:py-24 bg-[#FAF5EC] border-y border-[#EAE0D0]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Eternal Sparkle</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#241D12]">Certified Diamond Solitaires</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">GIA & IGI Certified natural diamonds with EF-VVS clarity, set in 18K white and rose gold.</p>
+        </div>
+        <a href="#rates" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>Explore Solitaire Rings →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="The Empress Solitaire Ring" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">IGI Certified</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#241D12]">The Empress Solitaire Ring</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">1.25 Carat EF VVS</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Brilliant round cut solitaire set in a 6-prong platinum crown with diamond-studded band in 18K gold.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Laser Inscribed Certificate Number</div>
+                <div>✓ 100% Exchange & Buyback Guarantee</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquireJewellery('The Empress Solitaire Ring', 'Diamond')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Inquire Solitaire Price 💬</button>
+          </div>
+        </div>
+
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80" alt="The Aurelia Halo Ring" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Cushion Halo</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#241D12]">The Aurelia Halo Ring</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">0.90 Ct Center</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Cushion-cut diamond enveloped by a halo of micro-pave diamonds in rose gold shank.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Hallmarked 18K Rose Gold</div>
+                <div>✓ Custom Ring Sizing Free</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquireJewellery('The Aurelia Halo Ring', 'Diamond')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Inquire Solitaire Price 💬</button>
+          </div>
+        </div>
+
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=800&q=80" alt="Classic Tennis Bracelet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Everyday Luxury</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#241D12]">Classic Tennis Bracelet</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">4.50 Carats Total</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">A continuous ribbon of natural brilliant diamonds set in flexible 18K white gold with security clasp.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Certified by International Gem Lab</div>
+                <div>✓ Sleek Contemporary Daily Wear</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquireJewellery('Classic Tennis Bracelet', 'Diamond')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Inquire Bracelet Price 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase 3: Heritage Jadau Polki -->
+  <section id="polki" class="py-16 md:py-24 bg-[#FFFDF9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Heritage Mastery</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#241D12]">Jadau Polki & 22K Gold Bangles</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">Uncut natural Polki diamonds embedded in pure 24K gold foil with meenakari reverse art.</p>
+        </div>
+        <a href="#rates" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>View Bangle & Kada Pairs →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm p-5 space-y-3">
+          <div class="aspect-square rounded-2xl overflow-hidden bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=600&q=80" alt="Royal Jadau Choker" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+          <h4 class="font-cinzel text-base font-bold text-[#241D12]">Royal Jadau Choker</h4>
+          <p class="text-xs text-[#6B5E49]">Syndicate uncut polki with natural emerald droplets.</p>
+          <button onclick="inquireJewellery('Royal Jadau Choker', 'Polki')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] text-xs font-bold py-2.5 rounded-xl block text-center">Inquire on WhatsApp</button>
+        </div>
+
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm p-5 space-y-3">
+          <div class="aspect-square rounded-2xl overflow-hidden bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1611591475879-114420a32d16?auto=format&fit=crop&w=600&q=80" alt="Antique Gold Kadas" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+          <h4 class="font-cinzel text-base font-bold text-[#241D12]">Antique Temple Kadas</h4>
+          <p class="text-xs text-[#6B5E49]">Solid 22K gold screw-open kadas with elephant trunk motifs.</p>
+          <button onclick="inquireJewellery('Antique Temple Kadas', 'Gold Bangles')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] text-xs font-bold py-2.5 rounded-xl block text-center">Inquire on WhatsApp</button>
+        </div>
+
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm p-5 space-y-3">
+          <div class="aspect-square rounded-2xl overflow-hidden bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Ruby Polki Pendant" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+          <h4 class="font-cinzel text-base font-bold text-[#241D12]">Ruby Polki Pendant</h4>
+          <p class="text-xs text-[#6B5E49]">Columbian rubies encircled by polki diamonds.</p>
+          <button onclick="inquireJewellery('Ruby Polki Pendant', 'Polki')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] text-xs font-bold py-2.5 rounded-xl block text-center">Inquire on WhatsApp</button>
+        </div>
+
+        <div class="jewel-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm p-5 space-y-3">
+          <div class="aspect-square rounded-2xl overflow-hidden bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" alt="Italian 22K Mesh Bangles" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+          <h4 class="font-cinzel text-base font-bold text-[#241D12]">Italian 22K Mesh Bangles</h4>
+          <p class="text-xs text-[#6B5E49]">Flexible, ultra-lightweight daily wear gold bangles.</p>
+          <button onclick="inquireJewellery('Italian 22K Mesh Bangles', 'Daily Wear Gold')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] text-xs font-bold py-2.5 rounded-xl block text-center">Inquire on WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Purity & Hallmarking Guarantees -->
+  <section id="purity" class="py-16 bg-[#FAF5EC] border-y border-[#EAE0D0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">The Adityam Promise</span>
+        <h2 class="text-2xl sm:text-4xl font-cinzel font-bold text-[#241D12]">Purity Guaranteed in Every Milligram</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">🔍</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">BIS 916 Hallmarked</h4>
+          <p class="text-[11px] text-[#6B5E49]">Govt recognized laser HUID engraved in every ornament.</p>
+        </div>
+
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">⚖️</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">Karatmeter Testing</h4>
+          <p class="text-[11px] text-[#6B5E49]">100% transparent purity verification in front of customers.</p>
+        </div>
+
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">🔄</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">Lifetime Buyback</h4>
+          <p class="text-[11px] text-[#6B5E49]">Guaranteed exchange value at prevailing live market rates.</p>
+        </div>
+
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">🎨</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">Custom Designing</h4>
+          <p class="text-[11px] text-[#6B5E49]">Turn your dream jewellery designs into reality with karigars.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Showroom Appointment & Rate Consultation -->
+  <section id="rates" class="py-20 bg-gradient-to-b from-[#FFFDF9] to-[#FAF5EC]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-block px-4 py-1 rounded-full bg-white border border-[#E0D0B8] text-[#8C6D23] text-xs font-bold font-cinzel">
+        ⚡ VIP Bridal Lounge Booking
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-cinzel font-bold text-[#241D12]">Book Your Private Showroom Consultation</h2>
+      <p class="text-xs sm:text-sm text-[#665741] max-w-lg mx-auto">Visit Adityam Jewellers on Birhana Road, Kanpur. Enjoy a personalized viewing experience in our private bridal lounge with our master gemmologists.</p>
+
+      <form onsubmit="handleAppointment(event)" class="space-y-4 text-left bg-white border border-[#E0D0B8] p-6 sm:p-10 rounded-3xl shadow-xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">Your Full Name</label>
+            <input type="text" id="custName" required placeholder="e.g. Anjali Agarwal" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">WhatsApp Mobile Number</label>
+            <input type="tel" id="custPhone" required placeholder="e.g. 9876543210" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">Preferred Visit Date</label>
+            <input type="date" id="visitDate" required class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">Looking For</label>
+            <select id="visitCategory" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none font-medium">
+              <option value="Bridal Gold Jewellery Sets">Bridal Gold Jewellery Sets</option>
+              <option value="Diamond Solitaire Engagement Rings">Diamond Solitaire Engagement Rings</option>
+              <option value="Jadau Polki Heritage Jewellery">Jadau Polki Heritage Jewellery</option>
+              <option value="Daily Wear 22K Chains & Bangles">Daily Wear 22K Chains & Bangles</option>
+              <option value="Gold Exchange / Karat Testing">Gold Exchange / Karat Testing</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] text-white font-extrabold text-sm py-4 rounded-xl shadow-xl shadow-[#B8860B]/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+          <span>Book VIP Appointment on WhatsApp</span>
+          <span>💬</span>
+        </button>
+      </form>
+
+      <div class="pt-4 text-xs text-[#736652]">
+        📍 <strong>Flagship Showroom:</strong> Adityam Jewellers, Main Birhana Road (Opp. Central Bank), Kanpur, Uttar Pradesh - 208001
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Footer -->
+  <footer class="bg-white border-t border-[#EAE0D0] py-8 px-4 text-center text-xs text-zinc-500">
+    <div class="max-w-4xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF5EC] border border-[#E0D0B8] text-[11px] text-[#73551D] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-[#B8860B]"></span>
+        <span>Concept Prepared for <strong>Adityam Jewellers, Kanpur</strong></span>
+      </div>
+      <p class="text-[10px] text-zinc-400">
+        Engineered with High-Converting Luxury Architecture & Live Gold Rates by <strong>Voltara Web Studio</strong>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky WhatsApp Button -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <a href="https://wa.me/919876543210?text=Hi%20Adityam%20Jewellers%20Kanpur,%20I%20want%20to%20check%20today's%20gold%20rate%20and%20jewellery%20designs" target="_blank" class="bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border-2 border-white transition-transform transform hover:scale-105 active:scale-95">
+      <span class="text-xl">💬</span>
+      <span class="text-xs font-bold">Ask Today's Gold Rate</span>
+    </a>
+  </div>
+
+  <script>
+    function inquireJewellery(productName, category) {
+      const message = `Namaste Adityam Jewellers Kanpur!\n\nI am interested in:\nDesign: ${productName}\nCategory: ${category}\n\nPlease share current making charges, gross weight, and live price quotation.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleJewelleryInquiry() {
+      const cat = document.getElementById('calcCategory').value;
+      const weight = document.getElementById('calcWeight').value;
+      const purity = document.getElementById('calcPurity').value;
+
+      const message = `Namaste Adityam Jewellers Kanpur!\n\nI want to check live gold rate & quotation:\nCategory: ${cat}\nPurity: ${purity}\nEstimated Budget: ${weight}\n\nPlease share latest catalogue and current gold rate offer.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleAppointment(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const date = document.getElementById('visitDate').value;
+      const cat = document.getElementById('visitCategory').value;
+
+      const message = `Namaste Adityam Jewellers Kanpur!\n\nI want to book a VIP showroom appointment:\nName: ${name}\nPhone: ${phone}\nVisit Date: ${date}\nInterested in: ${cat}\n\nPlease confirm appointment timing.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Three.js Gold Dust
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('canvas3d');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 28;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const count = 160;
+      const pGeometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+      for (let i = 0; i < count * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 50;
+        positions[i + 1] = (Math.random() - 0.5) * 35;
+        positions[i + 2] = (Math.random() - 0.5) * 20;
+      }
+      pGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const pMaterial = new THREE.PointsMaterial({ size: 0.32, color: 0xD4AF37, transparent: true, opacity: 0.55 });
+      const particles = new THREE.Points(pGeometry, pMaterial);
+      scene.add(particles);
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.y += 0.0004;
+        particles.position.x += (mouseX * 1.5 - particles.position.x) * 0.03;
+        particles.position.y += (-mouseY * 1.5 - particles.position.y) * 0.03;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    });
+  </script>
+</body>
+</html>
