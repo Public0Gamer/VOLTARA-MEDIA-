@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Karan Jewellers — Varanasi's Most Trusted Gold & Silver Jewellery | Color & Purity Guarantee</title>
+  <meta name="description" content="Discover pocket-friendly, long-lasting 22K Hallmarked gold and silver jewellery in Varanasi with lifetime color guarantee and 100% purity assurance.">
+  
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Marcellus&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-marcellus {
+      font-family: 'Marcellus', Georgia, serif;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .kj-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .kj-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -15px rgba(15, 46, 34, 0.25);
+    }
+
+    .emerald-gold-text {
+      background: linear-gradient(135deg, #0F2E22 0%, #1A4331 40%, #B8860B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#FDFBF7] text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#0F2E22] text-amber-200 py-2.5 px-4 text-xs border-b border-amber-500/20 shadow-sm flex items-center justify-between">
+    <div class="flex items-center gap-3 max-w-7xl mx-auto w-full justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-bold tracking-wider text-white">VARANASI'S #1 POCKET-FRIENDLY JEWELLERY:</span>
+        <span class="hidden sm:inline text-amber-300">Making Charges starting at just <strong>6%</strong></span>
+        <span class="hidden md:inline text-emerald-300">| Lifetime Free Polish & Color Guarantee</span>
+      </div>
+      <div class="text-[11px] text-amber-300 font-bold tracking-wider">
+        📍 Thatheri Bazar / Rathyatra, Varanasi
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-[#FDFBF7]/95 backdrop-blur-xl border-b border-[#E8E1D3] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-4 group">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#0F2E22] via-[#1A4331] to-[#B8860B] p-0.5 shadow-lg shadow-emerald-950/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#FDFBF7] rounded-[14px] flex items-center justify-center border border-[#E8E1D3]">
+            <span class="text-[#0F2E22] text-2xl font-marcellus font-bold">KJ</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-marcellus text-2xl sm:text-3xl font-extrabold tracking-wider text-[#0F2E22] block leading-none">
+            KARAN JEWELLERS
+          </span>
+          <span class="text-[11px] text-[#B8860B] tracking-[0.25em] font-bold uppercase mt-1.5 block font-marcellus">
+            PURITY & COLOR GUARANTEE • VARANASI
+          </span>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8 text-xs text-[#3E4D44] font-bold tracking-wider uppercase">
+        <a href="#specialties" class="hover:text-emerald-800 transition-colors">Our 4 Guarantees</a>
+        <a href="#collections" class="hover:text-emerald-800 transition-colors">Budget Collections</a>
+        <a href="#bridal" class="hover:text-emerald-800 transition-colors">Bridal Jewellery</a>
+        <a href="#scheme" class="hover:text-emerald-800 transition-colors">Gold Savings Scheme</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+919876543210" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-[#D5DDD5] bg-white hover:bg-[#F2F7F3] text-xs text-[#0F2E22] font-bold transition-all shadow-sm">
+          <span>📞 Call Showroom</span>
+        </a>
+        <a href="#scheme" class="bg-gradient-to-r from-[#0F2E22] via-[#1A4331] to-[#2B5E46] text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg shadow-emerald-900/25 flex items-center gap-1.5 transition-all transform active:scale-95">
+          <span>Check Best Rate on WhatsApp</span>
+          <span>💬</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-[#FDFBF7] via-[#F3EFE6] to-[#FDFBF7]">
+    <canvas id="canvas3d"></canvas>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald-500/10 blur-[160px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center space-y-7">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[#0F2E22] text-xs font-bold tracking-widest shadow-sm">
+        <span class="text-emerald-600">✦</span>
+        <span>Varanasi's Most Transparent & Pocket-Friendly Jeweller</span>
+        <span class="text-emerald-600">✦</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-marcellus font-extrabold text-[#0F2E22] tracking-tight leading-[1.15]">
+        Jewellery That Never Fades. <br>
+        <span class="italic font-serif emerald-gold-text">Prices That Fit Your Pocket.</span>
+      </h1>
+
+      <p class="text-sm sm:text-base text-[#46574E] max-w-2xl mx-auto leading-relaxed font-normal">
+        At <strong>Karan Jewellers (Varanasi)</strong>, we combine generational Banarasi craftsmanship with an unbreakable 4-Point Promise: <strong>100% Purity Assurance, Lifetime Color Guarantee, Solid Long-Lasting Durability</strong>, and <strong>Lowest Making Charges</strong>.
+      </p>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto pt-1">
+        <div class="bg-white/90 backdrop-blur-md border border-[#E0E7E1] p-4 rounded-2xl shadow-sm">
+          <div class="font-marcellus text-[#0F2E22] font-bold text-xl sm:text-2xl">100%</div>
+          <div class="text-[11px] text-[#4A5D52] font-medium mt-0.5">Purity Assured</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#E0E7E1] p-4 rounded-2xl shadow-sm">
+          <div class="font-marcellus text-[#B8860B] font-bold text-xl sm:text-2xl">Lifetime</div>
+          <div class="text-[11px] text-[#4A5D52] font-medium mt-0.5">Color Guarantee</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#E0E7E1] p-4 rounded-2xl shadow-sm">
+          <div class="font-marcellus text-[#0F2E22] font-bold text-xl sm:text-2xl">Just 6%</div>
+          <div class="text-[11px] text-[#4A5D52] font-medium mt-0.5">Making Starting</div>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto bg-white border border-[#D5DDD5] p-5 rounded-3xl shadow-xl shadow-emerald-950/5 space-y-3 mt-4 text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+          <div>
+            <label class="block text-[11px] font-bold text-[#0F2E22] uppercase tracking-wider mb-1">Looking For</label>
+            <select id="kjCategory" class="w-full bg-[#FAF8F5] border border-[#D5DDD5] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none font-medium">
+              <option value="Daily Wear Lightweight Gold">Daily Wear Lightweight Gold</option>
+              <option value="Bridal Gold Choker & Haar Sets">Bridal Gold Choker & Haar Sets</option>
+              <option value="Gold Kadas, Bangles & Bracelets">Gold Kadas, Bangles & Bracelets</option>
+              <option value="Pure Silver Payal & Utensils">Pure Silver Payal & Utensils</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-[#0F2E22] uppercase tracking-wider mb-1">Your Budget Range</label>
+            <select id="kjBudget" class="w-full bg-[#FAF8F5] border border-[#D5DDD5] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none font-medium">
+              <option value="Under ₹15,000 (Pocket Friendly)">Under ₹15,000 (Pocket Friendly)</option>
+              <option value="₹15,000 to ₹50,000">₹15,000 to ₹50,000</option>
+              <option value="₹50,000 to ₹1.5 Lakh">₹50,000 to ₹1.5 Lakh</option>
+              <option value="₹2 Lakh+ (Bridal Trousseau)">₹2 Lakh+ (Bridal Trousseau)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-[#0F2E22] uppercase tracking-wider mb-1">Purity Option</label>
+            <select id="kjPurity" class="w-full bg-[#FAF8F5] border border-[#D5DDD5] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none font-medium">
+              <option value="22K (916 BIS Hallmark)">22K (916 BIS Hallmark)</option>
+              <option value="18K (Durable Everyday Wear)">18K (Durable Everyday Wear)</option>
+              <option value="Pure 92.5 Sterling Silver">Pure 92.5 Sterling Silver</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button onclick="handleHeroInquiry()" class="w-full bg-gradient-to-r from-[#0F2E22] via-[#1A4331] to-[#2B5E46] text-white font-bold text-xs py-2.5 rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all transform active:scale-95 h-[42px]">
+              <span>Get WhatsApp Quote</span>
+              <span>💬</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 4 Core Specialties -->
+  <section id="specialties" class="py-16 md:py-24 bg-white border-t border-[#E8E1D3]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-marcellus">Why Varanasi Trusts Us</span>
+        <h2 class="text-3xl sm:text-5xl font-marcellus font-bold text-[#0F2E22]">The 4 Pillars of Karan Jewellers</h2>
+        <p class="text-xs sm:text-sm text-[#46574E]">Zero compromise on quality, crystal-clear pricing, and long-term peace of mind.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="kj-card bg-[#FBF9F4] border border-[#E2DDD2] p-7 rounded-3xl space-y-4 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-13 h-13 rounded-2xl bg-amber-100/70 text-amber-700 flex items-center justify-center text-3xl">✨</div>
+            <h3 class="font-marcellus text-xl font-bold text-[#0F2E22]">Lifetime Color Guarantee</h3>
+            <p class="text-xs text-[#526359] leading-relaxed">Specialized anti-tarnish protective sealing. If color ever fades, we provide <strong>100% Free Lifetime Re-Polishing</strong>.</p>
+          </div>
+          <div class="pt-3 border-t border-[#E8E1D3] text-[11px] font-bold text-emerald-800">✓ Free Lifetime Shine Warranty</div>
+        </div>
+
+        <div class="kj-card bg-[#FBF9F4] border border-[#E2DDD2] p-7 rounded-3xl space-y-4 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-13 h-13 rounded-2xl bg-emerald-100/70 text-emerald-700 flex items-center justify-center text-3xl">⏳</div>
+            <h3 class="font-marcellus text-xl font-bold text-[#0F2E22]">Long-Lasting Durability</h3>
+            <p class="text-xs text-[#526359] leading-relaxed">Crafted for everyday wear. Our solid-core karigari ensures chains, bangles, and rings do not dent, snap, or lose shape.</p>
+          </div>
+          <div class="pt-3 border-t border-[#E8E1D3] text-[11px] font-bold text-emerald-800">✓ Built for Everyday Wear</div>
+        </div>
+
+        <div class="kj-card bg-[#FBF9F4] border border-[#E2DDD2] p-7 rounded-3xl space-y-4 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-13 h-13 rounded-2xl bg-amber-100/70 text-amber-700 flex items-center justify-center text-3xl">⚖️</div>
+            <h3 class="font-marcellus text-xl font-bold text-[#0F2E22]">100% Purity Assurance</h3>
+            <p class="text-xs text-[#526359] leading-relaxed">Every piece is stamped with Govt Laser BIS HUID Hallmarking. Live computerized Karatmeter testing with zero deductions.</p>
+          </div>
+          <div class="pt-3 border-t border-[#E8E1D3] text-[11px] font-bold text-emerald-800">✓ 100% BIS 916 Laser Hallmarked</div>
+        </div>
+
+        <div class="kj-card bg-[#FBF9F4] border border-[#E2DDD2] p-7 rounded-3xl space-y-4 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-13 h-13 rounded-2xl bg-emerald-100/70 text-emerald-700 flex items-center justify-center text-3xl">💰</div>
+            <h3 class="font-marcellus text-xl font-bold text-[#0F2E22]">Pocket Friendly Pricing</h3>
+            <p class="text-xs text-[#526359] leading-relaxed">Lowest making charges in Varanasi starting from just 6%. No hidden fees or hefty markups. Accessible luxury for everyone.</p>
+          </div>
+          <div class="pt-3 border-t border-[#E8E1D3] text-[11px] font-bold text-emerald-800">✓ Making Starting at Just 6%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Budget-Friendly Collections Showcase -->
+  <section id="collections" class="py-16 md:py-24 bg-[#F5EFE6] border-y border-[#E8E1D3]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-marcellus">Curated for Varanasi</span>
+          <h2 class="text-3xl sm:text-4xl font-marcellus font-bold text-[#0F2E22]">Pocket-Friendly Gold & Silver Designs</h2>
+          <p class="text-xs sm:text-sm text-[#46574E]">High quality designs suited for festive gifting, bridal weddings, and daily wear.</p>
+        </div>
+        <a href="#scheme" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-800 hover:text-emerald-950 uppercase tracking-wider">
+          <span>Inquire Complete Catalogue on WhatsApp →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="kj-card bg-white border border-[#D5DDD5] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Durable Everyday Gold Chain" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-emerald-900/90 text-amber-200 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-marcellus">
+                Pocket Friendly • Under ₹18,000
+              </span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-marcellus text-xl font-bold text-[#0F2E22]">Banarasi Floral Gold Pendant</h3>
+                <span class="text-xs font-bold text-emerald-800">22K Hallmarked</span>
+              </div>
+              <p class="text-xs text-[#526359] leading-relaxed">Lightweight yet unbreakable solid link chain with delicate emerald floral pendant. Lifetime shine guarantee.</p>
+              <div class="pt-3 border-t border-[#E8E1D3] text-[11px] text-[#46574E] space-y-1">
+                <div>✓ Gross Weight: 2.8 Grams</div>
+                <div>✓ Making Charge: Flat 6% Only</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquirePiece('Banarasi Floral Gold Pendant', '₹16,500 Approx')" class="w-full bg-[#F3EFE6] hover:bg-[#E8E1D3] text-[#0F2E22] border border-[#D5DDD5] font-bold text-xs py-3 rounded-xl transition-all block text-center">Check Price on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="kj-card bg-white border border-[#D5DDD5] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=800&q=80" alt="Long Lasting Gold Bangles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-emerald-900/90 text-amber-200 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-marcellus">
+                Lifetime Color Warranty
+              </span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-marcellus text-xl font-bold text-[#0F2E22]">Solid Everyday Gold Kadas</h3>
+                <span class="text-xs font-bold text-emerald-800">22K BIS 916</span>
+              </div>
+              <p class="text-xs text-[#526359] leading-relaxed">Special heat-hardened gold alloy that resists scratches and everyday domestic wear. Non-bendable core.</p>
+              <div class="pt-3 border-t border-[#E8E1D3] text-[11px] text-[#46574E] space-y-1">
+                <div>✓ Pair Weight: 16 to 24 Grams</div>
+                <div>✓ 0% Exchange Deduction Guarantee</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquirePiece('Solid Everyday Gold Kadas', 'Bangles')" class="w-full bg-[#F3EFE6] hover:bg-[#E8E1D3] text-[#0F2E22] border border-[#D5DDD5] font-bold text-xs py-3 rounded-xl transition-all block text-center">Check Price on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="kj-card bg-white border border-[#D5DDD5] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1611591475879-114420a32d16?auto=format&fit=crop&w=800&q=80" alt="Affordable Bridal Gold Choker" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-emerald-900/90 text-amber-200 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-marcellus">
+                Bridal Special • High Look / Low Weight
+              </span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-marcellus text-xl font-bold text-[#0F2E22]">Kashi Heritage Bridal Set</h3>
+                <span class="text-xs font-bold text-emerald-800">22K Hallmarked</span>
+              </div>
+              <p class="text-xs text-[#526359] leading-relaxed">Engineered with lightweight 3D gold die-casting technology — gives a grand 70g look in just 38g weight to save budget!</p>
+              <div class="pt-3 border-t border-[#E8E1D3] text-[11px] text-[#46574E] space-y-1">
+                <div>✓ Includes Matching Jhumkas & Maang Tikka</div>
+                <div>✓ Monthly Savings Scheme Available</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="inquirePiece('Kashi Heritage Bridal Set', 'Bridal Set')" class="w-full bg-[#F3EFE6] hover:bg-[#E8E1D3] text-[#0F2E22] border border-[#D5DDD5] font-bold text-xs py-3 rounded-xl transition-all block text-center">Check Price on WhatsApp 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Easy Gold Savings Scheme -->
+  <section id="scheme" class="py-16 md:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 bg-[#0F2E22] rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+      <div class="relative z-10 space-y-6 max-w-2xl">
+        <span class="text-xs uppercase tracking-widest text-amber-300 font-bold font-marcellus">Karan Jewellers Suvarna Bachat Yojna</span>
+        <h2 class="text-3xl sm:text-4xl font-marcellus font-bold">Save Monthly & Get Free Gold Bonus for Weddings</h2>
+        <p class="text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
+          Start with just <strong>₹1,000, ₹2,000, or ₹5,000 per month</strong> for 11 months. Karan Jewellers pays the 12th installment as a special bonus! Buy 100% Hallmarked gold jewellery with zero extra making charges.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+            <div class="font-bold text-amber-300 text-lg">₹1,000 / mo</div>
+            <div class="text-[11px] text-zinc-300">Pocket Friendly Start</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+            <div class="font-bold text-amber-300 text-lg">11 + 1 Free</div>
+            <div class="text-[11px] text-zinc-300">1 Month Paid by Us</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+            <div class="font-bold text-amber-300 text-lg">0% Making</div>
+            <div class="text-[11px] text-zinc-300">On Maturity Purchase</div>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <a href="https://wa.me/919876543210?text=Hi%20Karan%20Jewellers%20Varanasi,%20I%20want%20to%20know%20more%20about%20the%20Monthly%20Gold%20Savings%20Scheme" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 text-[#0F2E22] font-extrabold text-xs px-7 py-3.5 rounded-xl shadow-lg transition-all">
+            <span>Join Gold Savings Scheme on WhatsApp</span>
+            <span>💬</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Call Booking Form -->
+  <section class="py-20 bg-gradient-to-b from-[#FDFBF7] to-[#F3EFE6] border-t border-[#E8E1D3]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-block px-4 py-1 rounded-full bg-white border border-[#D5DDD5] text-emerald-800 text-xs font-bold font-marcellus">
+        ⚡ Live Video Call or Showroom Visit
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-marcellus font-bold text-[#0F2E22]">See Designs Live from the Comfort of Your Home</h2>
+      <p class="text-xs sm:text-sm text-[#46574E] max-w-lg mx-auto">Can't visit Thatheri Bazar today? Fill this quick form to request a <strong>Live WhatsApp Video Call Showing</strong> with our jewellery specialists.</p>
+
+      <form onsubmit="handleVideoCall(event)" class="space-y-4 text-left bg-white border border-[#D5DDD5] p-6 sm:p-10 rounded-3xl shadow-xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#0F2E22] mb-1">Your Full Name</label>
+            <input type="text" id="custName" required placeholder="e.g. Ramesh Chandra Verma" class="w-full bg-[#FAF8F5] border border-[#D5DDD5] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#0F2E22] mb-1">WhatsApp Mobile Number</label>
+            <input type="tel" id="custPhone" required placeholder="e.g. 9876543210" class="w-full bg-[#FAF8F5] border border-[#D5DDD5] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#0F2E22] mb-1">Interested Jewellery</label>
+            <select id="custProduct" class="w-full bg-[#FAF8F5] border border-[#D5DDD5] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none font-medium">
+              <option value="Daily Wear Chains & Rings">Daily Wear Chains & Rings</option>
+              <option value="Durable Gold Bangles & Kadas">Durable Gold Bangles & Kadas</option>
+              <option value="Bridal Wedding Jewellery Set">Bridal Wedding Jewellery Set</option>
+              <option value="Pure Silver Payal & Gift Items">Pure Silver Payal & Gift Items</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#0F2E22] mb-1">Preferred Time for Video Call</label>
+            <select id="custTime" class="w-full bg-[#FAF8F5] border border-[#D5DDD5] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none font-medium">
+              <option value="Morning (11:00 AM - 1:00 PM)">Morning (11:00 AM - 1:00 PM)</option>
+              <option value="Afternoon (2:00 PM - 5:00 PM)">Afternoon (2:00 PM - 5:00 PM)</option>
+              <option value="Evening (6:00 PM - 8:30 PM)">Evening (6:00 PM - 8:30 PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-[#0F2E22] via-[#1A4331] to-[#2B5E46] text-white font-extrabold text-sm py-4 rounded-xl shadow-xl shadow-emerald-950/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+          <span>Schedule Video Call on WhatsApp</span>
+          <span>📹</span>
+        </button>
+      </form>
+
+      <div class="pt-4 text-xs text-[#46574E]">
+        📍 <strong>Showroom Address:</strong> Karan Jewellers, Main Thatheri Bazar / Rathyatra Crossing, Varanasi, Uttar Pradesh - 221001
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Footer -->
+  <footer class="bg-white border-t border-[#E8E1D3] py-8 px-4 text-center text-xs text-zinc-500">
+    <div class="max-w-4xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F3EFE6] border border-[#D5DDD5] text-[11px] text-[#0F2E22] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+        <span>Concept Prepared for <strong>Karan Jewellers, Varanasi</strong></span>
+      </div>
+      <p class="text-[10px] text-zinc-400">
+        Engineered with High-Converting Trust Architecture & Direct WhatsApp Commerce by <strong>Voltara Web Studio</strong>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky WhatsApp Button -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <a href="https://wa.me/919876543210?text=Hi%20Karan%20Jewellers%20Varanasi,%20I%20want%20to%20know%20about%20your%20jewellery%20designs%20and%20color%20guarantee" target="_blank" class="bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border-2 border-white transition-transform transform hover:scale-105 active:scale-95">
+      <span class="text-xl">💬</span>
+      <span class="text-xs font-bold">Chat on WhatsApp</span>
+    </a>
+  </div>
+
+  <script>
+    function handleHeroInquiry() {
+      const cat = document.getElementById('kjCategory').value;
+      const budget = document.getElementById('kjBudget').value;
+      const purity = document.getElementById('kjPurity').value;
+      const message = `Namaste Karan Jewellers Varanasi!\n\nI want to inquire about jewellery options:\nCategory: ${cat}\nBudget: ${budget}\nPurity: ${purity}\n\nPlease share designs and today's gold rate with making charges.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function inquirePiece(name, price) {
+      const message = `Namaste Karan Jewellers Varanasi!\n\nI am interested in:\nDesign: ${name}\nRange: ${price}\n\nPlease share live weight, making charges, and color guarantee details.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleVideoCall(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const product = document.getElementById('custProduct').value;
+      const time = document.getElementById('custTime').value;
+      const message = `Namaste Karan Jewellers Varanasi!\n\nI want to schedule a Live Video Call Viewing:\nName: ${name}\nPhone: ${phone}\nInterested In: ${product}\nPreferred Time: ${time}\n\nPlease confirm video call timing.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Three.js Soft Emerald & Gold Particles
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('canvas3d');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 28;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const count = 150;
+      const pGeometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+      for (let i = 0; i < count * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 50;
+        positions[i + 1] = (Math.random() - 0.5) * 35;
+        positions[i + 2] = (Math.random() - 0.5) * 20;
+      }
+      pGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const pMaterial = new THREE.PointsMaterial({ size: 0.3, color: 0x10B981, transparent: true, opacity: 0.45 });
+      const particles = new THREE.Points(pGeometry, pMaterial);
+      scene.add(particles);
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.y += 0.0004;
+        particles.position.x += (mouseX * 1.5 - particles.position.x) * 0.03;
+        particles.position.y += (-mouseY * 1.5 - particles.position.y) * 0.03;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    });
+  </script>
+</body>
+</html>
