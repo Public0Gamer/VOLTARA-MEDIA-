@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Heaven View Clarks Inn — Kanpur's Premier 5-Star Luxury Hotel & Grand Banquets</title>
+  <meta name="description" content="Experience 5-star hospitality in Kanpur at Heaven View Clarks Inn. Elegant luxury rooms, multi-cuisine fine dining, and grand banquets for royal weddings and corporate events.">
+  
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-cinzel {
+      font-family: 'Cinzel', Georgia, serif;
+    }
+    .font-cormorant {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.45;
+      z-index: 1;
+    }
+
+    .luxury-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .luxury-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(184, 134, 11, 0.18);
+    }
+  </style>
+</head>
+<body class="bg-[#FDFCF7] text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-[#F7EFE1] via-[#FFFDF9] to-[#F7EFE1] border-b border-[#EADCC5] py-2.5 px-4 text-center text-xs text-[#73551D] flex items-center justify-center gap-2 shadow-sm">
+    <span class="inline-block w-2 h-2 rounded-full bg-[#B8860B] animate-ping"></span>
+    <span class="font-cinzel tracking-wider font-semibold">Special Kanpur Staycation & Wedding Season Packages</span>
+    <span class="hidden md:inline text-[#B8860B]">• Best Rate Guarantee on Direct Bookings</span>
+    <span class="hidden lg:inline text-slate-400">• Kanpur, Uttar Pradesh</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-[#FFFDF9]/90 backdrop-blur-xl border-b border-[#EFE5D5] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#B8860B] via-[#D4AF37] to-[#F9E79F] p-0.5 shadow-md shadow-[#B8860B]/15 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#FFFDF9] rounded-[14px] flex items-center justify-center">
+            <span class="text-[#B8860B] text-2xl font-cinzel font-bold">HV</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-cinzel text-lg sm:text-xl font-bold tracking-wider text-[#2C2416] block leading-none">HEAVEN VIEW</span>
+          <span class="text-[10px] text-[#B8860B] tracking-widest font-bold uppercase mt-1 block">CLARKS INN • KANPUR</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-xs text-[#5C4F38] font-bold tracking-wider uppercase">
+        <a href="#rooms" class="hover:text-[#B8860B] transition-colors">Rooms & Suites</a>
+        <a href="#dining" class="hover:text-[#B8860B] transition-colors">Fine Dining</a>
+        <a href="#banquets" class="hover:text-[#B8860B] transition-colors">Grand Banquets</a>
+        <a href="#amenities" class="hover:text-[#B8860B] transition-colors">5-Star Amenities</a>
+        <a href="#reviews" class="hover:text-[#B8860B] transition-colors">Reviews</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+919876543210" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-[#E0D0B8] bg-white hover:bg-[#FAF5EC] text-xs text-[#73551D] font-bold transition-all shadow-sm">
+          <span>📞 Reception</span>
+        </a>
+        <a href="#book" class="bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] hover:from-[#996515] hover:to-[#73551D] text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-lg shadow-[#B8860B]/25 flex items-center gap-1.5 transition-all transform active:scale-95">
+          <span>Reserve Room</span>
+          <span>🛎️</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EC] to-[#FFFDF9]">
+    <canvas id="canvas3d"></canvas>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#D4AF37]/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center space-y-7">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF5EC] border border-[#E2D2B8] text-[#8C6D23] text-xs font-bold tracking-widest shadow-sm">
+        <span class="text-[#B8860B]">★ ★ ★ ★ ★</span>
+        <span>Kanpur's Destination for Luxury & Royal Banquets</span>
+        <span class="text-[#B8860B]">★ ★ ★ ★ ★</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-cinzel font-bold text-[#241D12] tracking-tight leading-[1.15]">
+        Immerse in Unrivaled Luxury <br>
+        <span class="italic font-cormorant text-transparent bg-clip-text bg-gradient-to-r from-[#8C6D23] via-[#B8860B] to-[#D4AF37]">In the Heart of Kanpur.</span>
+      </h1>
+
+      <p class="text-sm sm:text-base text-[#615440] max-w-2xl mx-auto leading-relaxed font-normal">
+        Where world-class Clarks Inn hospitality meets timeless royal elegance. Indulge in opulent designer suites, exquisite rooftop gourmet dining, and magnificent banquet spaces for Kanpur's finest weddings.
+      </p>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto pt-1">
+        <div class="bg-white/90 backdrop-blur-md border border-[#EADDC9] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#8C6D23] font-bold text-xl sm:text-2xl">45+</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Luxury Suites</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#EADDC9] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#B8860B] font-bold text-xl sm:text-2xl">800+</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Banquet Capacity</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#EADDC9] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#8C6D23] font-bold text-xl sm:text-2xl">4.8 ★</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Guest Satisfaction</div>
+        </div>
+      </div>
+
+      <!-- Quick Room Booking Bar -->
+      <div class="max-w-4xl mx-auto bg-white border border-[#E2D2B8] p-4 sm:p-5 rounded-3xl shadow-xl shadow-[#B8860B]/10 space-y-3 mt-4 text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+          <div>
+            <label class="block text-[11px] font-bold text-[#73551D] uppercase tracking-wider mb-1">Check-in</label>
+            <input type="date" id="checkInDate" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-[#73551D] uppercase tracking-wider mb-1">Check-out</label>
+            <input type="date" id="checkOutDate" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-[#73551D] uppercase tracking-wider mb-1">Accommodation</label>
+            <select id="roomCategory" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 text-xs text-slate-800 outline-none font-medium">
+              <option value="Executive Deluxe King">Executive Deluxe King</option>
+              <option value="Clarks Club Luxury Suite">Clarks Club Luxury Suite</option>
+              <option value="Presidential Royal Suite">Presidential Royal Suite</option>
+              <option value="Grand Banquet & Wedding">Grand Banquet & Wedding</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button onclick="handleHeroBooking()" class="w-full bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] hover:from-[#996515] text-white font-bold text-xs py-2.5 rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all transform active:scale-95 h-[42px]">
+              <span>Check Best Rate</span>
+              <span>⚡</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Elegant Rooms & Luxury Suites Showcase -->
+  <section id="rooms" class="py-16 md:py-24 bg-[#FFFDF9] border-t border-[#EFE5D5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Refined Comfort</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#2C2416]">Elegant Rooms & Suites</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">Designed with plush Italian bedding, soundproofing, and panoramic Kanpur city views.</p>
+        </div>
+        <a href="#book" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>View All 45 Rooms & Amenities →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Room 1 -->
+        <div class="luxury-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/11] relative overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" alt="Executive Deluxe King" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">
+                King Size Bed • 350 Sq.Ft
+              </span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2C2416]">Executive Deluxe King</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹3,999 <span class="text-[10px] text-slate-400 font-normal">/ night</span></span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Opulent marble bathrooms, premium memory-foam mattress, dedicated workstation, and Wi-Fi.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] grid grid-cols-2 gap-2 text-[11px] text-[#736652]">
+                <div>✓ Free Buffet Breakfast</div>
+                <div>✓ 55" 4K Smart TV</div>
+                <div>✓ Mini Bar & Coffee Kit</div>
+                <div>✓ 24/7 Room Dining</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="bookSpecificRoom('Executive Deluxe King')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Reserve Deluxe Room</button>
+          </div>
+        </div>
+
+        <!-- Room 2: Most Popular -->
+        <div class="luxury-card bg-gradient-to-b from-[#FFFDF9] to-white border-2 border-[#B8860B] rounded-3xl overflow-hidden shadow-xl shadow-[#B8860B]/10 flex flex-col justify-between relative">
+          <div class="absolute top-3.5 right-4 z-20 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white text-[10px] font-extrabold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-md">
+            Guest Favorite
+          </div>
+          <div>
+            <div class="aspect-[16/11] relative overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Clarks Club Luxury Suite" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">
+                Living Lounge • 520 Sq.Ft
+              </span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2C2416]">Clarks Club Luxury Suite</h3>
+                <span class="text-xs font-bold text-[#B8860B]">₹5,999 <span class="text-[10px] text-slate-400 font-normal">/ night</span></span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Separate lavish living salon, walk-in dressing wardrobe, bathtub with luxury bath therapies.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] grid grid-cols-2 gap-2 text-[11px] text-[#736652]">
+                <div class="text-[#8C6D23] font-semibold">✓ Priority VIP Check-In</div>
+                <div class="text-[#8C6D23] font-semibold">✓ Deep Soaking Bathtub</div>
+                <div>✓ Complimentary High Tea</div>
+                <div>✓ City View Balcony</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="bookSpecificRoom('Clarks Club Luxury Suite')" class="w-full bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] text-white font-bold text-xs py-3.5 rounded-xl shadow-lg transition-all block text-center">Reserve Club Suite</button>
+          </div>
+        </div>
+
+        <!-- Room 3 -->
+        <div class="luxury-card bg-white border border-[#E8DCB8] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/11] relative overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" alt="Presidential Royal Suite" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#73551D] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">
+                Royal Master • 750 Sq.Ft
+              </span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2C2416]">Presidential Royal Suite</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹9,999 <span class="text-[10px] text-slate-400 font-normal">/ night</span></span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">The pinnacle of Kanpur hospitality. Expansive master bedroom, dining salon, and private butler.</p>
+              <div class="pt-3 border-t border-[#F2E8DA] grid grid-cols-2 gap-2 text-[11px] text-[#736652]">
+                <div>✓ Private Butler on Call</div>
+                <div>✓ Master Dining Table</div>
+                <div>✓ Jacuzzi & Rain Shower</div>
+                <div>✓ Airport/Station Transfer</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="bookSpecificRoom('Presidential Royal Suite')" class="w-full bg-[#FAF5EC] hover:bg-[#F2E4CC] text-[#73551D] border border-[#E0D0B8] font-bold text-xs py-3 rounded-xl transition-all block text-center">Reserve Presidential Suite</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grand Banquets & Royal Weddings -->
+  <section id="banquets" class="py-16 md:py-24 bg-gradient-to-b from-[#FAF5EC] via-[#FFFDF9] to-[#FAF5EC] border-y border-[#EAE0D0]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Celebrations of a Lifetime</span>
+        <h2 class="text-3xl sm:text-5xl font-cinzel font-bold text-[#241D12]">Grand Banquets & Royal Weddings</h2>
+        <p class="text-xs sm:text-sm text-[#665741]">Catering to grand Indian weddings, ring ceremonies, and corporate galas for 100 to 800+ guests.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+          <div class="aspect-[16/10] relative">
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80" alt="Grand Ballroom" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+              <span class="text-xs font-cinzel font-bold text-[#F9E79F] uppercase tracking-wider">The Imperial Ballroom</span>
+              <h3 class="font-cinzel text-2xl sm:text-3xl font-bold mt-1">Pillar-Less Grand Hall with Crystal Chandeliers</h3>
+              <p class="text-xs text-zinc-300 mt-1 max-w-md">Fully centralized air-conditioning, dedicated bridal suite, and royal stage decor.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white border border-[#E2D2B8] p-6 sm:p-8 rounded-3xl shadow-lg space-y-5">
+            <div class="inline-block px-3 py-1 rounded-full bg-[#FAF5EC] text-[#8C6D23] text-xs font-bold font-cinzel">Plan Your Dream Event</div>
+            <h3 class="font-cinzel text-2xl font-bold text-[#2C2416]">Banquet Availability & Catering Quote</h3>
+            
+            <form onsubmit="handleBanquetInquiry(event)" class="space-y-3.5 text-xs">
+              <div>
+                <label class="block font-bold text-[#665741] mb-1">Your Full Name</label>
+                <input type="text" id="banqName" required placeholder="e.g. Rajesh Singhania" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-2.5 outline-none text-slate-800">
+              </div>
+              <div>
+                <label class="block font-bold text-[#665741] mb-1">WhatsApp Mobile Number</label>
+                <input type="tel" id="banqPhone" required placeholder="e.g. 9876543210" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-2.5 outline-none text-slate-800">
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-bold text-[#665741] mb-1">Event Date</label>
+                  <input type="date" id="banqDate" required class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 outline-none text-slate-800">
+                </div>
+                <div>
+                  <label class="block font-bold text-[#665741] mb-1">Guest Count</label>
+                  <select id="banqGuests" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-3 py-2.5 outline-none text-slate-800">
+                    <option value="150 - 250 Guests">150 - 250 Guests</option>
+                    <option value="300 - 500 Guests">300 - 500 Guests</option>
+                    <option value="500 - 800+ Guests">500 - 800+ Guests</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="w-full bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] text-white font-extrabold text-xs py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-1.5">
+                <span>Check Banquet Date on WhatsApp</span>
+                <span>💬</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fine Dining & Rooftop -->
+  <section id="dining" class="py-16 md:py-24 bg-[#FFFDF9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Gastronomy</span>
+        <h2 class="text-3xl sm:text-5xl font-cinzel font-bold text-[#2C2416]">Exquisite Fine Dining & Lounge</h2>
+        <p class="text-xs sm:text-sm text-[#736652]">Curated master chefs serving authentic Awadhi delicacies, rich Mughlai gravies, and global flavors.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="rounded-3xl overflow-hidden border border-[#EADDC9] bg-white shadow-md group">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="The Royal Spice Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="p-6 sm:p-8 space-y-3">
+            <span class="text-[10px] text-[#B8860B] font-cinzel font-bold uppercase tracking-wider">Multi-Cuisine Fine Dine</span>
+            <h3 class="font-cinzel text-2xl font-bold text-[#2C2416]">The Royal Spice Restaurant</h3>
+            <p class="text-xs text-[#6B5E49] leading-relaxed">Family dining featuring live tandoor stations, royal Dum Biryani, hand-churned curries, and buffet.</p>
+            <div class="pt-3 border-t border-[#F2E8DA] flex items-center justify-between text-xs text-[#736652] font-semibold">
+              <span>Open: 7:00 AM – 11:30 PM</span>
+              <a href="#book" class="text-[#8C6D23] hover:text-[#B8860B]">Reserve Table →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-3xl overflow-hidden border border-[#EADDC9] bg-white shadow-md group">
+          <div class="aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80" alt="Heaven Sky Rooftop Lounge" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="p-6 sm:p-8 space-y-3">
+            <span class="text-[10px] text-[#B8860B] font-cinzel font-bold uppercase tracking-wider">Panoramic Skyline View</span>
+            <h3 class="font-cinzel text-2xl font-bold text-[#2C2416]">Heaven Sky Rooftop Lounge</h3>
+            <p class="text-xs text-[#6B5E49] leading-relaxed">Breeze, live acoustic music, artisan mocktails, and wood-fired appetizers under the stars.</p>
+            <div class="pt-3 border-t border-[#F2E8DA] flex items-center justify-between text-xs text-[#736652] font-semibold">
+              <span>Open: 5:00 PM – 12:30 AM</span>
+              <a href="#book" class="text-[#8C6D23] hover:text-[#B8860B]">Reserve Table →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Grid -->
+  <section id="amenities" class="py-16 bg-[#FAF5EC] border-y border-[#EAE0D0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Guest Comfort</span>
+        <h2 class="text-2xl sm:text-4xl font-cinzel font-bold text-[#241D12]">World-Class Hotel Amenities</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">🚗</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">Valet Car Parking</h4>
+          <p class="text-[11px] text-[#6B5E49]">Secure 100+ car parking space with 24/7 CCTV surveillance.</p>
+        </div>
+
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">📶</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">High-Speed Optical Wi-Fi</h4>
+          <p class="text-[11px] text-[#6B5E49]">Seamless connectivity across all guest rooms, suites & lounges.</p>
+        </div>
+
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">🛎️</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">24/7 Concierge Service</h4>
+          <p class="text-[11px] text-[#6B5E49]">Round-the-clock room dining, taxi booking, and guest assistance.</p>
+        </div>
+
+        <div class="bg-white border border-[#E2D2B8] p-5 rounded-2xl text-center space-y-2 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-[#FAF5EC] text-[#B8860B] mx-auto flex items-center justify-center text-2xl">❄️</div>
+          <h4 class="font-cinzel font-bold text-sm text-[#2C2416]">100% Centralized AC</h4>
+          <p class="text-[11px] text-[#6B5E49]">Individual climate control in every room with 100% power backup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Direct Reservation Section -->
+  <section id="book" class="py-20 bg-gradient-to-b from-[#FFFDF9] to-[#FAF5EC] border-t border-[#EAE0D0]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-block px-4 py-1 rounded-full bg-white border border-[#E0D0B8] text-[#8C6D23] text-xs font-bold font-cinzel">
+        ⚡ Direct Reservation Benefit: 15% Off
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-cinzel font-bold text-[#241D12]">Reserve Your Stay or Banquet Date</h2>
+      <p class="text-xs sm:text-sm text-[#665741] max-w-lg mx-auto">Book directly with Heaven View Clarks Inn, Kanpur to receive complimentary breakfast and early check-in.</p>
+
+      <form onsubmit="handleFinalBooking(event)" class="space-y-4 text-left bg-white border border-[#E0D0B8] p-6 sm:p-10 rounded-3xl shadow-xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">Guest Full Name</label>
+            <input type="text" id="finalName" required placeholder="e.g. Dr. Amit Verma" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">WhatsApp Mobile Number</label>
+            <input type="tel" id="finalPhone" required placeholder="e.g. 9876543210" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">Check-in Date</label>
+            <input type="date" id="finalCheckIn" required class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#665741] mb-1">Requirement Type</label>
+            <select id="finalType" class="w-full bg-[#FAF7F0] border border-[#E0D0B8] rounded-xl px-4 py-3 text-xs text-slate-800 outline-none font-medium">
+              <option value="Executive Deluxe King Room">Executive Deluxe King Room</option>
+              <option value="Clarks Club Luxury Suite">Clarks Club Luxury Suite</option>
+              <option value="Presidential Royal Suite">Presidential Royal Suite</option>
+              <option value="Wedding / Grand Banquet Inquiry">Wedding / Grand Banquet Inquiry</option>
+              <option value="Corporate Meeting Room">Corporate Meeting Room</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] text-white font-extrabold text-sm py-4 rounded-xl shadow-xl shadow-[#B8860B]/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+          <span>Confirm Booking Details on WhatsApp</span>
+          <span>💬</span>
+        </button>
+      </form>
+
+      <div class="pt-4 text-xs text-[#736652]">
+        📍 <strong>Hotel Address:</strong> Heaven View Clarks Inn, GT Road / Central Business District, Kanpur, Uttar Pradesh - 208001
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Footer -->
+  <footer class="bg-white border-t border-[#EAE0D0] py-8 px-4 text-center text-xs text-zinc-500">
+    <div class="max-w-4xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF5EC] border border-[#E0D0B8] text-[11px] text-[#73551D] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-[#B8860B]"></span>
+        <span>Concept Prepared for <strong>Heaven View Clarks Inn, Kanpur</strong></span>
+      </div>
+      <p class="text-[10px] text-zinc-400">
+        Engineered with 5-Star Luxury Aesthetics & High-Speed Conversion Architecture by <strong>Voltara Web Studio</strong>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky WhatsApp Button -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <a href="https://wa.me/919876543210?text=Hi%20Heaven%20View%20Clarks%20Inn%20Kanpur,%20I%20want%20to%20reserve%20a%20room/banquet" target="_blank" class="bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border-2 border-white transition-transform transform hover:scale-105 active:scale-95">
+      <span class="text-xl">💬</span>
+      <span class="text-xs font-bold">Reserve on WhatsApp</span>
+    </a>
+  </div>
+
+  <script>
+    function handleHeroBooking() {
+      const checkIn = document.getElementById('checkInDate').value;
+      const checkOut = document.getElementById('checkOutDate').value;
+      const category = document.getElementById('roomCategory').value;
+      const message = `Namaste Heaven View Clarks Inn Kanpur!\n\nI would like to check availability and best rates.\n\nAccommodation: ${category}\nCheck-in: ${checkIn || 'Immediate'}\nCheck-out: ${checkOut || 'Next Day'}\n\nPlease share availability and discount details.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function bookSpecificRoom(roomName) {
+      const message = `Namaste Heaven View Clarks Inn Kanpur!\n\nI want to book the ${roomName}.\nPlease share availability and booking quotation.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleBanquetInquiry(e) {
+      e.preventDefault();
+      const name = document.getElementById('banqName').value.trim();
+      const phone = document.getElementById('banqPhone').value.trim();
+      const date = document.getElementById('banqDate').value;
+      const guests = document.getElementById('banqGuests').value;
+      const message = `Namaste Heaven View Clarks Inn Kanpur!\n\nI want to enquire about Grand Banquet Booking.\n\nHost Name: ${name}\nPhone: ${phone}\nEvent Date: ${date}\nExpected Guests: ${guests}\n\nPlease share menu package and hall availability.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleFinalBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('finalName').value.trim();
+      const phone = document.getElementById('finalPhone').value.trim();
+      const checkIn = document.getElementById('finalCheckIn').value;
+      const reqType = document.getElementById('finalType').value;
+      const message = `Namaste Heaven View Clarks Inn Kanpur!\n\nI want to confirm reservation details.\n\nGuest Name: ${name}\nPhone: ${phone}\nCheck-in Date: ${checkIn}\nRequirement: ${reqType}\n\nPlease share confirmation.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Three.js Subtle Gold Dust
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('canvas3d');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 28;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const count = 160;
+      const pGeometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+      for (let i = 0; i < count * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 50;
+        positions[i + 1] = (Math.random() - 0.5) * 35;
+        positions[i + 2] = (Math.random() - 0.5) * 20;
+      }
+      pGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const pMaterial = new THREE.PointsMaterial({ size: 0.3, color: 0xD4AF37, transparent: true, opacity: 0.5 });
+      const particles = new THREE.Points(pGeometry, pMaterial);
+      scene.add(particles);
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.y += 0.0004;
+        particles.position.x += (mouseX * 1.5 - particles.position.x) * 0.03;
+        particles.position.y += (-mouseY * 1.5 - particles.position.y) * 0.03;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    });
+  </script>
+</body>
+</html>
