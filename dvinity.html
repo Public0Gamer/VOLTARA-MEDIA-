@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dvinity by Kavita Chopra — Luxury Home Decor & Haute Furnishings</title>
+  <meta name="description" content="Discover bespoke luxury home decor, opulent bedcovers, high-thread-count bedsheets, artisanal designer cushions, and exquisite table runners by Kavita Chopra.">
+  
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-cinzel {
+      font-family: 'Cinzel', Georgia, serif;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      z-index: 1;
+    }
+
+    .decor-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .decor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -15px rgba(184, 134, 11, 0.18);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #8C6D23 0%, #B8860B 50%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF8F5] text-stone-800 antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-[#F4EFEA] via-[#FFFDFB] to-[#F4EFEA] border-b border-[#E8DFC8] py-2.5 px-4 text-center text-xs text-[#7A622A] flex items-center justify-center gap-2 shadow-sm">
+    <span class="inline-block w-2 h-2 rounded-full bg-[#B8860B] animate-ping"></span>
+    <span class="font-cinzel tracking-wider font-bold">New Festive & Bridal Home Decor Collection 2026</span>
+    <span class="hidden md:inline text-[#B8860B]">• Bespoke Custom Sizing Available</span>
+    <span class="hidden lg:inline text-stone-400">• Pan-India & Worldwide Shipping</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-xl border-b border-[#EAE3D2] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-4 group">
+        <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-[#B8860B] via-[#D4AF37] to-[#F7E7B4] p-0.5 shadow-md shadow-[#B8860B]/15 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#FAF8F5] rounded-[14px] flex items-center justify-center border border-[#EAE3D2]">
+            <span class="text-[#B8860B] text-2xl font-serif italic font-bold">D</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-cinzel text-2xl sm:text-3xl font-extrabold tracking-wider text-[#2A241C] block leading-none">
+            DVINITY
+          </span>
+          <span class="text-[11px] text-[#B8860B] tracking-[0.25em] font-bold uppercase mt-1.5 block font-cinzel">
+            BY KAVITA CHOPRA • HAUTE LIVING
+          </span>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8 text-xs text-[#635543] font-bold tracking-wider uppercase">
+        <a href="#bedcovers" class="hover:text-[#B8860B] transition-colors">Bedcovers</a>
+        <a href="#bedsheets" class="hover:text-[#B8860B] transition-colors">Bedsheets</a>
+        <a href="#cushions" class="hover:text-[#B8860B] transition-colors">Cushions</a>
+        <a href="#runners" class="hover:text-[#B8860B] transition-colors">Table Runners</a>
+        <a href="#custom" class="hover:text-[#B8860B] transition-colors">Bespoke Orders</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/919876543210?text=Hi%20Dvinity%20by%20Kavita%20Chopra,%20I%20want%20to%20view%20the%20latest%20catalogue" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-[#DECDB3] bg-white hover:bg-[#F5EFE6] text-xs text-[#7A622A] font-bold transition-all shadow-sm">
+          <span>📖 View Catalogue</span>
+        </a>
+        <a href="#custom" class="bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] hover:from-[#996515] text-white font-extrabold text-xs px-5 py-3 rounded-xl shadow-lg shadow-[#B8860B]/25 flex items-center gap-1.5 transition-all transform active:scale-95">
+          <span>Order on WhatsApp</span>
+          <span>💬</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-[#F5EFE6] to-[#FAF8F5]">
+    <canvas id="canvas3d"></canvas>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#D4AF37]/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center space-y-7">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#DECDB3] text-[#7A622A] text-xs font-bold tracking-widest shadow-sm">
+        <span class="text-[#B8860B]">✦</span>
+        <span>Artisanal Luxury Home Decor & Soft Furnishings</span>
+        <span class="text-[#B8860B]">✦</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-cinzel font-extrabold text-[#262017] tracking-tight leading-[1.15]">
+        Transform Your Sanctuary <br>
+        <span class="italic font-serif gold-gradient-text">Into Pure Divine Elegance.</span>
+      </h1>
+
+      <p class="text-sm sm:text-base text-[#6E5F4D] max-w-2xl mx-auto leading-relaxed font-normal">
+        Handcrafted luxury by <strong>Kavita Chopra</strong>. Immerse in opulent silk-quilted bedcovers, 800-thread-count Egyptian bedsheets, artisanal embroidered cushions, and bespoke dining table runners.
+      </p>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto pt-1">
+        <div class="bg-white/90 backdrop-blur-md border border-[#E8DEC7] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#8C6D23] font-bold text-xl sm:text-2xl">800 TC</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Egyptian Cotton</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#E8DEC7] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#B8860B] font-bold text-xl sm:text-2xl">100%</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Handcrafted Detail</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-[#E8DEC7] p-4 rounded-2xl shadow-sm">
+          <div class="font-cinzel text-[#8C6D23] font-bold text-xl sm:text-2xl">Bespoke</div>
+          <div class="text-[11px] text-[#786952] font-medium mt-0.5">Custom Sizing</div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 flex-wrap pt-2">
+        <a href="#bedcovers" class="bg-white hover:bg-[#F4ECE1] border border-[#DECDB3] text-xs font-bold text-[#6E5F4D] px-5 py-2.5 rounded-xl transition-all shadow-sm">Bedcovers</a>
+        <a href="#bedsheets" class="bg-white hover:bg-[#F4ECE1] border border-[#DECDB3] text-xs font-bold text-[#6E5F4D] px-5 py-2.5 rounded-xl transition-all shadow-sm">Bedsheets</a>
+        <a href="#cushions" class="bg-white hover:bg-[#F4ECE1] border border-[#DECDB3] text-xs font-bold text-[#6E5F4D] px-5 py-2.5 rounded-xl transition-all shadow-sm">Designer Cushions</a>
+        <a href="#runners" class="bg-white hover:bg-[#F4ECE1] border border-[#DECDB3] text-xs font-bold text-[#6E5F4D] px-5 py-2.5 rounded-xl transition-all shadow-sm">Table Runners</a>
+        <a href="#custom" class="bg-[#B8860B] text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow-md hover:bg-[#996515] transition-all">Custom Sizing →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Elegant Bedcovers -->
+  <section id="bedcovers" class="py-16 md:py-24 bg-[#FFFDFB] border-t border-[#EAE3D2]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Signature Bedroom Luxury</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#2A241C]">Opulent Bedcovers & Quilts</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">Layered textures, velvet touches, hand-quilted motifs, and soothing neutral tones.</p>
+        </div>
+        <a href="#custom" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>Inquire Custom King / Queen Sizes →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Royal Ivory Velvet Bedcover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Bestseller</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2A241C]">The Royal Ivory Quilt</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹7,499</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Hand-tucked micro-fiber filling wrapped in plush French velvet with gold piping. Includes 2 shams.</p>
+              <div class="pt-3 border-t border-[#F2EADA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Size: Super King (108" x 108")</div>
+                <div>✓ Hypoallergenic & Ultra Lightweight</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="orderProduct('The Royal Ivory Quilt', 'Bedcover')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=800&q=80" alt="Alabaster Pearl Jacquard Bedcover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">New Arrival</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2A241C]">Alabaster Jacquard Quilt</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹8,999</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Woven Italian jacquard with botanical relief patterns in warm pearl champagne. Reversible dual-tone.</p>
+              <div class="pt-3 border-t border-[#F2EADA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Size: King & Queen Available</div>
+                <div>✓ Includes 2 Euro Shams & 1 Cushion</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="orderProduct('Alabaster Jacquard Quilt', 'Bedcover')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80" alt="Bespoke Kantha Throw" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Artisan Pick</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2A241C]">Bespoke Kantha Throw</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹6,499</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Pure organic washed linen hand-stitched with delicate metallic gold thread work. Breathable luxury.</p>
+              <div class="pt-3 border-t border-[#F2EADA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ 100% Organic Washed Flax Linen</div>
+                <div>✓ Natural Eco-Friendly Dyes</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="orderProduct('Bespoke Kantha Throw', 'Bedcover')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Bedsheets -->
+  <section id="bedsheets" class="py-16 md:py-24 bg-[#F5EFE6] border-y border-[#EAE3D2]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Sensory Indulgence</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#2A241C]">Egyptian Cotton Bedsheets</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">Silky soft, breathable, and woven from extra-long-staple fibers for a 5-star hotel sleep.</p>
+        </div>
+        <a href="#custom" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>Inquire Elastic Fitted / Flat Sheets →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80" alt="Hotel Satin Stripe Bedsheet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">600 TC</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2A241C]">Classic Hotel Satin Stripe</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹3,499</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Silken luster with 1cm self-stripes. Crisp, cool, gets softer with every wash. Includes 2 pillowcases.</p>
+              <div class="pt-3 border-t border-[#F2EADA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ 100% Long-Staple Egyptian Cotton</div>
+                <div>✓ Deep Pocket Fits up to 14" Mattress</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="orderProduct('Classic Hotel Satin Stripe', 'Bedsheet')" class="w-full bg-[#FAF8F5] hover:bg-[#F2EADA] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80" alt="Blush Champagne Sateen Bedsheet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">800 TC</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2A241C]">Blush Champagne Sateen</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹4,499</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Soft blush sheen with hand-hemstitched borders. Ultra-luxurious drape that glides against skin.</p>
+              <div class="pt-3 border-t border-[#F2EADA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ Mercerized Finish for Lasting Luster</div>
+                <div>✓ Breathable & Thermoregulating</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="orderProduct('Blush Champagne Sateen', 'Bedsheet')" class="w-full bg-[#FAF8F5] hover:bg-[#F2EADA] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Crisp Alabaster Percale Bedsheet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Pure Percale</span>
+            </div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-xl font-bold text-[#2A241C]">Crisp Alabaster Percale</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹3,999</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">For hot sleepers who crave crisp, breathable matte cotton. Hotel durability that stays fresh.</p>
+              <div class="pt-3 border-t border-[#F2EADA] text-[11px] text-[#736652] space-y-1">
+                <div>✓ 500 TC One-Under-One-Over Weave</div>
+                <div>✓ Machine Wash Friendly & Anti-Pill</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="orderProduct('Crisp Alabaster Percale', 'Bedsheet')" class="w-full bg-[#FAF8F5] hover:bg-[#F2EADA] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Cushions -->
+  <section id="cushions" class="py-16 md:py-24 bg-[#FFFDFB]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">Artisanal Accents</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#2A241C]">Designer Cushions & Throws</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">Statement embroidery, crushed velvet, metallic foil embellishments, and artisanal tassels.</p>
+        </div>
+        <a href="#custom" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>Set of 5 Styling Bundles Available →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-square overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Zardozi Velvet Cushion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-5 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-base font-bold text-[#2A241C]">Imperial Zardozi Velvet</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹1,850</span>
+              </div>
+              <p class="text-xs text-[#6B5E49]">Rich crushed emerald & gold metallic thread embroidery.</p>
+              <div class="text-[11px] text-stone-400">Size: 16" x 16" / 18" x 18"</div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="orderProduct('Imperial Zardozi Velvet', 'Cushion')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] text-xs font-bold py-2.5 rounded-xl block text-center">Order on WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-square overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Boucle Pearl Cushion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-5 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-base font-bold text-[#2A241C]">Parisian Bouclé Pearl</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹1,450</span>
+              </div>
+              <p class="text-xs text-[#6B5E49]">Ultra-textured cozy bouclé yarn in warm ecru alabaster.</p>
+              <div class="text-[11px] text-stone-400">Size: 18" x 18" Lumbar Available</div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="orderProduct('Parisian Bouclé Pearl', 'Cushion')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] text-xs font-bold py-2.5 rounded-xl block text-center">Order on WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-square overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Botanical Threadwork Cushion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-5 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-base font-bold text-[#2A241C]">Botanical Threadwork</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹1,650</span>
+              </div>
+              <p class="text-xs text-[#6B5E49]">Hand-guided needlework inspired by Mughal palace gardens.</p>
+              <div class="text-[11px] text-stone-400">Size: 16" x 16" / 20" x 20"</div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="orderProduct('Botanical Threadwork', 'Cushion')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] text-xs font-bold py-2.5 rounded-xl block text-center">Order on WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-square overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=600&q=80" alt="Royal Tassel Lumbar Cushion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="p-5 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-base font-bold text-[#2A241C]">Royal Tassel Lumbar</h3>
+                <span class="text-xs font-bold text-[#8C6D23]">₹1,950</span>
+              </div>
+              <p class="text-xs text-[#6B5E49]">Elongated statement lumbar pillow with handmade bullion tassels.</p>
+              <div class="text-[11px] text-stone-400">Size: 12" x 24" (Lumbar)</div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="orderProduct('Royal Tassel Lumbar', 'Cushion')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] text-xs font-bold py-2.5 rounded-xl block text-center">Order on WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Table Runners -->
+  <section id="runners" class="py-16 md:py-24 bg-[#F5EFE6] border-y border-[#EAE3D2]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">The Art of Entertaining</span>
+          <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#2A241C]">Bespoke Table Runners & Linens</h2>
+          <p class="text-xs sm:text-sm text-[#736652]">Elevate dinner parties, festive celebrations, and everyday dining with couture table couture.</p>
+        </div>
+        <a href="#custom" class="inline-flex items-center gap-2 text-xs font-bold text-[#8C6D23] hover:text-[#B8860B] uppercase tracking-wider">
+          <span>Custom Table Lengths (6, 8, 10, 12 Seater) →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=800&q=80" alt="Gilded Brocade Table Runner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Festive Edition</span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-2xl font-bold text-[#2A241C]">The Gilded Brocade Runner</h3>
+                <span class="text-sm font-bold text-[#8C6D23]">₹2,999</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">Metallic champagne gold zari motifs woven on pure raw silk. Features matching corner tassels and non-slip cotton backing.</p>
+              <div class="pt-3 border-t border-[#F2EADA] flex items-center justify-between text-xs text-[#736652] font-semibold">
+                <span>Length: 14" x 72" & 14" x 90"</span>
+                <span>Includes 6 Coordinated Mats Option</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8 pt-0">
+            <button onclick="orderProduct('The Gilded Brocade Runner', 'Table Runner')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3.5 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="decor-card bg-white border border-[#E8DEC7] rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden relative bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986b88?auto=format&fit=crop&w=800&q=80" alt="French Hemstitch Linen Runner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#7A622A] text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-cinzel">Everyday Luxury</span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-cinzel text-2xl font-bold text-[#2A241C]">French Hemstitch Linen Set</h3>
+                <span class="text-sm font-bold text-[#8C6D23]">₹3,499</span>
+              </div>
+              <p class="text-xs text-[#6B5E49] leading-relaxed">100% natural European flax linen with classic openwork hemstitching. Perfect for candlelit dinners and Sunday brunches.</p>
+              <div class="pt-3 border-t border-[#F2EADA] flex items-center justify-between text-xs text-[#736652] font-semibold">
+                <span>Length: 16" x 84"</span>
+                <span>Includes 6 Matching Linen Napkins</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8 pt-0">
+            <button onclick="orderProduct('French Hemstitch Linen Set', 'Table Runner')" class="w-full bg-[#F5EFE6] hover:bg-[#EFE5D5] text-[#7A622A] border border-[#DECDB3] font-bold text-xs py-3.5 rounded-xl transition-all block text-center">Order on WhatsApp 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Kavita Chopra Atelier Story -->
+  <section class="py-16 md:py-24 bg-[#FFFDFB]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-5 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Dvinity by Kavita Chopra Atelier" class="w-full aspect-[4/5] object-cover">
+      </div>
+      <div class="md:col-span-7 space-y-5">
+        <span class="text-xs uppercase tracking-widest text-[#B8860B] font-bold font-cinzel">The Atelier Philosophy</span>
+        <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-[#2A241C]">"Every Home Has a Soul. We Weave Its Grace."</h2>
+        <p class="text-xs sm:text-sm text-[#6B5E49] leading-relaxed">
+          Founded by <strong>Kavita Chopra</strong>, <strong>Dvinity</strong> was born out of a profound passion for exquisite fabrics, timeless embroideries, and the warmth of a beautifully appointed home.
+        </p>
+        <p class="text-xs sm:text-sm text-[#6B5E49] leading-relaxed">
+          Each bedcover, bedsheet, and cushion is meticulously crafted with master artisans — combining centuries-old Indian handloom mastery with contemporary international aesthetics.
+        </p>
+        <div class="pt-2 flex items-center gap-6 text-xs text-[#7A622A] font-bold">
+          <div>✦ 100% Artisanal Quality</div>
+          <div>✦ Custom Sizing Available</div>
+          <div>✦ Pan-India Delivery</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bespoke Custom Order Form & WhatsApp Concierge -->
+  <section id="custom" class="py-20 bg-gradient-to-b from-[#FAF8F5] to-[#F5EFE6] border-t border-[#EAE3D2]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-block px-4 py-1 rounded-full bg-white border border-[#DECDB3] text-[#7A622A] text-xs font-bold font-cinzel">
+        ⚡ Direct Atelier Concierge
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-cinzel font-bold text-[#262017]">Custom Sizing & Bespoke Inquiries</h2>
+      <p class="text-xs sm:text-sm text-[#6E5F4D] max-w-lg mx-auto">Have specific mattress dimensions or custom interior color palettes? Fill this quick request to connect directly with Kavita Chopra's styling team.</p>
+
+      <form onsubmit="handleCustomInquiry(event)" class="space-y-4 text-left bg-white border border-[#DECDB3] p-6 sm:p-10 rounded-3xl shadow-xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#6E5F4D] mb-1">Your Full Name</label>
+            <input type="text" id="custName" required placeholder="e.g. Shalini Kapoor" class="w-full bg-[#FAF8F5] border border-[#DECDB3] rounded-xl px-4 py-3 text-xs text-stone-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#6E5F4D] mb-1">WhatsApp Mobile Number</label>
+            <input type="tel" id="custPhone" required placeholder="e.g. 9876543210" class="w-full bg-[#FAF8F5] border border-[#DECDB3] rounded-xl px-4 py-3 text-xs text-stone-800 outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-[#6E5F4D] mb-1">Category of Interest</label>
+            <select id="custCategory" class="w-full bg-[#FAF8F5] border border-[#DECDB3] rounded-xl px-4 py-3 text-xs text-stone-800 outline-none font-medium">
+              <option value="Luxury Bedcovers & Quilts">Luxury Bedcovers & Quilts</option>
+              <option value="Egyptian Cotton Bedsheets">Egyptian Cotton Bedsheets</option>
+              <option value="Artisanal Designer Cushions">Artisanal Designer Cushions</option>
+              <option value="Bespoke Table Runners & Dining Sets">Bespoke Table Runners & Dining Sets</option>
+              <option value="Full Home Furnishing Consultation">Full Home Furnishing Consultation</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-[#6E5F4D] mb-1">Bed / Table Size (Optional)</label>
+            <input type="text" id="custSize" placeholder="e.g. Super King 108x108 / 8 Seater Table" class="w-full bg-[#FAF8F5] border border-[#DECDB3] rounded-xl px-4 py-3 text-xs text-stone-800 outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#6E5F4D] mb-1">Custom Notes / Color Preferences</label>
+          <input type="text" id="custNotes" placeholder="e.g. Looking for warm ivory and beige shades for bridal trousseau" class="w-full bg-[#FAF8F5] border border-[#DECDB3] rounded-xl px-4 py-3 text-xs text-stone-800 outline-none">
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-[#B8860B] via-[#C59B27] to-[#996515] text-white font-extrabold text-sm py-4 rounded-xl shadow-xl shadow-[#B8860B]/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+          <span>Connect with Kavita Chopra on WhatsApp</span>
+          <span>💬</span>
+        </button>
+      </form>
+
+      <div class="pt-4 text-xs text-[#736652]">
+        📍 <strong>Atelier Studio:</strong> Dvinity by Kavita Chopra • Luxury Home Decor & Soft Furnishings Studio
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Footer -->
+  <footer class="bg-white border-t border-[#EAE3D2] py-8 px-4 text-center text-xs text-stone-500">
+    <div class="max-w-4xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F5EFE6] border border-[#DECDB3] text-[11px] text-[#7A622A] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-[#B8860B]"></span>
+        <span>Concept Prepared for <strong>Dvinity by Kavita Chopra</strong></span>
+      </div>
+      <p class="text-[10px] text-stone-400">
+        Engineered with Haute Living Aesthetics & Direct WhatsApp Commerce Architecture by <strong>Voltara Web Studio</strong>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky WhatsApp Button -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <a href="https://wa.me/919876543210?text=Hi%20Dvinity%20by%20Kavita%20Chopra,%20I%20want%20to%20enquire%20about%20luxury%20home%20decor%20products" target="_blank" class="bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border-2 border-white transition-transform transform hover:scale-105 active:scale-95">
+      <span class="text-xl">💬</span>
+      <span class="text-xs font-bold">Chat with Concierge</span>
+    </a>
+  </div>
+
+  <script>
+    function orderProduct(productName, category) {
+      const message = `Namaste Dvinity by Kavita Chopra!\n\nI am interested in ordering:\nProduct: ${productName}\nCategory: ${category}\n\nPlease share price, fabric details, and available sizes.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleCustomInquiry(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const category = document.getElementById('custCategory').value;
+      const size = document.getElementById('custSize').value.trim();
+      const notes = document.getElementById('custNotes').value.trim();
+
+      const message = `Namaste Kavita Chopra & Dvinity Team!\n\nI want to discuss a custom order:\nName: ${name}\nPhone: ${phone}\nCategory: ${category}\nSize: ${size || 'Standard'}\nNotes: ${notes || 'None'}\n\nPlease share catalog and consultation details.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Three.js Gold Dust
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('canvas3d');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 28;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const count = 150;
+      const pGeometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+      for (let i = 0; i < count * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 50;
+        positions[i + 1] = (Math.random() - 0.5) * 35;
+        positions[i + 2] = (Math.random() - 0.5) * 20;
+      }
+      pGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const pMaterial = new THREE.PointsMaterial({ size: 0.3, color: 0xD4AF37, transparent: true, opacity: 0.45 });
+      const particles = new THREE.Points(pGeometry, pMaterial);
+      scene.add(particles);
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.y += 0.0004;
+        particles.position.x += (mouseX * 1.5 - particles.position.x) * 0.03;
+        particles.position.y += (-mouseY * 1.5 - particles.position.y) * 0.03;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    });
+  </script>
+</body>
+</html>
