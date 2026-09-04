@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Hive Unisex Salon — Kanpur's Premier Luxury Hair, Skin & Makeover Studio</title>
+  <meta name="description" content="Experience high-fashion hair transformations, advanced HydraFacials, keratin botox, and bridal makeovers at The Hive Unisex Salon in Kanpur. Book appointment on WhatsApp.">
+  
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-syne {
+      font-family: 'Syne', sans-serif;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .salon-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .salon-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -15px rgba(245, 158, 11, 0.2);
+    }
+
+    .hive-gradient-text {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ba-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-[#FBFBF9] text-zinc-800 antialiased selection:bg-amber-200 selection:text-amber-900">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#18181B] text-amber-300 py-2.5 px-4 text-xs font-medium border-b border-amber-500/20 shadow-sm flex items-center justify-between">
+    <div class="flex items-center gap-3 max-w-7xl mx-auto w-full justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="font-bold tracking-wider text-white">KANPUR EXCLUSIVE OFFER:</span>
+        <span class="text-amber-300 font-semibold">Flat 20% OFF on Keratin, Hair Botox & HydraFacials</span>
+      </div>
+      <div class="text-[11px] text-zinc-300 font-bold hidden sm:block">
+        📍 Swaroop Nagar / Kakadeo, Kanpur
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-[#FBFBF9]/90 backdrop-blur-xl border-b border-zinc-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-4 group">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-200 p-0.5 shadow-lg shadow-amber-500/25 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#18181B] rounded-[14px] flex items-center justify-center">
+            <span class="text-amber-400 text-2xl font-syne font-extrabold">⬡</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-syne text-2xl sm:text-3xl font-extrabold tracking-wider text-zinc-900 block leading-none">
+            THE HIVE
+          </span>
+          <span class="text-[11px] text-amber-600 tracking-[0.25em] font-bold uppercase mt-1.5 block">
+            UNISEX SALON & SPA • KANPUR
+          </span>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8 text-xs text-zinc-600 font-bold tracking-wider uppercase">
+        <a href="#services" class="hover:text-amber-600 transition-colors">Hair & Skin</a>
+        <a href="#transformation" class="hover:text-amber-600 transition-colors">Before / After</a>
+        <a href="#men" class="hover:text-amber-600 transition-colors">Men's Grooming</a>
+        <a href="#bridal" class="hover:text-amber-600 transition-colors">Bridal Studio</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+919876543210" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-zinc-300 bg-white hover:bg-zinc-50 text-xs text-zinc-800 font-bold transition-all shadow-sm">
+          <span>📞 Call Salon</span>
+        </a>
+        <a href="#book" class="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-600 text-black font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg shadow-amber-500/20 flex items-center gap-1.5 transition-all transform active:scale-95">
+          <span>Book Appointment</span>
+          <span>⚡</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-[#FBFBF9] via-[#F7F4EE] to-[#FBFBF9]">
+    <canvas id="canvas3d"></canvas>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-400/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center space-y-7">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-bold tracking-widest shadow-sm">
+        <span class="text-amber-500">⬡</span>
+        <span>Kanpur's #1 Luxury Destination for Hair, Skin & Aesthetics</span>
+        <span class="text-amber-500">⬡</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-extrabold text-zinc-900 tracking-tight leading-[1.15]">
+        Unleash Your Ultimate Glow. <br>
+        <span class="italic font-serif hive-gradient-text">Crafted by Master Stylists.</span>
+      </h1>
+
+      <p class="text-sm sm:text-base text-zinc-600 max-w-2xl mx-auto leading-relaxed font-normal">
+        Step into Kanpur's most modern unisex salon. From celebrity-grade Keratin & Botox hair transformations to Korean glass skin HydraFacials and dapper men's grooming at <strong>The Hive</strong>.
+      </p>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto pt-1">
+        <div class="bg-white/90 backdrop-blur-md border border-zinc-200 p-4 rounded-2xl shadow-sm">
+          <div class="font-syne text-amber-600 font-bold text-xl sm:text-2xl">10k+</div>
+          <div class="text-[11px] text-zinc-500 font-medium mt-0.5">Happy Clients</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-zinc-200 p-4 rounded-2xl shadow-sm">
+          <div class="font-syne text-zinc-900 font-bold text-xl sm:text-2xl">100%</div>
+          <div class="text-[11px] text-zinc-500 font-medium mt-0.5">Original Products</div>
+        </div>
+        <div class="bg-white/90 backdrop-blur-md border border-zinc-200 p-4 rounded-2xl shadow-sm">
+          <div class="font-syne text-amber-600 font-bold text-xl sm:text-2xl">4.9 ★</div>
+          <div class="text-[11px] text-zinc-500 font-medium mt-0.5">Google Verified</div>
+        </div>
+      </div>
+
+      <!-- Quick Selector Bar -->
+      <div class="max-w-4xl mx-auto bg-white border border-zinc-200 p-5 rounded-3xl shadow-xl shadow-amber-500/5 space-y-3 mt-4 text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+          <div>
+            <label class="block text-[11px] font-bold text-zinc-700 uppercase tracking-wider mb-1">Select Service</label>
+            <select id="quickService" class="w-full bg-[#FAF9F5] border border-zinc-300 rounded-xl px-3 py-2.5 text-xs text-zinc-800 outline-none font-medium">
+              <option value="Keratin / Nanoplastia Hair Treatment">Keratin / Nanoplastia Hair Treatment</option>
+              <option value="Advanced 7-Step HydraFacial">Advanced 7-Step HydraFacial</option>
+              <option value="Global Balayage & Hair Color">Global Balayage & Hair Color</option>
+              <option value="Dapper Men's Haircut & Beard Spa">Dapper Men's Haircut & Beard Spa</option>
+              <option value="Bridal / Groom Airbrush Makeup">Bridal / Groom Airbrush Makeup</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-zinc-700 uppercase tracking-wider mb-1">Select Gender</label>
+            <select id="quickGender" class="w-full bg-[#FAF9F5] border border-zinc-300 rounded-xl px-3 py-2.5 text-xs text-zinc-800 outline-none font-medium">
+              <option value="Female Client">Female Client</option>
+              <option value="Male Client">Male Client</option>
+              <option value="Couple / Bridal & Groom">Couple / Bridal & Groom</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-zinc-700 uppercase tracking-wider mb-1">Preferred Date</label>
+            <input type="date" id="quickDate" class="w-full bg-[#FAF9F5] border border-zinc-300 rounded-xl px-3 py-2.5 text-xs text-zinc-800 outline-none font-medium">
+          </div>
+          <div class="flex items-end">
+            <button onclick="handleQuickBooking()" class="w-full bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 text-black font-extrabold text-xs py-2.5 rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all transform active:scale-95 h-[42px]">
+              <span>Book Appointment</span>
+              <span>⚡</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Salon Services -->
+  <section id="services" class="py-16 md:py-24 bg-white border-t border-zinc-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-amber-600 font-bold font-syne">Precision & Artistry</span>
+          <h2 class="text-3xl sm:text-4xl font-syne font-bold text-zinc-900">High-Fashion Salon Services</h2>
+          <p class="text-xs sm:text-sm text-zinc-500">Performed with international products: L'Oréal Professionnel, Olaplex, Schwarzkopf & Cheryl's.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="salon-card bg-[#FAF9F5] border border-zinc-200 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-zinc-100">
+              <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80" alt="Keratin & Hair Botox" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-zinc-900 text-amber-300 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-syne">Most Popular</span>
+            </div>
+            <div class="p-6 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-syne text-xl font-bold text-zinc-900">Keratin & Botox</h3>
+                <span class="text-xs font-bold text-amber-600">From ₹2,999</span>
+              </div>
+              <p class="text-xs text-zinc-600 leading-relaxed">Transform frizzy hair into mirror-like glossy glass strands. 0% Formaldehyde restoration.</p>
+              <div class="pt-3 border-t border-zinc-200 text-[11px] text-zinc-500 space-y-1">
+                <div>✓ Olaplex Bond Repair Included</div>
+                <div>✓ Lasts 4 to 6 Months</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="bookService('Keratin & Hair Botox')" class="w-full bg-white hover:bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold text-xs py-3 rounded-xl transition-all block text-center">Book on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="salon-card bg-[#FAF9F5] border border-zinc-200 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-zinc-100">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="HydraFacial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-zinc-900 text-amber-300 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-syne">Instant Glow</span>
+            </div>
+            <div class="p-6 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-syne text-xl font-bold text-zinc-900">7-Step HydraFacial</h3>
+                <span class="text-xs font-bold text-amber-600">From ₹1,999</span>
+              </div>
+              <p class="text-xs text-zinc-600 leading-relaxed">Vortex pore extraction, hyaluronic acid infusion, and LED light therapy for a radiant glass skin finish.</p>
+              <div class="pt-3 border-t border-zinc-200 text-[11px] text-zinc-500 space-y-1">
+                <div>✓ Painless Extraction</div>
+                <div>✓ Zero Downtime & Pure Glow</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="bookService('7-Step HydraFacial')" class="w-full bg-white hover:bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold text-xs py-3 rounded-xl transition-all block text-center">Book on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="salon-card bg-[#FAF9F5] border border-zinc-200 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-zinc-100">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Balayage Hair Color" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-zinc-900 text-amber-300 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-syne">Couture Color</span>
+            </div>
+            <div class="p-6 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-syne text-xl font-bold text-zinc-900">Balayage & Ombré</h3>
+                <span class="text-xs font-bold text-amber-600">From ₹3,499</span>
+              </div>
+              <p class="text-xs text-zinc-600 leading-relaxed">Seamless sun-kissed blending, caramel blonde streaks, or chocolate mocha balayage.</p>
+              <div class="pt-3 border-t border-zinc-200 text-[11px] text-zinc-500 space-y-1">
+                <div>✓ Ammonia-Free Italian Color</div>
+                <div>✓ Post-Color Gloss Included</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="bookService('Balayage & Hair Color')" class="w-full bg-white hover:bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold text-xs py-3 rounded-xl transition-all block text-center">Book on WhatsApp 💬</button>
+          </div>
+        </div>
+
+        <div class="salon-card bg-[#FAF9F5] border border-zinc-200 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between group">
+          <div>
+            <div class="aspect-[4/3] overflow-hidden relative bg-zinc-100">
+              <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="Men's Beard & Hair Studio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3.5 left-3.5 bg-zinc-900 text-amber-300 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm font-syne">Men's Lounge</span>
+            </div>
+            <div class="p-6 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-syne text-xl font-bold text-zinc-900">Beard & Hair Lounge</h3>
+                <span class="text-xs font-bold text-amber-600">From ₹499</span>
+              </div>
+              <p class="text-xs text-zinc-600 leading-relaxed">Precision fade haircuts, hot towel beard sculpting, charcoal detox, and anti-dandruff hair spa.</p>
+              <div class="pt-3 border-t border-zinc-200 text-[11px] text-zinc-500 space-y-1">
+                <div>✓ Hot Towel Steam Finish</div>
+                <div>✓ Premium Beard Oils</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="bookService('Men Beard & Hair Lounge')" class="w-full bg-white hover:bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold text-xs py-3 rounded-xl transition-all block text-center">Book on WhatsApp 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Before / After Slider -->
+  <section id="transformation" class="py-16 md:py-24 bg-[#F4F1EA] border-y border-zinc-300">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+      <div class="text-center space-y-3">
+        <span class="text-xs uppercase tracking-widest text-amber-700 font-bold font-syne">Real Transformations</span>
+        <h2 class="text-2xl sm:text-4xl font-syne font-bold text-zinc-900">Interactive Transformation Slider</h2>
+        <p class="text-xs sm:text-sm text-zinc-600">Slide the bar to witness real Keratin & Nanoplastia results at The Hive Unisex Salon, Kanpur.</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto ba-slider shadow-2xl border-4 border-white aspect-[16/10] relative">
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80" alt="After Keratin Glass Hair" class="w-full h-full object-cover">
+        <div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold px-3.5 py-1.5 rounded-full z-20">
+          AFTER: Silk Glass Shine ✨
+        </div>
+
+        <div id="beforeContainer" class="absolute inset-0 overflow-hidden w-1/2 border-r-2 border-amber-400">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" alt="Before Frizzy Hair" class="absolute inset-0 w-full h-full object-cover max-w-none">
+          <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md text-zinc-300 text-xs font-bold px-3.5 py-1.5 rounded-full z-20">
+            BEFORE: Dull & Frizzy
+          </div>
+        </div>
+
+        <input type="range" min="0" max="100" value="50" id="sliderRange" class="absolute inset-0 opacity-0 cursor-ew-resize w-full h-full z-30">
+
+        <div id="sliderHandle" class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 flex items-center justify-center pointer-events-none z-20">
+          <div class="w-8 h-8 rounded-full bg-amber-500 text-black font-bold flex items-center justify-center text-xs shadow-xl border-2 border-white">
+            ⇄
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bridal & Groom Studio -->
+  <section id="bridal" class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-6 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#FAF9F5]">
+        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" alt="Bridal & Groom Makeover" class="w-full aspect-[4/5] object-cover">
+      </div>
+
+      <div class="md:col-span-6 space-y-6">
+        <span class="text-xs uppercase tracking-widest text-amber-600 font-bold font-syne">The Wedding Lounge</span>
+        <h2 class="text-3xl sm:text-5xl font-syne font-bold text-zinc-900 leading-tight">Couture Bridal & Groom Makeovers</h2>
+        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+          Look timeless on your special day. Our specialized team handles HD Airbrush Makeup, Pre-Bridal Skin Detan Spas, Saree & Dupatta draping, and Groom Styling in Kanpur.
+        </p>
+
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center gap-3 text-xs text-zinc-700 font-semibold">
+            <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold">✓</span>
+            <span>HD & Airbrush Makeup with International Kits</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-zinc-700 font-semibold">
+            <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold">✓</span>
+            <span>Pre-Bridal Packages: Body Polishing & HydraFacial</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-zinc-700 font-semibold">
+            <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold">✓</span>
+            <span>Dedicated Private VIP Dressing Lounge</span>
+          </div>
+        </div>
+
+        <div class="pt-3">
+          <button onclick="bookService('Bridal / Groom Wedding Package')" class="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 text-black font-extrabold text-xs px-7 py-3.5 rounded-xl shadow-lg flex items-center gap-2">
+            <span>Inquire Bridal Packages on WhatsApp</span>
+            <span>💍</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instant Appointment Booking -->
+  <section id="book" class="py-20 bg-gradient-to-b from-[#FBFBF9] to-[#F4F1EA] border-t border-zinc-300">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-bold font-syne">
+        ⚡ Instant Confirmation on WhatsApp
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-syne font-bold text-zinc-900">Book Your Session at The Hive</h2>
+      <p class="text-xs sm:text-sm text-zinc-600 max-w-lg mx-auto">Fill this quick form to reserve your slot with our master stylists. You will receive an immediate confirmation on WhatsApp.</p>
+
+      <form onsubmit="handleFinalBooking(event)" class="space-y-4 text-left bg-white border border-zinc-200 p-6 sm:p-10 rounded-3xl shadow-xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 mb-1">Your Full Name</label>
+            <input type="text" id="custName" required placeholder="e.g. Megha Singhania" class="w-full bg-[#FAF9F5] border border-zinc-300 rounded-xl px-4 py-3 text-xs text-zinc-800 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 mb-1">WhatsApp Mobile Number</label>
+            <input type="tel" id="custPhone" required placeholder="e.g. 9876543210" class="w-full bg-[#FAF9F5] border border-zinc-300 rounded-xl px-4 py-3 text-xs text-zinc-800 outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 mb-1">Select Service</label>
+            <select id="custService" class="w-full bg-[#FAF9F5] border border-zinc-300 rounded-xl px-4 py-3 text-xs text-zinc-800 outline-none font-medium">
+              <option value="Keratin / Hair Botox (Flat 20% Off)">Keratin / Hair Botox (Flat 20% Off)</option>
+              <option value="Advanced 7-Step HydraFacial">Advanced 7-Step HydraFacial</option>
+              <option value="Global Hair Color / Balayage">Global Hair Color / Balayage</option>
+              <option value="Haircut + Wash + Blowdry Styling">Haircut + Wash + Blowdry Styling</option>
+              <option value="Men Beard Grooming & Spa">Men Beard Grooming & Spa</option>
+              <option value="Bridal / Engagement Makeup">Bridal / Engagement Makeup</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-zinc-700 mb-1">Preferred Time Slot</label>
+            <select id="custTime" class="w-full bg-[#FAF9F5] border border-zinc-300 rounded-xl px-4 py-3 text-xs text-zinc-800 outline-none font-medium">
+              <option value="Morning (10:30 AM - 1:00 PM)">Morning (10:30 AM - 1:00 PM)</option>
+              <option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM - 4:00 PM)</option>
+              <option value="Evening (4:00 PM - 8:30 PM)">Evening (4:00 PM - 8:30 PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 text-black font-extrabold text-sm py-4 rounded-xl shadow-xl shadow-amber-500/20 flex items-center justify-center gap-2 transition-all transform active:scale-95">
+          <span>Confirm Appointment & Get 20% Off on WhatsApp</span>
+          <span>💬</span>
+        </button>
+      </form>
+
+      <div class="pt-4 text-xs text-zinc-500">
+        📍 <strong>Salon Address:</strong> The Hive Unisex Salon, Main Commercial Belt, Swaroop Nagar / Kakadeo, Kanpur, Uttar Pradesh - 208002
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Footer -->
+  <footer class="bg-[#18181B] text-zinc-400 py-8 px-4 text-center text-xs">
+    <div class="max-w-4xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] text-amber-400 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+        <span>Concept Prepared for <strong>The Hive Unisex Salon, Kanpur</strong></span>
+      </div>
+      <p class="text-[10px] text-zinc-500">
+        Engineered with Modern 3D Aesthetics & Direct WhatsApp Conversion by <strong>Voltara Web Studio</strong>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky WhatsApp Button -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <a href="https://wa.me/919876543210?text=Hi%20The%20Hive%20Unisex%20Salon%20Kanpur,%20I%20want%20to%20book%20an%20appointment" target="_blank" class="bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border-2 border-white transition-transform transform hover:scale-105 active:scale-95">
+      <span class="text-xl">💬</span>
+      <span class="text-xs font-bold">Book on WhatsApp</span>
+    </a>
+  </div>
+
+  <script>
+    const range = document.getElementById('sliderRange');
+    const container = document.getElementById('beforeContainer');
+    const handle = document.getElementById('sliderHandle');
+
+    if (range) {
+      range.addEventListener('input', (e) => {
+        const val = e.target.value;
+        container.style.width = val + '%';
+        handle.style.left = val + '%';
+      });
+    }
+
+    function bookService(serviceName) {
+      const message = `Namaste The Hive Unisex Salon Kanpur!\n\nI want to book an appointment for:\nService: ${serviceName}\n\nPlease share available slots today/tomorrow and ongoing offers.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleQuickBooking() {
+      const service = document.getElementById('quickService').value;
+      const gender = document.getElementById('quickGender').value;
+      const date = document.getElementById('quickDate').value;
+      const message = `Namaste The Hive Unisex Salon Kanpur!\n\nI want to reserve a salon appointment:\nService: ${service}\nClient: ${gender}\nPreferred Date: ${date || 'Today/Tomorrow'}\n\nPlease confirm slot.`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function handleFinalBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const service = document.getElementById('custService').value;
+      const time = document.getElementById('custTime').value;
+      const message = `Namaste The Hive Unisex Salon Kanpur!\n\nI want to confirm appointment with 20% discount:\nName: ${name}\nPhone: ${phone}\nService: ${service}\nTime Slot: ${time}\nLocation: Kanpur\n\nPlease confirm booking!`;
+      window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Three.js 3D Golden Honeycomb Particle Animation
+    window.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('canvas3d');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 28;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const torusGeo = new THREE.TorusGeometry(10, 0.25, 6, 6);
+      const torusMat = new THREE.MeshBasicMaterial({ color: 0xF59E0B, wireframe: true, transparent: true, opacity: 0.2 });
+      const torus = new THREE.Mesh(torusGeo, torusMat);
+      torus.position.set(0, 0, -4);
+      scene.add(torus);
+
+      const count = 160;
+      const pGeometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+      for (let i = 0; i < count * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 55;
+        positions[i + 1] = (Math.random() - 0.5) * 35;
+        positions[i + 2] = (Math.random() - 0.5) * 20;
+      }
+      pGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const pMaterial = new THREE.PointsMaterial({ size: 0.32, color: 0xF59E0B, transparent: true, opacity: 0.5 });
+      const particles = new THREE.Points(pGeometry, pMaterial);
+      scene.add(particles);
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        torus.rotation.x += 0.002;
+        torus.rotation.y += 0.003;
+        particles.rotation.y += 0.0005;
+        torus.position.x += (mouseX * 1.5 - torus.position.x) * 0.03;
+        torus.position.y += (-mouseY * 1.5 - torus.position.y) * 0.03;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    });
+  </script>
+</body>
+</html>
