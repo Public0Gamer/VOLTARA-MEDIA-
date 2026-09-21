@@ -80,7 +80,6 @@
         "x-markdown-tokens": "1450"
       },
       "continue": true
-    },
     {
       "handle": "filesystem"
     }
