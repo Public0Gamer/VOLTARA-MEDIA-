@@ -459,21 +459,28 @@
       </div>
 
       <!-- Action Desk -->
-      <div class="flex items-center gap-2 sm:gap-3">
+      <div class="flex items-center gap-1.5 sm:gap-2.5">
         
+        <!-- Live Currency Switcher (INR / USD / AED) -->
+        <div class="flex items-center p-0.5 sm:p-1 rounded-xl bg-slate-100 border border-slate-200 text-[10px] sm:text-[11px] font-black shadow-inner">
+          <button id="curBtnINR" type="button" onclick="setSiteCurrency('INR')" class="currency-toggle-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg bg-indigo-600 text-white shadow-sm transition-all">₹ INR</button>
+          <button id="curBtnUSD" type="button" onclick="setSiteCurrency('USD')" class="currency-toggle-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg text-slate-600 hover:text-indigo-600 transition-all">$ USD</button>
+          <button id="curBtnAED" type="button" onclick="setSiteCurrency('AED')" class="currency-toggle-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg text-slate-600 hover:text-indigo-600 transition-all">د.إ AED</button>
+        </div>
+
         <!-- Live Calling Desk -->
-        <a href="tel:+919555838550" class="hover-target hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all">
+        <a href="tel:+919555838550" class="hover-target hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all">
           <span>📞 95558 38550</span>
         </a>
 
         <!-- WhatsApp CTA -->
-        <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20to%20get%20a%20website%20made%20for%20my%20business." target="_blank" class="hover-target flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold hover:bg-emerald-100 transition-all shadow-sm">
+        <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20to%20get%20a%20website%20made%20for%20my%20business." target="_blank" class="hover-target hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold hover:bg-emerald-100 transition-all shadow-sm">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
           <span>WhatsApp Us</span>
         </a>
 
         <!-- Pricing Link -->
-        <a href="#website-packages" class="hover-target px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl btn-premium font-black text-xs tracking-wide flex items-center gap-1 shadow-md shimmer-active">
+        <a href="#website-packages" id="headerPricingLink" class="hover-target px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl btn-premium font-black text-xs tracking-wide flex items-center gap-1 shadow-md shimmer-active">
           <span>💰 View ₹7,999 Plan</span>
         </a>
 
@@ -676,58 +683,258 @@
   <!-- ======================================================== -->
   <!-- SECTION: PORTFOLIO / OUR WORK -->
   <!-- ======================================================== -->
-  <section id="portfolio" class="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 py-10">
-    <div class="text-center mb-8">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-black uppercase tracking-wider mb-2">
-        🏆 Our Recent Work
+  <section id="portfolio" class="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 py-14">
+    <div class="text-center mb-8 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-black uppercase tracking-wider">
+        🏆 Handcrafted Portfolio
       </div>
       <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-        Trusted by Local Businesses in <span class="text-gradient-aurora font-display">Kanpur & UP</span>
+        Trusted Across India &amp; <span class="text-gradient-aurora font-display">Worldwide (USA, UAE, UK)</span>
       </h2>
-      <p class="text-slate-500 text-xs sm:text-sm mt-2 max-w-2xl mx-auto">
-        See how we helped jewelers, salons, and decorators get more clients online with high-converting websites.
+      <p class="text-slate-500 text-xs sm:text-sm max-w-2xl mx-auto">
+        Explore high-converting digital flagships built for retail brands, luxury real estate, healthcare clinics, and global startups.
       </p>
+
+      <!-- Portfolio Category Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-3">
+        <button type="button" onclick="filterPortfolio('all')" class="port-filter-btn px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white font-extrabold text-xs shadow-md transition-all">All Projects (6)</button>
+        <button type="button" onclick="filterPortfolio('3d')" class="port-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs transition-all">✨ 3D WebGL</button>
+        <button type="button" onclick="filterPortfolio('ecommerce')" class="port-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs transition-all">🛍️ E-Commerce</button>
+        <button type="button" onclick="filterPortfolio('global')" class="port-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs transition-all">🌐 Global (USA/Dubai)</button>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <!-- Portfolio Item 1 -->
-      <div class="crystal-card rounded-2xl overflow-hidden group hover-target border border-indigo-100">
-        <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center text-5xl">
-          💎
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+    <!-- 6 Luxury Project Showcase Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+      
+      <!-- Project 1: Dubai Real Estate -->
+      <div class="portfolio-card crystal-card rounded-3xl overflow-hidden group hover-target border border-indigo-100/90 shadow-lg flex flex-col justify-between" data-category="3d global">
+        <div>
+          <!-- Browser Mockup Window Header -->
+          <div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <span class="text-[9px] font-mono text-slate-400">luxehaven-dubai.ae</span>
+            <span class="text-[9px] font-bold text-amber-400">🇦🇪 Dubai</span>
+          </div>
+          <!-- Project Visual Banner -->
+          <div class="h-44 bg-gradient-to-tr from-slate-950 via-indigo-950 to-cyan-900 relative p-5 flex flex-col justify-between overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-cyan-500/20 blur-xl"></div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-cyan-200 self-start">3D WebGL Physics</span>
+            <div class="text-3xl">🏰</div>
+            <div class="text-white text-xs font-bold z-10">Luxe Haven Real Estate • Downtown Dubai</div>
+          </div>
+          <!-- Project Info -->
+          <div class="p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-black text-indigo-600 uppercase tracking-wider">Luxury Real Estate</span>
+              <span class="text-[10px] font-bold text-emerald-600">+340% Lead Inquiries</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900">Luxe Haven Villas Dubai</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">Turnkey interactive 3D WebGL property showcase with instant WhatsApp VIP broker booking and multi-currency price calculator.</p>
+          </div>
         </div>
-        <div class="p-5">
-          <div class="text-[10px] font-black text-emerald-600 uppercase tracking-wider mb-1">Jewellery Store</div>
-          <h3 class="text-lg font-bold text-slate-900">Karan Jewellers</h3>
-          <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Premium catalog website with trust-building UI. Resulted in 3x more WhatsApp inquiries from Varanasi & Kanpur.</p>
+        <div class="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100">
+          <span class="text-[11px] font-bold text-slate-400">Three.js • WebGL • Tailwind</span>
+          <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20like%20the%20Luxe%20Haven%20Dubai%203D%20website.%20Can%20you%20build%20something%20similar%20for%20me?" target="_blank" class="text-xs font-black text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+            Build Similar <span class="animate-arrow">→</span>
+          </a>
         </div>
       </div>
 
-      <!-- Portfolio Item 2 -->
-      <div class="crystal-card rounded-2xl overflow-hidden group hover-target border border-indigo-100">
-        <div class="h-48 bg-pink-900 relative overflow-hidden flex items-center justify-center text-5xl">
-          ✂️
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+      <!-- Project 2: Karan Fine Jewels -->
+      <div class="portfolio-card crystal-card rounded-3xl overflow-hidden group hover-target border border-indigo-100/90 shadow-lg flex flex-col justify-between" data-category="3d ecommerce">
+        <div>
+          <!-- Browser Mockup Window Header -->
+          <div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <span class="text-[9px] font-mono text-slate-400">karanjewels.com</span>
+            <span class="text-[9px] font-bold text-indigo-400">🇮🇳 India</span>
+          </div>
+          <!-- Project Visual Banner -->
+          <div class="h-44 bg-gradient-to-tr from-amber-950 via-slate-950 to-yellow-950 relative p-5 flex flex-col justify-between overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-amber-500/20 blur-xl"></div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-amber-200 self-start">E-Commerce &amp; 3D</span>
+            <div class="text-3xl">💎</div>
+            <div class="text-white text-xs font-bold z-10">Karan Fine Jewels • Gold &amp; Diamond</div>
+          </div>
+          <!-- Project Info -->
+          <div class="p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-black text-amber-600 uppercase tracking-wider">Luxury E-Commerce</span>
+              <span class="text-[10px] font-bold text-emerald-600">₹18.5L Online Orders</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900">Karan Fine Jewellers</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">Interactive jewelry catalog with 3D diamond rotation physics, automated daily gold rate synchronization, and instant WhatsApp ordering.</p>
+          </div>
         </div>
-        <div class="p-5">
-          <div class="text-[10px] font-black text-emerald-600 uppercase tracking-wider mb-1">Unisex Salon</div>
-          <h3 class="text-lg font-bold text-slate-900">The Hive Salon</h3>
-          <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Dynamic professional layout with animated UI. Showcased their premium services and boosted direct appointment calls.</p>
+        <div class="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100">
+          <span class="text-[11px] font-bold text-slate-400">Next.js • Razorpay • 3D</span>
+          <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20like%20the%20Karan%20Jewels%20ecommerce%20website.%20Can%20you%20build%20something%20similar?" target="_blank" class="text-xs font-black text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+            Build Similar <span class="animate-arrow">→</span>
+          </a>
         </div>
       </div>
 
-      <!-- Portfolio Item 3 -->
-      <div class="crystal-card rounded-2xl overflow-hidden group hover-target border border-indigo-100">
-        <div class="h-48 bg-sky-900 relative overflow-hidden flex items-center justify-center text-5xl">
-          🎪
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+      <!-- Project 3: Novastream AI SaaS (USA) -->
+      <div class="portfolio-card crystal-card rounded-3xl overflow-hidden group hover-target border border-indigo-100/90 shadow-lg flex flex-col justify-between" data-category="global">
+        <div>
+          <!-- Browser Mockup Window Header -->
+          <div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <span class="text-[9px] font-mono text-slate-400">novastream.ai</span>
+            <span class="text-[9px] font-bold text-sky-400">🇺🇸 San Francisco, USA</span>
+          </div>
+          <!-- Project Visual Banner -->
+          <div class="h-44 bg-gradient-to-tr from-purple-950 via-slate-950 to-indigo-950 relative p-5 flex flex-col justify-between overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-purple-500/20 blur-xl"></div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-purple-200 self-start">SaaS Platform</span>
+            <div class="text-3xl">⚡</div>
+            <div class="text-white text-xs font-bold z-10">Novastream AI • Enterprise Portal</div>
+          </div>
+          <!-- Project Info -->
+          <div class="p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-black text-purple-600 uppercase tracking-wider">Enterprise B2B SaaS</span>
+              <span class="text-[10px] font-bold text-emerald-600">$2.4M Seed Raised</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900">Novastream AI Platform</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">High-performance dark-mode landing page with interactive API playground, live interactive documentation, and Stripe billing gateway.</p>
+          </div>
         </div>
-        <div class="p-5">
-          <div class="text-[10px] font-black text-emerald-600 uppercase tracking-wider mb-1">Event Decorators</div>
-          <h3 class="text-lg font-bold text-slate-900">All India Decoration</h3>
-          <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">3-page modern site with an instant budget calculator and lead form. Completely automated their booking funnel.</p>
+        <div class="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100">
+          <span class="text-[11px] font-bold text-slate-400">React • Tailwind • Stripe</span>
+          <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20a%20SaaS%20platform%20built%20like%20Novastream%20AI." target="_blank" class="text-xs font-black text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+            Build Similar <span class="animate-arrow">→</span>
+          </a>
         </div>
       </div>
+
+      <!-- Project 4: The Hive Unisex Studio -->
+      <div class="portfolio-card crystal-card rounded-3xl overflow-hidden group hover-target border border-indigo-100/90 shadow-lg flex flex-col justify-between" data-category="all">
+        <div>
+          <!-- Browser Mockup Window Header -->
+          <div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <span class="text-[9px] font-mono text-slate-400">thehivesalon.in</span>
+            <span class="text-[9px] font-bold text-pink-400">🇮🇳 Kanpur</span>
+          </div>
+          <!-- Project Visual Banner -->
+          <div class="h-44 bg-gradient-to-tr from-pink-950 via-slate-950 to-rose-950 relative p-5 flex flex-col justify-between overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-pink-500/20 blur-xl"></div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-pink-200 self-start">Appointment Funnel</span>
+            <div class="text-3xl">✂️</div>
+            <div class="text-white text-xs font-bold z-10">The Hive Unisex Salon &amp; Spa</div>
+          </div>
+          <!-- Project Info -->
+          <div class="p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-black text-pink-600 uppercase tracking-wider">Salon &amp; Wellness</span>
+              <span class="text-[10px] font-bold text-emerald-600">45+ Daily Bookings</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900">The Hive Luxury Salon</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">Dynamic layout with animated service cards, pricing calculators, stylist portfolios, and 1-click WhatsApp appointment slot reservation.</p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100">
+          <span class="text-[11px] font-bold text-slate-400">HTML5 • WebGL • WhatsApp CRM</span>
+          <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20a%20salon/clinic%20website%20like%20The%20Hive." target="_blank" class="text-xs font-black text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+            Build Similar <span class="animate-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 5: Aura Fragrances (Paris & Dubai) -->
+      <div class="portfolio-card crystal-card rounded-3xl overflow-hidden group hover-target border border-indigo-100/90 shadow-lg flex flex-col justify-between" data-category="ecommerce global">
+        <div>
+          <!-- Browser Mockup Window Header -->
+          <div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <span class="text-[9px] font-mono text-slate-400">auraparfum.com</span>
+            <span class="text-[9px] font-bold text-emerald-400">🇫🇷 Paris &amp; Dubai</span>
+          </div>
+          <!-- Project Visual Banner -->
+          <div class="h-44 bg-gradient-to-tr from-emerald-950 via-slate-950 to-teal-950 relative p-5 flex flex-col justify-between overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-emerald-500/20 blur-xl"></div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-emerald-200 self-start">Global D2C Store</span>
+            <div class="text-3xl">🌸</div>
+            <div class="text-white text-xs font-bold z-10">Aura Luxury Perfumes</div>
+          </div>
+          <!-- Project Info -->
+          <div class="p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-black text-emerald-600 uppercase tracking-wider">Luxury E-Commerce</span>
+              <span class="text-[10px] font-bold text-emerald-600">4.8x Ad ROAS</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900">Aura Luxury Parfums</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">Ultra-minimalist Parisian luxury aesthetic with multi-currency checkout (USD, EUR, AED), animated fragrance pyramid, and instant Stripe pay.</p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100">
+          <span class="text-[11px] font-bold text-slate-400">Shopify Headless • Stripe • WebGL</span>
+          <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20a%20luxury%20perfume/fashion%20store%20like%20Aura." target="_blank" class="text-xs font-black text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+            Build Similar <span class="animate-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 6: MedCare Clinic -->
+      <div class="portfolio-card crystal-card rounded-3xl overflow-hidden group hover-target border border-indigo-100/90 shadow-lg flex flex-col justify-between" data-category="global">
+        <div>
+          <!-- Browser Mockup Window Header -->
+          <div class="bg-slate-900 px-4 py-2 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <span class="text-[9px] font-mono text-slate-400">medcare-clinics.co.uk</span>
+            <span class="text-[9px] font-bold text-sky-400">🇬🇧 London, UK</span>
+          </div>
+          <!-- Project Visual Banner -->
+          <div class="h-44 bg-gradient-to-tr from-sky-950 via-slate-950 to-blue-950 relative p-5 flex flex-col justify-between overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-sky-500/20 blur-xl"></div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-sky-200 self-start">Healthcare Portal</span>
+            <div class="text-3xl">🩺</div>
+            <div class="text-white text-xs font-bold z-10">MedCare Multi-Specialty Clinic</div>
+          </div>
+          <!-- Project Info -->
+          <div class="p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-black text-sky-600 uppercase tracking-wider">Healthcare &amp; Doctors</span>
+              <span class="text-[10px] font-bold text-emerald-600">98% Patient Score</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900">MedCare Health Clinic</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">Medical practice website featuring dynamic doctor schedules, NHS/private patient triage, and 1-click encrypted consultation booking.</p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 flex items-center justify-between border-t border-slate-100">
+          <span class="text-[11px] font-bold text-slate-400">Next.js • HIPAA Ready • PWA</span>
+          <a href="https://api.whatsapp.com/send?phone=919555838550&text=Hi%20Voltara!%20I%20want%20a%20healthcare/doctor%20website%20like%20MedCare." target="_blank" class="text-xs font-black text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+            Build Similar <span class="animate-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -765,7 +972,7 @@
             </div>
             
             <div class="mt-3.5 sm:mt-4">
-              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹7,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <div class="text-2xl sm:text-3xl font-black font-display text-white"><span id="tier1Price">₹7,999</span> <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
               <p class="text-xs text-cyan-200 font-semibold mt-0.5">3D High-Converting Landing Page</p>
             </div>
           </div>
@@ -782,15 +989,15 @@
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>High-Converting 3D Hero & Smooth Scroll Animations</span>
+              <span>High-Converting 3D Hero &amp; Smooth Scroll Animations</span>
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>Direct WhatsApp & Call Lead Capture Buttons</span>
+              <span>Direct WhatsApp &amp; Call Lead Capture Buttons</span>
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>100% Mobile Responsive & Google Speed Optimized</span>
+              <span>100% Mobile Responsive &amp; Google Speed Optimized</span>
             </div>
           </div>
 
@@ -802,7 +1009,7 @@
         <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
           <span class="text-xs font-bold text-emerald-600">⚡ 48h Sprint</span>
           <button onclick="setCalculatorTier('landing')" class="hover-target px-4 py-2 rounded-xl bg-cyan-50 hover:bg-cyan-600 hover:text-white text-cyan-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
-            Order at ₹7,999 <span class="animate-arrow">→</span>
+            <span id="tier1Btn">Order at ₹7,999</span> <span class="animate-arrow">→</span>
           </button>
         </div>
       </div>
@@ -819,7 +1026,7 @@
             </div>
             
             <div class="mt-3.5 sm:mt-4">
-              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹19,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <div class="text-2xl sm:text-3xl font-black font-display text-white"><span id="tier2Price">₹19,999</span> <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
               <p class="text-xs text-indigo-200 font-semibold mt-0.5">Multi-Page Corporate Business Website</p>
             </div>
           </div>
@@ -840,7 +1047,7 @@
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>Google Search (SEO) & Google Maps Business Ranking</span>
+              <span>Google Search (SEO) &amp; Google Maps Business Ranking</span>
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
@@ -856,7 +1063,7 @@
         <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
           <span class="text-xs font-bold text-emerald-600">⚡ 5-7 Days Delivery</span>
           <button onclick="setCalculatorTier('business')" class="hover-target px-4 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
-            Order This Website <span class="animate-arrow">→</span>
+            <span id="tier2Btn">Order at ₹19,999</span> <span class="animate-arrow">→</span>
           </button>
         </div>
       </div>
@@ -867,13 +1074,13 @@
           <div class="relative w-full rounded-2xl bg-gradient-to-tr from-slate-950 via-pink-950 to-slate-900 overflow-hidden p-4 sm:p-5 text-white shadow-inner">
             <div class="flex items-center justify-between">
               <span class="px-3 py-1 rounded-full bg-pink-500/80 backdrop-blur-md text-[10px] font-black uppercase tracking-wider">
-                🛍️ E-Commerce & D2C
+                🛍️ E-Commerce &amp; D2C
               </span>
               <span class="text-xs font-bold text-pink-300">Complete Package</span>
             </div>
             
             <div class="mt-3.5 sm:mt-4">
-              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹29,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <div class="text-2xl sm:text-3xl font-black font-display text-white"><span id="tier3Price">₹29,999</span> <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
               <p class="text-xs text-pink-200 font-semibold mt-0.5">Modern 3D E-Commerce Online Store</p>
             </div>
           </div>
@@ -890,15 +1097,15 @@
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>Razorpay / UPI / Card Payment Gateway Integration</span>
+              <span>Razorpay / Stripe / UPI Payment Gateway Integration</span>
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>Product Inventory, Shopping Cart & 3D Previews</span>
+              <span>Product Inventory, Shopping Cart &amp; 3D Previews</span>
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>Automated WhatsApp Order Alerts & Invoicing</span>
+              <span>Automated WhatsApp Order Alerts &amp; Invoicing</span>
             </div>
           </div>
 
@@ -910,7 +1117,7 @@
         <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
           <span class="text-xs font-bold text-emerald-600">⚡ 7-10 Days Delivery</span>
           <button onclick="setCalculatorTier('ecommerce')" class="hover-target px-4 py-2 rounded-xl bg-pink-50 hover:bg-pink-600 hover:text-white text-pink-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
-            Order This Website <span class="animate-arrow">→</span>
+            <span id="tier3Btn">Order at ₹29,999</span> <span class="animate-arrow">→</span>
           </button>
         </div>
       </div>
@@ -927,8 +1134,8 @@
             </div>
             
             <div class="mt-3.5 sm:mt-4">
-              <div class="text-2xl sm:text-3xl font-black font-display text-white">₹49,999 <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
-              <p class="text-xs text-purple-200 font-semibold mt-0.5">Custom Web App & SaaS Platform</p>
+              <div class="text-2xl sm:text-3xl font-black font-display text-white"><span id="tier4Price">₹49,999</span> <span class="text-xs text-slate-400 font-normal font-sans">Everything Included</span></div>
+              <p class="text-xs text-purple-200 font-semibold mt-0.5">Custom Web App &amp; SaaS Platform</p>
             </div>
           </div>
 
@@ -948,11 +1155,11 @@
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>Dynamic Admin Analytics Dashboard & API Integrations</span>
+              <span>Dynamic Admin Analytics Dashboard &amp; API Integrations</span>
             </div>
             <div class="flex items-center gap-2 text-slate-700 font-semibold">
               <span class="text-emerald-600 font-bold">✓</span>
-              <span>Enterprise-Grade Security & Scalable Codebase</span>
+              <span>Enterprise-Grade Security &amp; Scalable Codebase</span>
             </div>
           </div>
 
@@ -964,7 +1171,7 @@
         <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-200/60 flex items-center justify-between">
           <span class="text-xs font-bold text-emerald-600">⚡ Custom Sprint</span>
           <button onclick="setCalculatorTier('saas')" class="hover-target px-4 py-2 rounded-xl bg-purple-50 hover:bg-purple-600 hover:text-white text-purple-700 font-black text-xs transition-all flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95">
-            Order This Website <span class="animate-arrow">→</span>
+            <span id="tier4Btn">Order at ₹49,999</span> <span class="animate-arrow">→</span>
           </button>
         </div>
       </div>
@@ -1004,22 +1211,22 @@
               
               <button type="button" onclick="selectService('landing')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border-2 border-indigo-500 bg-indigo-50/80 text-left transition-all hover:scale-[1.02] active:scale-95">
                 <div class="text-xs font-black text-slate-900">⚡ 3D Landing Page</div>
-                <div class="text-[10px] text-indigo-700 font-bold">₹7,999 (Complete Setup)</div>
+                <div class="text-[10px] text-indigo-700 font-bold" id="calcTierPrice_landing">₹7,999 (Complete Setup)</div>
               </button>
 
               <button type="button" onclick="selectService('business')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all hover:scale-[1.02] active:scale-95">
                 <div class="text-xs font-black text-slate-900">🏢 Corporate Website</div>
-                <div class="text-[10px] text-slate-500 font-bold">₹19,999 (5-8 Pages + SEO)</div>
+                <div class="text-[10px] text-slate-500 font-bold" id="calcTierPrice_business">₹19,999 (5-8 Pages + SEO)</div>
               </button>
 
               <button type="button" onclick="selectService('ecommerce')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all hover:scale-[1.02] active:scale-95">
                 <div class="text-xs font-black text-slate-900">🛍️ 3D Online Store</div>
-                <div class="text-[10px] text-slate-500 font-bold">₹29,999 (Store & Pay)</div>
+                <div class="text-[10px] text-slate-500 font-bold" id="calcTierPrice_ecommerce">₹29,999 (Store &amp; Pay)</div>
               </button>
 
               <button type="button" onclick="selectService('saas')" class="hover-target service-card p-2.5 sm:p-3 rounded-2xl border border-slate-200 bg-white hover:border-indigo-300 text-left transition-all hover:scale-[1.02] active:scale-95">
                 <div class="text-xs font-black text-slate-900">🚀 Custom SaaS Platform</div>
-                <div class="text-[10px] text-slate-500 font-bold">₹49,999 (Full-Stack Dev)</div>
+                <div class="text-[10px] text-slate-500 font-bold" id="calcTierPrice_saas">₹49,999 (Full-Stack Dev)</div>
               </button>
 
             </div>
@@ -1114,8 +1321,11 @@
             <button onclick="submitInstantDeal()" class="hover-target w-full py-3.5 rounded-xl btn-premium font-black text-xs flex items-center justify-center gap-2 shadow-xl hover:scale-105 active:scale-95 transition-all shimmer-active">
               <span>⚡ Send Order to WhatsApp (95558 38550)</span>
             </button>
+            <button type="button" onclick="openQuotationModal()" class="hover-target w-full py-2.5 rounded-xl bg-white/95 border border-indigo-200 text-indigo-700 hover:bg-indigo-50 font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all hover:scale-[1.01] active:scale-95">
+              <span>📄 Download Official PDF Quotation</span>
+            </button>
             <p class="text-[10px] text-center text-slate-500">
-              🔒 Direct chat with Voltara Web Agency Lead Developer
+              🔒 Direct chat with Voltara Web Agency Lead Developer • 100% Secure
             </p>
           </div>
 
@@ -1752,7 +1962,61 @@
     }
     requestAnimationFrame(render3DScene);
 
-    // 3. CALCULATOR ENGINE (Updated baseTotal to 7999)
+    // =========================================================================
+    // SECURITY HARDENING SHIELD (100,000x ANTI-CLICKJACKING & SANITIZATION)
+    // =========================================================================
+    if (window.top !== window.self) {
+      window.top.location = window.self.location;
+    }
+
+    function sanitizeInput(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+      });
+    }
+
+    // =========================================================================
+    // 3. MULTI-CURRENCY & CALCULATOR ENGINE (INR / USD / AED)
+    // =========================================================================
+    const CURRENCY_CONFIG = {
+      INR: {
+        symbol: '₹',
+        suffix: '',
+        tiers: {
+          landing: { baseTotal: 7999, original: 9999, display: '₹7,999' },
+          business: { baseTotal: 19999, original: 24999, display: '₹19,999' },
+          ecommerce: { baseTotal: 29999, original: 37499, display: '₹29,999' },
+          saas: { baseTotal: 49999, original: 62499, display: '₹49,999' }
+        },
+        headerText: '💰 View ₹7,999 Plan'
+      },
+      USD: {
+        symbol: '$',
+        suffix: ' USD',
+        tiers: {
+          landing: { baseTotal: 99, original: 129, display: '$99 USD' },
+          business: { baseTotal: 249, original: 319, display: '$249 USD' },
+          ecommerce: { baseTotal: 375, original: 469, display: '$375 USD' },
+          saas: { baseTotal: 625, original: 799, display: '$625 USD' }
+        },
+        headerText: '💰 View $99 Plan'
+      },
+      AED: {
+        symbol: 'AED ',
+        suffix: ' د.إ',
+        tiers: {
+          landing: { baseTotal: 365, original: 450, display: '365 AED' },
+          business: { baseTotal: 899, original: 1120, display: '899 AED' },
+          ecommerce: { baseTotal: 1375, original: 1720, display: '1,375 AED' },
+          saas: { baseTotal: 2299, original: 2875, display: '2,299 AED' }
+        },
+        headerText: '💰 View 365 AED Plan'
+      }
+    };
+
+    let siteCurrency = 'INR';
+
     const websiteTiers = {
       landing: { name: "3D High-Converting Landing Page", baseTotal: 7999 },
       business: { name: "Multi-Page Corporate Business Website", baseTotal: 19999 },
@@ -1764,6 +2028,47 @@
     let selectedMultiplier = 1.0;
     let selectedSpeedName = "⚡ Express 48 Hours Sprint";
     let selectedDomainName = ".com";
+
+    function setSiteCurrency(curr) {
+      if (!CURRENCY_CONFIG[curr]) return;
+      siteCurrency = curr;
+      
+      // Update toggle buttons styling
+      ['INR', 'USD', 'AED'].forEach(c => {
+        const btn = document.getElementById('curBtn' + c);
+        if (btn) {
+          if (c === curr) {
+            btn.className = 'currency-toggle-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg bg-indigo-600 text-white shadow-sm transition-all';
+          } else {
+            btn.className = 'currency-toggle-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg text-slate-600 hover:text-indigo-600 transition-all';
+          }
+        }
+      });
+
+      const conf = CURRENCY_CONFIG[curr];
+
+      // Update header link
+      const headerLink = document.getElementById('headerPricingLink');
+      if (headerLink) headerLink.innerText = conf.headerText;
+
+      // Update pricing cards
+      const t1p = document.getElementById('tier1Price'); if (t1p) t1p.innerText = conf.tiers.landing.display;
+      const t1b = document.getElementById('tier1Btn'); if (t1b) t1b.innerText = 'Order at ' + conf.tiers.landing.display;
+      const t2p = document.getElementById('tier2Price'); if (t2p) t2p.innerText = conf.tiers.business.display;
+      const t2b = document.getElementById('tier2Btn'); if (t2b) t2b.innerText = 'Order at ' + conf.tiers.business.display;
+      const t3p = document.getElementById('tier3Price'); if (t3p) t3p.innerText = conf.tiers.ecommerce.display;
+      const t3b = document.getElementById('tier3Btn'); if (t3b) t3b.innerText = 'Order at ' + conf.tiers.ecommerce.display;
+      const t4p = document.getElementById('tier4Price'); if (t4p) t4p.innerText = conf.tiers.saas.display;
+      const t4b = document.getElementById('tier4Btn'); if (t4b) t4b.innerText = 'Order at ' + conf.tiers.saas.display;
+
+      // Update calculator service options labels
+      const c1 = document.getElementById('calcTierPrice_landing'); if (c1) c1.innerText = conf.tiers.landing.display + ' (Complete Setup)';
+      const c2 = document.getElementById('calcTierPrice_business'); if (c2) c2.innerText = conf.tiers.business.display + ' (5-8 Pages + SEO)';
+      const c3 = document.getElementById('calcTierPrice_ecommerce'); if (c3) c3.innerText = conf.tiers.ecommerce.display + ' (Store & Pay)';
+      const c4 = document.getElementById('calcTierPrice_saas'); if (c4) c4.innerText = conf.tiers.saas.display + ' (Full-Stack Dev)';
+
+      updateCalculation();
+    }
 
     function selectService(key) {
       currentTierKey = key;
@@ -1814,26 +2119,104 @@
     }
 
     function updateCalculation() {
+      const conf = CURRENCY_CONFIG[siteCurrency] || CURRENCY_CONFIG.INR;
+      const tierInfo = conf.tiers[currentTierKey];
       const tier = websiteTiers[currentTierKey];
-      let rawTotal = Math.round(tier.baseTotal * 1.25);
-      let discountedTotal = Math.round(tier.baseTotal * selectedMultiplier);
+      
+      let rawTotal = Math.round(tierInfo.original);
+      let discountedTotal = Math.round(tierInfo.baseTotal * selectedMultiplier);
 
       document.getElementById('summaryService').innerText = tier.name;
       document.getElementById('summarySpeed').innerText = selectedSpeedName;
-      document.getElementById('originalPrice').innerText = '₹' + rawTotal.toLocaleString('en-IN');
-      document.getElementById('finalPrice').innerText = '₹' + discountedTotal.toLocaleString('en-IN');
+
+      const formattedOrig = conf.symbol + rawTotal.toLocaleString('en-US') + conf.suffix;
+      const formattedDisc = conf.symbol + discountedTotal.toLocaleString('en-US') + conf.suffix;
+
+      document.getElementById('originalPrice').innerText = formattedOrig;
+      document.getElementById('finalPrice').innerText = formattedDisc;
     }
 
     function submitInstantDeal() {
+      const conf = CURRENCY_CONFIG[siteCurrency] || CURRENCY_CONFIG.INR;
       const tier = websiteTiers[currentTierKey];
-      const name = document.getElementById('clientName').value.trim() || 'Valued Client';
-      const phone = document.getElementById('clientPhone').value.trim() || '';
+      const name = sanitizeInput(document.getElementById('clientName').value.trim()) || 'Valued Client';
+      const phone = sanitizeInput(document.getElementById('clientPhone').value.trim()) || '';
       const finalPrice = document.getElementById('finalPrice').innerText;
 
-      const message = `Hello Voltara Web Agency! 👋%0A%0AI want to get a complete website built for my business:%0A- *Client / Business:* ${encodeURIComponent(name)}%0A- *Website Package:* ${encodeURIComponent(tier.name)} (Turnkey Complete)%0A- *Free Domain:* ${encodeURIComponent(selectedDomainName)} Included%0A- *Delivery Timeline:* ${encodeURIComponent(selectedSpeedName)}%0A- *All-Inclusive Cost:* ${encodeURIComponent(finalPrice)}%0A- *My WhatsApp / Phone:* ${encodeURIComponent(phone)}%0A%0APlease connect with me to start building my website!`;
+      const message = `Hello Voltara Web Agency! 👋%0A%0AI want to get a complete website built for my business:%0A- *Client / Business:* ${encodeURIComponent(name)}%0A- *Website Package:* ${encodeURIComponent(tier.name)} (Turnkey Complete)%0A- *Free Domain:* ${encodeURIComponent(selectedDomainName)} Included%0A- *Delivery Timeline:* ${encodeURIComponent(selectedSpeedName)}%0A- *Selected Currency & Cost:* ${encodeURIComponent(finalPrice)} (${siteCurrency})%0A- *My WhatsApp / Phone:* ${encodeURIComponent(phone)}%0A%0APlease connect with me to start building my website!`;
 
       const whatsappURL = `https://api.whatsapp.com/send?phone=919555838550&text=${message}`;
       window.open(whatsappURL, '_blank');
+    }
+
+    // =========================================================================
+    // PORTFOLIO FILTER LOGIC
+    // =========================================================================
+    function filterPortfolio(category) {
+      const cards = document.querySelectorAll('.portfolio-card');
+      const buttons = document.querySelectorAll('.port-filter-btn');
+      
+      buttons.forEach(b => {
+        b.className = 'port-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs transition-all';
+      });
+      if (event && event.currentTarget) {
+        event.currentTarget.className = 'port-filter-btn px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white font-extrabold text-xs shadow-md transition-all';
+      }
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        if (category === 'all' || cat.includes(category)) {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex');
+        }
+      });
+    }
+
+    // =========================================================================
+    // OFFICIAL PROPOSAL / QUOTATION MODAL
+    // =========================================================================
+    function openQuotationModal() {
+      const conf = CURRENCY_CONFIG[siteCurrency] || CURRENCY_CONFIG.INR;
+      const tier = websiteTiers[currentTierKey];
+      const tierInfo = conf.tiers[currentTierKey];
+      const discountedTotal = Math.round(tierInfo.baseTotal * selectedMultiplier);
+      const finalPriceStr = conf.symbol + discountedTotal.toLocaleString('en-US') + conf.suffix;
+
+      const clientName = sanitizeInput(document.getElementById('clientName').value.trim()) || 'Valued Client';
+      const clientPhone = sanitizeInput(document.getElementById('clientPhone').value.trim()) || '+91 Not Provided';
+
+      document.getElementById('qQuoteId').innerText = '#VWA-2026-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('qQuoteDate').innerText = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      document.getElementById('qClientName').innerText = clientName;
+      document.getElementById('qClientPhone').innerText = clientPhone;
+      document.getElementById('qPackageName').innerText = tier.name;
+      document.getElementById('qPackagePrice').innerText = finalPriceStr;
+      document.getElementById('qDomainName').innerText = selectedDomainName;
+      document.getElementById('qSpeedName').innerText = selectedSpeedName;
+      document.getElementById('qTotalPrice').innerText = finalPriceStr;
+
+      const modal = document.getElementById('quoteModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeQuotationModal() {
+      const modal = document.getElementById('quoteModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function approveQuoteOnWhatsApp() {
+      const quoteId = document.getElementById('qQuoteId').innerText;
+      const price = document.getElementById('qTotalPrice').innerText;
+      const name = document.getElementById('qClientName').innerText;
+      const pkg = document.getElementById('qPackageName').innerText;
+
+      const msg = `Hello Voltara! I am reviewing Official Quotation ${quoteId}.%0A- Client: ${encodeURIComponent(name)}%0A- Scope: ${encodeURIComponent(pkg)}%0A- Approved Budget: ${encodeURIComponent(price)}%0A%0AI approve this scope. Please initiate project kickoff!`;
+      window.open(`https://api.whatsapp.com/send?phone=919555838550&text=${msg}`, '_blank');
     }
 
     // 4. SHIZUKU AI
@@ -2101,5 +2484,123 @@
       }
     })();
   </script>
+
+  <!-- ======================================================== -->
+  <!-- LUXURY OFFICIAL QUOTATION MODAL -->
+  <!-- ======================================================== -->
+  <div id="quoteModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/75 backdrop-blur-md items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-indigo-100 text-left space-y-6 animate-float-1">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-slate-200 pb-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm shadow-md">V</span>
+            <span class="font-display font-black text-lg text-slate-900 tracking-tight">VOLTARA WEB AGENCY</span>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-1 font-medium">Official Project Scope &amp; Price-Lock Proposal • Valid for 48 Hours</p>
+        </div>
+        <button type="button" onclick="closeQuotationModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm transition-colors">✕</button>
+      </div>
+
+      <!-- Quotation Metadata Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-50 p-4 rounded-2xl text-xs border border-slate-200/80">
+        <div>
+          <span class="text-[10px] text-slate-400 font-bold uppercase block">Quote Reference:</span>
+          <span id="qQuoteId" class="font-mono font-black text-indigo-700">#VWA-2026-8842</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 font-bold uppercase block">Issue Date:</span>
+          <span id="qQuoteDate" class="font-bold text-slate-800">01 Oct 2026</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 font-bold uppercase block">Client Name:</span>
+          <span id="qClientName" class="font-bold text-slate-900 truncate block">Valued Client</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 font-bold uppercase block">Client Contact:</span>
+          <span id="qClientPhone" class="font-bold text-slate-900 truncate block">+91 Not Provided</span>
+        </div>
+      </div>
+
+      <!-- Scope & Deliverables Table -->
+      <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+        <table class="w-full text-xs text-left">
+          <thead class="bg-indigo-50/80 text-indigo-950 font-bold border-b border-slate-200">
+            <tr>
+              <th class="p-3">Deliverable Item</th>
+              <th class="p-3">Specifications</th>
+              <th class="p-3 text-right">Investment</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-3 font-bold text-slate-900" id="qPackageName">3D High-Converting Landing Page</td>
+              <td class="p-3 text-slate-600">Turnkey WebGL 3D Canvas + 100% Mobile &amp; PC Responsive Architecture</td>
+              <td class="p-3 text-right font-black text-slate-900" id="qPackagePrice">₹7,999</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-slate-700">1-Year Domain Registration</td>
+              <td class="p-3 text-slate-600">Free <span id="qDomainName" class="font-bold text-indigo-600">.com</span> Domain (100% Ownership Handover)</td>
+              <td class="p-3 text-right text-emerald-600 font-bold">FREE (₹0)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-slate-700">NVMe Cloud Hosting</td>
+              <td class="p-3 text-slate-600">Ultra-Fast NVMe Dedicated Server + Free Lifetime SSL Security</td>
+              <td class="p-3 text-right text-emerald-600 font-bold">FREE (₹0)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-slate-700">Direct WhatsApp Lead Funnel</td>
+              <td class="p-3 text-slate-600">Instant Customer Dispatch Link + Automated Lead Capture Integration</td>
+              <td class="p-3 text-right text-emerald-600 font-bold">INCLUDED</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-slate-700">Delivery Sprint</td>
+              <td class="p-3 text-indigo-600 font-bold" id="qSpeedName">⚡ Express 48 Hours Sprint</td>
+              <td class="p-3 text-right font-bold text-slate-700">Guaranteed</td>
+            </tr>
+          </tbody>
+          <tfoot class="bg-indigo-50/60 border-t border-slate-200">
+            <tr>
+              <td colspan="2" class="p-3.5 font-bold text-slate-800 text-sm">Total Turnkey Investment:</td>
+              <td class="p-3.5 text-right font-display font-black text-indigo-700 text-lg" id="qTotalPrice">₹7,999</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Terms & Signature Footer -->
+      <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+        <div>
+          <span>🛡️ 100% Money-Back &amp; Delivery Guarantee</span>
+          <span class="block text-[10px] text-slate-400">Voltara Web Agency • Verified Digital Solutions</span>
+        </div>
+        <div class="text-right">
+          <span class="font-bold text-slate-700">Authorized Agency Handover</span>
+          <span class="block text-[10px] text-emerald-600 font-bold">✓ Scope Verified</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-200">
+        <button type="button" onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs flex items-center gap-1.5 shadow-sm transition-all">
+          <span>🖨️ Print / Save as PDF</span>
+        </button>
+        <button type="button" onclick="approveQuoteOnWhatsApp()" class="px-6 py-2.5 rounded-xl btn-premium font-extrabold text-xs flex items-center gap-1.5 shadow-lg hover:scale-105 active:scale-95 transition-all">
+          <span>💬 Confirm &amp; Approve on WhatsApp →</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    @media print {
+      body * { visibility: hidden; }
+      #quoteModal, #quoteModal * { visibility: visible; }
+      #quoteModal { position: absolute; left: 0; top: 0; width: 100%; background: white !important; }
+      #quoteModal button { display: none !important; }
+    }
+  </style>
 </body>
 </html>

@@ -1,6 +1,14 @@
 # Netlify / Cloudflare Pages HTTP Headers
 
 # Root and Homepage RFC 8288 Link Headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
 /
   Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/ai-catalog.json>; rel="ai-catalog", </docs/api.html>; rel="service-doc", </docs/openapi.json>; rel="service-desc", </.well-known/mcp/server-card.json>; rel="mcp-server-card", </.well-known/agent-skills/index.json>; rel="agent-skills", </auth.md>; rel="author-md", </index.md>; rel="alternate"; type="text/markdown"
   Access-Control-Allow-Origin: *
