@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- Homepage -->
   <url>
-    <loc>https://voltara-media.vercel.app/</loc>
+    <loc>https://www.voltarawebagency.com/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/index.html</loc>
+    <loc>https://www.voltarawebagency.com/index.html</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -19,7 +19,7 @@
 
   <!-- Markdown for AI Agents -->
   <url>
-    <loc>https://voltara-media.vercel.app/index.md</loc>
+    <loc>https://www.voltarawebagency.com/index.md</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -27,7 +27,7 @@
 
   <!-- Agent Authentication & Instructions -->
   <url>
-    <loc>https://voltara-media.vercel.app/auth.md</loc>
+    <loc>https://www.voltarawebagency.com/auth.md</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -35,19 +35,19 @@
 
   <!-- Interactive API Documentation -->
   <url>
-    <loc>https://voltara-media.vercel.app/docs/api.html</loc>
+    <loc>https://www.voltarawebagency.com/docs/api.html</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/docs/openapi.json</loc>
+    <loc>https://www.voltarawebagency.com/docs/openapi.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/docs/dns-aid.md</loc>
+    <loc>https://www.voltarawebagency.com/docs/dns-aid.md</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -55,51 +55,52 @@
 
   <!-- Well-Known Agent Discovery Endpoints -->
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/api-catalog</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/api-catalog</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/ai-catalog.json</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/ai-catalog.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/mcp/server-card.json</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/mcp/server-card.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/agent-skills/index.json</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/agent-skills/index.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/agent-card.json</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/agent-card.json</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/oauth-protected-resource</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/oauth-protected-resource</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/openid-configuration</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/openid-configuration</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://voltara-media.vercel.app/.well-known/oauth-authorization-server</loc>
+    <loc>https://www.voltarawebagency.com/.well-known/oauth-authorization-server</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>
+

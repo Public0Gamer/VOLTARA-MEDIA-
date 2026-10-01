@@ -23,12 +23,12 @@ Every package includes:
 4. 1-Click WhatsApp Instant Lead Generation Funnel
 5. Complete Source Code Ownership & Admin Handover
 
-| Package Name | Base Price (INR) | Delivery Speed | Ideal For | Key Inclusions |
-| :--- | :--- | :--- | :--- | :--- |
-| **High-Converting 3D Landing Page** | ₹7,999 | 48 Hours | Products, Events, Ads, Single Offers | Single page, 3D Hero Canvas, Lead Form, WhatsApp Button, Free Domain |
-| **Complete Business Website** | ₹19,999 | 3-5 Days | Doctors, Law Firms, Agencies, Real Estate | 5 to 8 Custom Pages, Services Grid, Team, Testimonials, Google Map & SEO |
-| **Full E-Commerce Store** | ₹29,999 | 5-7 Days | Fashion, Electronics, D2C Brands | Product Catalog, Cart, Razorpay/Stripe, WhatsApp Checkout, Inventory Manager |
-| **Custom Web App / SaaS MVP** | ₹49,999 | 10-14 Days | Tech Startups, Portals, SaaS Founders | Auth, Database, Interactive Dashboard, API Integrations, Scalable Cloud |
+| Package Name | Base Price (INR) | USD ($) | AED (د.إ) | Delivery Speed | Ideal For | Key Inclusions |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **High-Converting 3D Landing Page** | ₹7,999 | $99 USD | 365 AED | 48 Hours | Products, Events, Ads, Single Offers | Single page, 3D Hero Canvas, Lead Form, WhatsApp Button, Free Domain |
+| **Complete Business Website** | ₹19,999 | $249 USD | 899 AED | 3-5 Days | Doctors, Law Firms, Agencies, Real Estate | 5 to 8 Custom Pages, Services Grid, Team, Testimonials, Google Map & SEO |
+| **Full E-Commerce Store** | ₹29,999 | $375 USD | 1,375 AED | 5-7 Days | Fashion, Electronics, D2C Brands | Product Catalog, Cart, Stripe/Razorpay, WhatsApp Checkout, Inventory Manager |
+| **Custom Web App / SaaS MVP** | ₹49,999 | $625 USD | 2,299 AED | 10-14 Days | Tech Startups, Portals, SaaS Founders | Auth, Database, Interactive Dashboard, API Integrations, Scalable Cloud |
 
 ---
 

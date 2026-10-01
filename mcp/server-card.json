@@ -1,0 +1,117 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/sep-1649/server-card.json",
+  "serverInfo": {
+    "name": "voltara-web-studio-mcp",
+    "version": "1.0.0",
+    "description": "Official Model Context Protocol (MCP) server for Voltara Web Studio — real-time 3D website cost estimations, package querying, and instant consultation dispatch.",
+    "homepage": "https://voltara.studio",
+    "documentation": "https://voltara.studio/docs/api.html",
+    "vendor": "Voltara Media"
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://voltara.studio/api/mcp/sse",
+    "headers": {
+      "Accept": "text/event-stream"
+    }
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "calculate_project_estimate",
+        "description": "Calculate exact turnkey website package pricing in INR based on tier (landing, business, ecommerce, saas), speed multiplier, and custom domain inclusion.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "packageKey": {
+              "type": "string",
+              "enum": ["landing", "business", "ecommerce", "saas"],
+              "description": "Package tier key"
+            },
+            "speed": {
+              "type": "string",
+              "enum": ["standard", "express", "economy"],
+              "description": "Delivery turnaround speed (express is 48h rush, standard is typical agency speed, economy is relaxed)"
+            },
+            "domain": {
+              "type": "string",
+              "enum": [".com", ".in", ".co", "own"],
+              "description": "Chosen domain extension included for 1 year"
+            }
+          },
+          "required": ["packageKey"]
+        }
+      },
+      {
+        "name": "get_services_catalog",
+        "description": "Retrieve comprehensive breakdown of Voltara Web Studio's development services, tech stack, and deliverable commitments.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "submit_client_lead",
+        "description": "Submit a customer lead or quote request to Voltara Web Studio CRM and generate direct WhatsApp routing link.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "clientName": {
+              "type": "string",
+              "description": "Client or business name"
+            },
+            "clientPhone": {
+              "type": "string",
+              "description": "WhatsApp or phone number with country code"
+            },
+            "packageKey": {
+              "type": "string",
+              "enum": ["landing", "business", "ecommerce", "saas"],
+              "description": "Preferred service package"
+            },
+            "projectBrief": {
+              "type": "string",
+              "description": "Brief description of client requirements"
+            }
+          },
+          "required": ["clientName", "clientPhone", "packageKey"]
+        }
+      },
+      {
+        "name": "get_agency_info",
+        "description": "Get verified contact coordinates, WhatsApp number, email, turnaround guarantees, and headquarters info.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    ],
+    "resources": [
+      {
+        "uri": "voltara://packages/all",
+        "name": "Voltara Website Making Packages",
+        "mimeType": "application/json",
+        "description": "All-inclusive pricing tiers with domain and cloud hosting"
+      },
+      {
+        "uri": "voltara://contact/direct",
+        "name": "Voltara Direct WhatsApp Route",
+        "mimeType": "application/json",
+        "description": "Direct communication channel for immediate quotes"
+      }
+    ],
+    "prompts": [
+      {
+        "name": "estimate_website_cost",
+        "description": "Prompt guide for estimating a client's website cost using Voltara turnkey options.",
+        "arguments": [
+          {
+            "name": "businessType",
+            "description": "Type of business (doctor, store, agency, startup)",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

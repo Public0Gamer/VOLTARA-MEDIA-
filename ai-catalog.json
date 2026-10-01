@@ -1,0 +1,71 @@
+﻿{
+  "specVersion": "1.0.0",
+  "host": {
+    "domain": "www.voltarawebagency.com",
+    "name": "Voltara Web Studio",
+    "description": "Professional 3D website design and turnkey web development agency delivering complete websites in 48 hours with free domain, hosting, and WhatsApp ordering funnel."
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:www.voltarawebagency.com:mcp:server",
+      "id": "urn:air:www.voltarawebagency.com:mcp:server",
+      "displayName": "Voltara Web Studio MCP Server",
+      "type": "application/json",
+      "url": "https://www.voltarawebagency.com/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "hire 3d website developer in india",
+        "voltara web studio mcp server tools",
+        "calculate website making cost in rupees",
+        "how to book a website package with voltara"
+      ]
+    },
+    {
+      "identifier": "urn:air:www.voltarawebagency.com:skills:index",
+      "id": "urn:air:www.voltarawebagency.com:skills:index",
+      "displayName": "Voltara Agent Skills Index",
+      "type": "application/json",
+      "url": "https://www.voltarawebagency.com/.well-known/agent-skills/index.json",
+      "representativeQueries": [
+        "agent skills for website cost estimation",
+        "voltara turnkey packages and deliverables",
+        "book instant web developer consultation"
+      ]
+    },
+    {
+      "identifier": "urn:air:www.voltarawebagency.com:api:openapi",
+      "id": "urn:air:www.voltarawebagency.com:api:openapi",
+      "displayName": "Voltara Web Studio REST API",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://www.voltarawebagency.com/docs/openapi.json",
+      "representativeQueries": [
+        "voltara openapi 3.1 specification",
+        "api endpoint for website project cost calculation",
+        "submit client lead to voltara web studio"
+      ]
+    },
+    {
+      "identifier": "urn:air:www.voltarawebagency.com:service:pricing",
+      "id": "urn:air:www.voltarawebagency.com:service:pricing",
+      "displayName": "Turnkey Website Pricing & Packages",
+      "type": "text/markdown",
+      "url": "https://www.voltarawebagency.com/index.md",
+      "representativeQueries": [
+        "how much does a landing page cost in india",
+        "price of ecommerce website with payment gateway",
+        "website design cost including free domain and hosting"
+      ]
+    },
+    {
+      "identifier": "urn:air:www.voltarawebagency.com:auth:protocol",
+      "id": "urn:air:www.voltarawebagency.com:auth:protocol",
+      "displayName": "Voltara Agent Authentication Specification",
+      "type": "text/markdown",
+      "url": "https://www.voltarawebagency.com/auth.md",
+      "representativeQueries": [
+        "how can ai agents authenticate with voltara api",
+        "agent registration uri and oauth scopes for voltara"
+      ]
+    }
+  ]
+}
+

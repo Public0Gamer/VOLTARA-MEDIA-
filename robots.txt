@@ -88,8 +88,5 @@ Allow: /docs/
 # ------------------------------------------------------------------------------
 Content-Signal: ai-train=no, search=yes, ai-input=no
 
-# ------------------------------------------------------------------------------
-Sitemap: https://voltara-media.vercel.app/sitemap.xml
-Sitemap: https://public0gamer.github.io/VOLTARA-MEDIA-/sitemap.xml
-Sitemap: https://public0gamer.github.io/sitemap.xml
+Sitemap: https://www.voltarawebagency.com/sitemap.xml
 Sitemap: /sitemap.xml

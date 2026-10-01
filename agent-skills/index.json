@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/discovery.json",
+  "version": "0.2.0",
+  "name": "Voltara Web Studio Agent Skills",
+  "description": "Skills for automated consultation, real-time website package estimation, and portfolio discovery.",
+  "skills": [
+    {
+      "name": "calculate-website-estimate",
+      "type": "calculation",
+      "description": "Calculates turnkey website pricing for Voltara Web Studio packages with free domain, hosting, SSL, and speed multiplier.",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/agent-skills/calculate-website-estimate/SKILL.md",
+      "sha256": "96edf3a8d209d6b44e73de801194c0aef90b558de358ac870a8af8b3d36d020b"
+    },
+    {
+      "name": "book-consultation",
+      "type": "action",
+      "description": "Generates direct WhatsApp booking and quotation links to contact Voltara Web Studio lead developer immediately.",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/agent-skills/book-consultation/SKILL.md",
+      "sha256": "a3c52fb3a47a9b579ad1c7738f61bc88671a83c9a23b53d8c26ef4f58cc7534b"
+    },
+    {
+      "name": "fetch-portfolio-catalog",
+      "type": "inquiry",
+      "description": "Retrieves Voltara Web Studio's showcase portfolio, live demo links, client verticals, and 3D WebGL features.",
+      "url": "https://public0gamer.github.io/VOLTARA-MEDIA-/.well-known/agent-skills/fetch-portfolio-catalog/SKILL.md",
+      "sha256": "3f688676a7a630154ededd1b702106d2307c5486a35aecd778886be9e7d29057"
+    }
+  ]
+}

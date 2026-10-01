@@ -1,0 +1,15 @@
+{
+  "resource": "https://voltara-media.vercel.app",
+  "authorization_servers": [
+    "https://voltara-media.vercel.app"
+  ],
+  "scopes_supported": [
+    "voltara:read",
+    "voltara:estimate",
+    "voltara:lead"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://voltara-media.vercel.app/docs/api.html"
+}

@@ -1,0 +1,27 @@
+{
+  "issuer": "https://voltara-media.vercel.app",
+  "authorization_endpoint": "https://voltara-media.vercel.app/api/v1/oauth/authorize",
+  "token_endpoint": "https://voltara-media.vercel.app/api/v1/oauth/token",
+  "grant_types_supported": [
+    "client_credentials",
+    "authorization_code"
+  ],
+  "scopes_supported": [
+    "voltara:read",
+    "voltara:estimate",
+    "voltara:lead"
+  ],
+  "service_documentation": "https://voltara-media.vercel.app/docs/api.html",
+  "agent_auth": {
+    "register_uri": "https://voltara-media.vercel.app/api/v1/agents/register",
+    "supported_identity_types": [
+      "did:key",
+      "uri:https",
+      "email"
+    ],
+    "supported_credential_types": [
+      "api_key",
+      "oauth2_client_credentials"
+    ]
+  }
+}
