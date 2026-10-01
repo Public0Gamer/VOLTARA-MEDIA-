@@ -421,6 +421,44 @@
       pointer-events: none;
       z-index: 1;
     }
+
+    /* ======================================================== */
+    /* ANIMATION UPGRADE 2.0: 3D PARALLAX TILT & GLOWING AURA */
+    /* ======================================================== */
+    .tilt-3d {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      transition: transform 0.25s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .tilt-3d:hover {
+      box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+    }
+    @keyframes glowAuraPulse {
+      0%, 100% {
+        box-shadow: 0 0 20px -3px rgba(99, 102, 241, 0.35), 0 0 8px 0px rgba(168, 85, 247, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 35px 2px rgba(99, 102, 241, 0.65), 0 0 15px 4px rgba(236, 72, 153, 0.35);
+      }
+    }
+    .glow-aura-pulse {
+      animation: glowAuraPulse 3s ease-in-out infinite;
+    }
+    @keyframes borderNeonPulse {
+      0%, 100% { border-color: rgba(99, 102, 241, 0.3); }
+      50% { border-color: rgba(236, 72, 153, 0.7); }
+    }
+    .neon-border-pulse {
+      animation: borderNeonPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(0.8deg); }
+    }
+    .float-gentle {
+      animation: floatGentle 4s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="selection:bg-indigo-100 selection:text-indigo-900">
@@ -457,6 +495,22 @@
           <p class="text-[8px] sm:text-[9px] text-emerald-600 font-bold uppercase tracking-wider">● We Make Websites For Businesses</p>
         </div>
       </div>
+
+      <!-- Quick Nav Links -->
+      <nav class="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-600">
+        <a href="#ai-simulator" class="hover:text-indigo-600 flex items-center gap-1 transition-colors">
+          <span>🔮 3D Simulator</span>
+        </a>
+        <a href="#portfolio" class="hover:text-indigo-600 flex items-center gap-1 transition-colors">
+          <span>💼 Portfolio</span>
+        </a>
+        <a href="#speed-audit" class="hover:text-rose-600 flex items-center gap-1 transition-colors">
+          <span>🔥 Speed Roast</span>
+        </a>
+        <a href="#website-packages" class="hover:text-indigo-600 flex items-center gap-1 transition-colors">
+          <span>💰 Packages</span>
+        </a>
+      </nav>
 
       <!-- Action Desk -->
       <div class="flex items-center gap-1.5 sm:gap-2.5">
@@ -679,6 +733,200 @@
     </div>
   </section>
 
+
+  <!-- ======================================================== -->
+  <!-- SECTION: AI LIVE 3D PROTOTYPE SIMULATOR (UPGRADE 3.0) -->
+  <!-- ======================================================== -->
+  <section id="ai-simulator" class="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 py-16">
+    <div class="text-center mb-10 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-200 text-indigo-700 text-xs font-black uppercase tracking-wider shadow-sm animate-float-1">
+        <span class="w-2 h-2 rounded-full bg-indigo-600 animate-ping"></span>
+        <span>🔮 World-First Feature • AI 3D Live Website Simulator</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+        Test-Drive Your Website In 30 Seconds <br/>
+        <span class="text-gradient-aurora font-display">Before Paying A Single Rupee.</span>
+      </h2>
+      <p class="text-slate-500 text-xs sm:text-sm max-w-2xl mx-auto">
+        Enter your business details below. Our real-time neural architecture engine analyzes your industry and synthesizes an interactive 3D luxury prototype live on your screen.
+      </p>
+    </div>
+
+    <!-- Simulator Interactive Studio Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- Left Column: Input Customization Studio -->
+      <div class="lg:col-span-5 crystal-card p-6 sm:p-7 rounded-3xl border border-indigo-100 shadow-xl space-y-4 text-left">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+          <span class="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+            <span>⚙️ Prototype Studio</span>
+          </span>
+          <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">● 100% Free Live Preview</span>
+        </div>
+
+        <!-- Business Name Input -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">1. Your Business or Brand Name</label>
+          <input type="text" id="simBizName" placeholder="E.g. Royal Diamond Jewellers" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none text-xs font-bold text-slate-900 shadow-sm transition-all" value="Royal Diamond Jewellers" />
+        </div>
+
+        <!-- Category Selector -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">2. Business Industry / Vertical</label>
+          <select id="simCategory" onchange="updateSimPreview()" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none text-xs font-bold text-slate-900 bg-white shadow-sm transition-all">
+            <option value="jewel">💎 Luxury Jewellery &amp; High Fashion</option>
+            <option value="realestate">🏰 Premium Real Estate &amp; Villa Builders</option>
+            <option value="clinic">🩺 Multi-Specialty Clinic &amp; Doctors</option>
+            <option value="salon">✂️ Luxury Unisex Salon, Spa &amp; Beauty</option>
+            <option value="restaurant">🍽️ Fine Dining Restaurant &amp; Cafe Lounge</option>
+            <option value="tech">⚡ AI Tech Startup, SaaS &amp; Digital App</option>
+            <option value="corporate">🏢 Corporate Company, Law Firm &amp; CA</option>
+          </select>
+        </div>
+
+        <!-- Visual Aesthetic Mood -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">3. Aesthetic Mood &amp; 3D Lighting</label>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <button type="button" onclick="setSimTheme('gold')" id="simThemeBtn_gold" class="sim-theme-btn p-2 rounded-xl border-2 border-amber-500 bg-amber-50 font-bold text-amber-900 text-left transition-all">
+              👑 Royal Obsidian Gold
+            </button>
+            <button type="button" onclick="setSimTheme('neon')" id="simThemeBtn_neon" class="sim-theme-btn p-2 rounded-xl border border-slate-200 bg-white font-bold text-slate-700 text-left transition-all">
+              ⚡ Cyberpunk Neon WebGL
+            </button>
+            <button type="button" onclick="setSimTheme('minimal')" id="simThemeBtn_minimal" class="sim-theme-btn p-2 rounded-xl border border-slate-200 bg-white font-bold text-slate-700 text-left transition-all">
+              🍏 Silicon Apple Minimal
+            </button>
+            <button type="button" onclick="setSimTheme('emerald')" id="simThemeBtn_emerald" class="sim-theme-btn p-2 rounded-xl border border-slate-200 bg-white font-bold text-slate-700 text-left transition-all">
+              🌿 Emerald Executive
+            </button>
+          </div>
+        </div>
+
+        <!-- Target City / Market -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">4. Target City / Market</label>
+          <input type="text" id="simCity" placeholder="E.g. Kanpur, UP (or Dubai, London, New York)" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none text-xs font-bold text-slate-900 shadow-sm transition-all" value="Kanpur, India" />
+        </div>
+
+        <!-- Generation Trigger Button -->
+        <button type="button" onclick="generateSimPrototype()" id="simGenBtn" class="w-full py-3.5 rounded-2xl btn-premium font-black text-xs flex items-center justify-center gap-2 shadow-xl hover:scale-105 active:scale-95 transition-all shimmer-active mt-2">
+          <span>🚀 Synthesize Live 3D Website Prototype</span>
+          <span class="animate-arrow">→</span>
+        </button>
+      </div>
+
+      <!-- Right Column: Interactive MacBook Pro Device Viewport -->
+      <div class="lg:col-span-7">
+        <div class="crystal-card rounded-3xl p-3 sm:p-4 border border-indigo-100 shadow-2xl space-y-2 text-left relative overflow-hidden">
+          
+          <!-- MacBook Pro Mockup Window Frame -->
+          <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl relative">
+            
+            <!-- Window Titlebar & Domain -->
+            <div class="bg-slate-900/90 px-4 py-2.5 flex items-center justify-between border-b border-slate-800">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block shadow-sm"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block shadow-sm"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block shadow-sm"></span>
+              </div>
+              <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-[10px] font-mono text-slate-300">
+                <span class="text-emerald-400">🔒</span>
+                <span id="simUrlBar">https://royal-diamond.voltara.luxury</span>
+              </div>
+              <span class="text-[10px] font-bold text-indigo-400">LIVE PREVIEW</span>
+            </div>
+
+            <!-- Virtual Screen Viewport -->
+            <div id="simScreen" class="relative min-h-[380px] sm:min-h-[420px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 bg-slate-950 text-white">
+              
+              <!-- Interactive Mini 3D Canvas Background -->
+              <canvas id="sim3DCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+              <!-- Top Mockup Navigation -->
+              <div class="relative z-10 flex items-center justify-between border-b border-white/10 pb-3">
+                <div class="flex items-center gap-2">
+                  <span id="simLogoIcon" class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md">💎</span>
+                  <span id="simBrandDisplay" class="font-display font-black text-sm tracking-tight text-white">Royal Diamond Jewellers</span>
+                </div>
+                <div class="hidden sm:flex items-center gap-4 text-[10px] font-bold text-slate-300">
+                  <span>Home</span>
+                  <span>Collection</span>
+                  <span>VIP Lounge</span>
+                  <span class="px-2 py-0.5 rounded-full bg-white/20 text-white">48h Live</span>
+                </div>
+              </div>
+
+              <!-- Main Hero Mockup Content -->
+              <div class="relative z-10 py-6 space-y-3 max-w-lg">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-black text-amber-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+                  <span id="simBadgeText">✨ Premier Handcrafted Luxury Collection</span>
+                </div>
+
+                <h3 id="simHeroTitle" class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight">
+                  Elegance Redefined In <br/>
+                  <span id="simHighlightText" class="text-amber-400 font-display">Pure Gold &amp; Diamonds.</span>
+                </h3>
+
+                <p id="simHeroDesc" class="text-xs text-slate-300 leading-relaxed font-medium">
+                  Experience timeless luxury with certified gold, solitaires, and bespoke heritage ornaments designed for royalty in <span id="simCityText" class="text-white font-bold">Kanpur, India</span>.
+                </p>
+
+                <!-- 3 Highlights Pills -->
+                <div class="flex flex-wrap gap-1.5 pt-2" id="simFeaturePills">
+                  <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ 100% BIS Hallmarked</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ 3D Virtual Try-On</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ WhatsApp VIP Catalog</span>
+                </div>
+              </div>
+
+              <!-- Mockup Bottom Action Strip -->
+              <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-3">
+                <div class="text-[10px] text-slate-400 font-medium">
+                  Architecture: <span id="simThemeTag" class="text-amber-400 font-bold">3D WebGL Gold Physics</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="px-3 py-1 rounded-xl bg-emerald-500 text-white font-black text-xs shadow-md">
+                    💬 WhatsApp Booking Live
+                  </span>
+                </div>
+              </div>
+
+              <!-- Generating Scanning Overlay HUD (Hidden by default) -->
+              <div id="simHudScanner" class="hidden absolute inset-0 z-30 bg-slate-950/90 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center space-y-4">
+                <div class="w-16 h-16 rounded-full border-4 border-indigo-500 border-t-transparent animate-spin flex items-center justify-center">
+                  <span class="text-xl">⚡</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-sm font-black text-white" id="simHudStep">🧠 Analyzing Brand Positioning...</div>
+                  <div class="text-xs text-slate-400 font-mono" id="simHudDetails">Compiling 3D WebGL Shaders &amp; Typography...</div>
+                </div>
+                <div class="w-48 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                  <div id="simHudProgress" class="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 w-0 transition-all duration-300"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Direct WhatsApp Dispatch to Build This Mockup -->
+          <div class="p-3 bg-indigo-50/80 rounded-2xl border border-indigo-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="text-left">
+              <span class="font-black text-slate-900 block">Like this live 3D website prototype?</span>
+              <span class="text-slate-500 text-[11px]">We can code, build, and deploy this exact website for you in 48 hours!</span>
+            </div>
+            <button type="button" onclick="claimSimulatedWebsite()" class="px-4 py-2.5 rounded-xl btn-premium font-black text-xs flex items-center gap-1.5 shadow-md hover:scale-105 active:scale-95 transition-all shrink-0">
+              <span>🚀 Launch This Website on WhatsApp →</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- ======================================================== -->
   <!-- SECTION: PORTFOLIO / OUR WORK -->
@@ -933,6 +1181,174 @@
             Build Similar <span class="animate-arrow">→</span>
           </a>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION: 10-SECOND WEBSITE SPEED & COMPETITOR ROASTER (UPGRADE 3.0) -->
+  <!-- ======================================================== -->
+  <section id="speed-audit" class="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 py-16">
+    <div class="text-center mb-10 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-300 text-rose-600 text-xs font-black uppercase tracking-wider shadow-sm animate-float-1">
+        <span class="w-2 h-2 rounded-full bg-rose-600 animate-ping"></span>
+        <span>🔥 10-Second Live Audit • Speed &amp; Revenue Leak Scanner</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+        Is Your Current Website <br/>
+        <span class="text-rose-600 font-display">Silently Killing 60% Of Your Sales?</span>
+      </h2>
+      <p class="text-slate-500 text-xs sm:text-sm max-w-2xl mx-auto">
+        53% of mobile visitors abandon a website if it takes longer than 3 seconds to load. Enter your business website (or your competitor's) to roast its speed, Core Web Vitals, and lost WhatsApp conversions.
+      </p>
+    </div>
+
+    <!-- Scanner Card Container -->
+    <div class="max-w-4xl mx-auto crystal-card rounded-3xl p-6 sm:p-8 border border-indigo-100 shadow-2xl relative overflow-hidden text-left tilt-3d">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <div class="relative flex-1">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 font-mono text-sm">
+            🌐
+          </div>
+          <input 
+            type="text" 
+            id="auditUrlInput" 
+            placeholder="Enter website (e.g. yourbusiness.com or competitor.com)" 
+            class="w-full pl-11 pr-4 py-3.5 rounded-2xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none text-xs sm:text-sm font-bold text-slate-900 shadow-sm transition-all"
+            value="sample-business.in"
+          />
+        </div>
+        <select id="auditIndustrySelect" class="px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none text-xs sm:text-sm font-bold text-slate-700 bg-white shadow-sm transition-all">
+          <option value="ecommerce">🛒 E-Commerce &amp; Retail Store</option>
+          <option value="realestate">🏰 Real Estate &amp; Builders</option>
+          <option value="clinic">🩺 Clinic &amp; Healthcare</option>
+          <option value="salon">✂️ Salon, Spa &amp; Beauty</option>
+          <option value="restaurant">🍽️ Cafe &amp; Restaurant</option>
+          <option value="corporate">🏢 Corporate &amp; Consulting</option>
+        </select>
+        <button 
+          type="button" 
+          onclick="runSpeedRoastAudit()" 
+          id="btnRunAudit" 
+          class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 via-pink-600 to-indigo-600 hover:from-rose-500 hover:to-indigo-500 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all shrink-0 cursor-pointer"
+        >
+          <span>🔥 Roast &amp; Audit Now</span>
+        </button>
+      </div>
+
+      <!-- Live Audit Diagnostics HUD (Hidden during idle) -->
+      <div id="auditProgressHud" class="hidden mt-6 p-5 rounded-2xl bg-slate-950 text-white space-y-3">
+        <div class="flex items-center justify-between text-xs font-mono">
+          <span class="text-rose-400 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            <span id="auditHudStatus">Auditing Edge Nodes: Mumbai, Delhi, Kanpur, Dubai...</span>
+          </span>
+          <span id="auditHudPercent" class="text-indigo-400 font-bold">25%</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+          <div id="auditHudBar" class="h-full bg-gradient-to-r from-rose-500 via-amber-400 to-emerald-400 w-1/4 transition-all duration-300"></div>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] font-mono text-slate-400 pt-1">
+          <div id="auditMetric1" class="p-2 rounded-lg bg-slate-900 border border-slate-800">⏳ TTFB: Measuring...</div>
+          <div id="auditMetric2" class="p-2 rounded-lg bg-slate-900 border border-slate-800">📱 Mobile LCP: Measuring...</div>
+          <div id="auditMetric3" class="p-2 rounded-lg bg-slate-900 border border-slate-800">✨ 3D GPU Check: Measuring...</div>
+          <div id="auditMetric4" class="p-2 rounded-lg bg-slate-900 border border-slate-800">💬 Lead Funnel: Measuring...</div>
+        </div>
+      </div>
+
+      <!-- Audit Results Card (Displayed once scan finishes) -->
+      <div id="auditResultCard" class="hidden mt-6 space-y-6 pt-2">
+        <!-- Score Highlights Banner -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-rose-50/80 border border-rose-200 flex items-center gap-3">
+            <div class="w-14 h-14 rounded-2xl bg-rose-500 text-white flex flex-col items-center justify-center font-black shadow-md">
+              <span class="text-lg leading-none" id="auditScoreVal">34</span>
+              <span class="text-[9px] uppercase font-bold text-rose-100">/ 100</span>
+            </div>
+            <div>
+              <div class="text-[11px] font-black uppercase text-rose-700">Performance Grade: F</div>
+              <div class="text-xs text-rose-900 font-semibold" id="auditLoadTimeText">4.9s Mobile Load Time (Slow)</div>
+              <div class="text-[10px] text-rose-600 font-bold">58% of visitors bounce immediately</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-amber-50/80 border border-amber-200 flex items-center gap-3">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl shadow-md">
+              💸
+            </div>
+            <div>
+              <div class="text-[11px] font-black uppercase text-amber-800">Est. Monthly Lost Revenue</div>
+              <div class="text-sm font-black text-amber-900" id="auditLostRevenue">₹1,85,000 / month</div>
+              <div class="text-[10px] text-amber-700">Lost to competitor websites</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200 flex items-center gap-3">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex flex-col items-center justify-center font-black shadow-md">
+              <span class="text-lg leading-none">99</span>
+              <span class="text-[9px] uppercase font-bold text-emerald-100">/ 100</span>
+            </div>
+            <div>
+              <div class="text-[11px] font-black uppercase text-emerald-700">Voltara 3D Turbo Score</div>
+              <div class="text-xs text-emerald-900 font-semibold">0.6s Instant Global Edge Load</div>
+              <div class="text-[10px] text-emerald-600 font-bold">3.8x Higher Inquiries &amp; Orders</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Roasting Diagnostics Breakdown -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm space-y-3">
+          <div class="text-xs font-black uppercase text-slate-800 flex items-center gap-2">
+            <span>🔍 4 Critical Conversion Leaks Found in <span id="auditTargetSiteName" class="text-indigo-600 font-bold">sample-business.in</span>:</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs" id="auditRoastPoints">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+              <span class="text-rose-500 font-black text-sm">❌</span>
+              <div>
+                <span class="font-bold text-slate-800 block">Flat 2D Boring Layout (Zero 3D Immersion)</span>
+                <span class="text-slate-500 text-[11px]">Customers look for 3 seconds and forget the brand. Lacks luxury interactive polish.</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+              <span class="text-rose-500 font-black text-sm">❌</span>
+              <div>
+                <span class="font-bold text-slate-800 block">Massive Mobile Cumulative Layout Shift (CLS)</span>
+                <span class="text-slate-500 text-[11px]">Elements jump while opening on 4G/5G mobile phones, causing accidental misclicks.</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+              <span class="text-rose-500 font-black text-sm">❌</span>
+              <div>
+                <span class="font-bold text-slate-800 block">Uncompressed Assets &amp; Sluggish TTFB</span>
+                <span class="text-slate-500 text-[11px]">Server responds slowly across tier-1 &amp; global regions; Google SEO ranking is penalized.</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+              <span class="text-rose-500 font-black text-sm">❌</span>
+              <div>
+                <span class="font-bold text-slate-800 block">No 1-Tap WhatsApp Lead Capture Pipeline</span>
+                <span class="text-slate-500 text-[11px]">Visitors forced into long forms they abandon. Over 80% warm customer inquiries lost.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Benchmark Comparison Bar -->
+          <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-slate-600">
+              <span class="font-bold text-slate-800">Ready to crush your competitors?</span> We rebuild your website with 0.6s edge caching, 3D WebGL visuals, and 1-tap WhatsApp automation in 48 hours.
+            </div>
+            <button 
+              type="button" 
+              onclick="fixAuditedSiteOnWhatsApp()" 
+              class="px-5 py-3 rounded-xl btn-premium font-black text-xs flex items-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all shrink-0 cursor-pointer"
+            >
+              <span>⚡ Fix My Website on WhatsApp (0.6s Upgrade) →</span>
+            </button>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -2483,6 +2899,512 @@
         }
       }
     })();
+
+    /* ======================================================== */
+    /* UPGRADE 3.0: MOBILE HAPTIC FEEDBACK ENGINE */
+    /* ======================================================== */
+    const VoltaraHaptics = {
+      isSupported: typeof navigator !== 'undefined' && 'vibrate' in navigator,
+      tick: function() {
+        if (this.isSupported) {
+          try { navigator.vibrate(8); } catch(e){}
+        }
+      },
+      tap: function() {
+        if (this.isSupported) {
+          try { navigator.vibrate(14); } catch(e){}
+        }
+      },
+      bump: function() {
+        if (this.isSupported) {
+          try { navigator.vibrate(28); } catch(e){}
+        }
+      },
+      celebrate: function() {
+        if (this.isSupported) {
+          try { navigator.vibrate([30, 40, 25, 45, 50, 60]); } catch(e){}
+        }
+      }
+    };
+    window.VoltaraHaptics = VoltaraHaptics;
+
+    // Attach haptic feedback to clicks, taps & selections
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('button, a, input, select, .crystal-card, .sim-theme-btn, .currency-btn');
+      if (target) {
+        VoltaraHaptics.tap();
+      }
+    }, { passive: true });
+
+    // Attach haptic micro-tick to typing on mobile
+    document.addEventListener('input', (e) => {
+      if (e.target.matches('input, textarea')) {
+        VoltaraHaptics.tick();
+      }
+    }, { passive: true });
+
+    // Haptic scroll milestones (gentle tactile sensation on scrolling through sections)
+    if ('IntersectionObserver' in window) {
+      const milestoneObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+            VoltaraHaptics.tick();
+          }
+        });
+      }, { threshold: [0.25] });
+
+      ['ai-simulator', 'portfolio', 'speed-audit', 'website-packages', 'quote-calculator', 'faq'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) milestoneObserver.observe(el);
+      });
+    }
+
+    /* ======================================================== */
+    /* UPGRADE 3.0: ANIMATION 2.0 - 3D PARALLAX TILT ENGINE */
+    /* ======================================================== */
+    function init3DCardTilt() {
+      const tiltCards = document.querySelectorAll('.tilt-3d, .crystal-card');
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `perspective(1000px) rotateX(${ -y * 10 }deg) rotateY(${ x * 10 }deg) translateY(-3px) scale3d(1.01, 1.01, 1.01)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init3DCardTilt);
+    } else {
+      init3DCardTilt();
+    }
+
+    /* ======================================================== */
+    /* UPGRADE 3.0: AI LIVE 3D WEBSITE PROTOTYPE SIMULATOR */
+    /* ======================================================== */
+    let currentSimTheme = 'gold';
+
+    const simVerticalData = {
+      jewel: {
+        logo: '💎',
+        badge: '✨ Premier Handcrafted Luxury Collection',
+        title: 'Elegance Redefined In',
+        highlight: 'Pure Gold & Diamonds.',
+        desc: 'Experience timeless luxury with certified gold, solitaires, and bespoke heritage ornaments designed for royalty in {city}.',
+        pills: ['✓ 100% BIS Hallmarked', '✓ 3D Virtual Try-On', '✓ WhatsApp VIP Catalog'],
+        domain: 'royal-diamond.voltara.luxury',
+        defaultName: 'Royal Diamond Jewellers'
+      },
+      realestate: {
+        logo: '🏰',
+        badge: '🌟 Ultra-Luxury Residential & Commercial Estates',
+        title: 'Architectural Icons Crafted For',
+        highlight: 'Generational Wealth.',
+        desc: 'Explore ultra-luxury penthouses, modern smart villas, and prime commercial developments in {city}.',
+        pills: ['✓ 3D Interactive Virtual Walkthrough', '✓ Direct Builder Pricing', '✓ Instant Brochure on WhatsApp'],
+        domain: 'signature-estates.voltara.luxury',
+        defaultName: 'Signature Skyline Realty'
+      },
+      clinic: {
+        logo: '🩺',
+        badge: '❤️ Advanced Multi-Specialty Healthcare',
+        title: 'World-Class Medical Care &',
+        highlight: 'Super-Specialist Doctors.',
+        desc: 'Book doctor appointments, check 24/7 emergency services, and view certified specialist profiles in {city}.',
+        pills: ['✓ 1-Tap WhatsApp Appointment', '✓ NABH Accredited Standards', '✓ Instant Digital Rx Handover'],
+        domain: 'apex-care.voltara.health',
+        defaultName: 'Apex Super Specialty Hospital'
+      },
+      salon: {
+        logo: '✂️',
+        badge: '💅 Luxury Unisex Salon, Spa & Aesthetics',
+        title: 'Elevate Your Style With',
+        highlight: 'Celebrity Master Artists.',
+        desc: 'Pamper yourself with premium hair design, organic skin therapies, and bridal glow packages in {city}.',
+        pills: ['✓ 100% VIP Private Suites', '✓ Organic European Products', '✓ Instant WhatsApp Slot Booking'],
+        domain: 'luxe-glow.voltara.salon',
+        defaultName: 'Luxe Glow Studio & Spa'
+      },
+      restaurant: {
+        logo: '🍽️',
+        badge: '🍷 Gourmet Dining & Rooftop Lounge',
+        title: 'An Unforgettable Culinary Symphony &',
+        highlight: 'Signature Flavors.',
+        desc: 'Enjoy artisanal cuisine, handcrafted mocktails, and live ambient music in the heart of {city}.',
+        pills: ['✓ 1-Click WhatsApp Table Reservation', '✓ Interactive QR Digital Menu', '✓ Private Event Booking'],
+        domain: 'amber-room.voltara.dining',
+        defaultName: 'The Amber Room Bistro'
+      },
+      tech: {
+        logo: '⚡',
+        badge: '🚀 Next-Gen Autonomous AI & Cloud Stack',
+        title: 'Empower Your Enterprise With',
+        highlight: 'Autonomous AI Infrastructure.',
+        desc: 'Accelerate revenue pipelines, automate operations, and scale globally from {city} with 99.99% uptime.',
+        pills: ['✓ 0.4s Sub-Second Cloud Latency', '✓ Enterprise SOC-2 Security', '✓ WhatsApp Developer Onboarding'],
+        domain: 'hyperscale-ai.voltara.tech',
+        defaultName: 'HyperScale AI Systems'
+      },
+      corporate: {
+        logo: '🏢',
+        badge: '⚖️ Trusted Corporate Advisors & Counsel',
+        title: 'Strategic Excellence In',
+        highlight: 'Global Legal & Financial Growth.',
+        desc: 'Providing boardroom consultancy, tax architecture, and cross-border corporate solutions in {city}.',
+        pills: ['✓ 15+ Years Industry Experience', '✓ Confidential 1-on-1 Consultation', '✓ WhatsApp Direct Partner Line'],
+        domain: 'apex-vanguard.voltara.corp',
+        defaultName: 'Apex Vanguard Partners'
+      }
+    };
+
+    const simThemeConfigs = {
+      gold: {
+        badgeClass: 'bg-amber-400/20 text-amber-300 border-amber-400/30',
+        highlightClass: 'text-amber-400',
+        tagText: '3D WebGL Gold Physics',
+        tagClass: 'text-amber-400',
+        canvasColor: '#F59E0B'
+      },
+      neon: {
+        badgeClass: 'bg-cyan-400/20 text-cyan-300 border-cyan-400/30',
+        highlightClass: 'text-cyan-400',
+        tagText: 'Cyberpunk WebGL Shader',
+        tagClass: 'text-cyan-400',
+        canvasColor: '#06B6D4'
+      },
+      minimal: {
+        badgeClass: 'bg-white/10 text-white border-white/20',
+        highlightClass: 'text-white underline decoration-indigo-400',
+        tagText: 'Apple Cupertino Glassmorphism',
+        tagClass: 'text-slate-200',
+        canvasColor: '#CBD5E1'
+      },
+      emerald: {
+        badgeClass: 'bg-emerald-400/20 text-emerald-300 border-emerald-400/30',
+        highlightClass: 'text-emerald-400',
+        tagText: 'Emerald Enterprise GPU Engine',
+        tagClass: 'text-emerald-400',
+        canvasColor: '#10B981'
+      }
+    };
+
+    function updateSimPreview() {
+      const bizNameInput = document.getElementById('simBizName');
+      const catSelect = document.getElementById('simCategory');
+      const cityInput = document.getElementById('simCity');
+
+      if (!bizNameInput || !catSelect || !cityInput) return;
+
+      const catKey = catSelect.value || 'jewel';
+      const data = simVerticalData[catKey] || simVerticalData.jewel;
+
+      const rawBizName = bizNameInput.value.trim();
+      const bizName = rawBizName ? sanitizeInput(rawBizName) : data.defaultName;
+      const rawCity = cityInput.value.trim();
+      const city = rawCity ? sanitizeInput(rawCity) : 'Kanpur, India';
+
+      // Update brand display & titlebar
+      const brandDisplay = document.getElementById('simBrandDisplay');
+      if (brandDisplay) brandDisplay.textContent = bizName;
+
+      const logoIcon = document.getElementById('simLogoIcon');
+      if (logoIcon) logoIcon.textContent = data.logo;
+
+      const slug = bizName.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').slice(0, 20);
+      const urlBar = document.getElementById('simUrlBar');
+      if (urlBar) urlBar.textContent = `https://${slug || 'brand'}.voltara.luxury`;
+
+      // Update badge, titles and desc
+      const badgeText = document.getElementById('simBadgeText');
+      if (badgeText) badgeText.textContent = data.badge;
+
+      const heroTitle = document.getElementById('simHeroTitle');
+      if (heroTitle) {
+        heroTitle.innerHTML = `${data.title} <br/><span id="simHighlightText" class="font-display">${data.highlight}</span>`;
+      }
+
+      const heroDesc = document.getElementById('simHeroDesc');
+      if (heroDesc) {
+        heroDesc.innerHTML = data.desc.replace('{city}', `<span id="simCityText" class="text-white font-bold">${city}</span>`);
+      }
+
+      // Update feature pills
+      const pillsContainer = document.getElementById('simFeaturePills');
+      if (pillsContainer) {
+        pillsContainer.innerHTML = data.pills.map(p => `
+          <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">${p}</span>
+        `).join('');
+      }
+
+      // Re-apply theme highlight styling
+      applySimThemeStyles();
+    }
+
+    function setSimTheme(theme) {
+      if (!simThemeConfigs[theme]) return;
+      currentSimTheme = theme;
+      VoltaraHaptics.bump();
+
+      // Update theme buttons
+      ['gold', 'neon', 'minimal', 'emerald'].forEach(t => {
+        const btn = document.getElementById(`simThemeBtn_${t}`);
+        if (btn) {
+          if (t === theme) {
+            btn.className = 'sim-theme-btn p-2 rounded-xl border-2 border-indigo-600 bg-indigo-50 font-bold text-indigo-950 text-left shadow-sm transition-all';
+          } else {
+            btn.className = 'sim-theme-btn p-2 rounded-xl border border-slate-200 bg-white font-bold text-slate-700 text-left transition-all';
+          }
+        }
+      });
+
+      applySimThemeStyles();
+    }
+
+    function applySimThemeStyles() {
+      const cfg = simThemeConfigs[currentSimTheme] || simThemeConfigs.gold;
+      const highlight = document.getElementById('simHighlightText');
+      if (highlight) {
+        highlight.className = `${cfg.highlightClass} font-display`;
+      }
+
+      const tag = document.getElementById('simThemeTag');
+      if (tag) {
+        tag.textContent = cfg.tagText;
+        tag.className = `${cfg.tagClass} font-bold`;
+      }
+
+      // Set mini canvas color
+      if (simCanvasContext) {
+        simCanvasContext.activeColor = cfg.canvasColor;
+      }
+    }
+
+    function generateSimPrototype() {
+      const hud = document.getElementById('simHudScanner');
+      const stepText = document.getElementById('simHudStep');
+      const detailsText = document.getElementById('simHudDetails');
+      const progressBar = document.getElementById('simHudProgress');
+      const genBtn = document.getElementById('simGenBtn');
+
+      if (!hud || !progressBar) return;
+
+      VoltaraHaptics.bump();
+      hud.classList.remove('hidden');
+      if (genBtn) genBtn.disabled = true;
+
+      const steps = [
+        { pct: '25%', step: '🧠 Analyzing Brand Market Positioning...', detail: 'Extracting semantic keywords and local competitors...' },
+        { pct: '55%', step: '💎 Synthesizing 3D WebGL Shaders & Lighting...', detail: 'Rendering GPU-accelerated materials & reactive mesh...' },
+        { pct: '85%', step: '⚡ Configuring 0.6s Global Edge Caching...', detail: 'Compiling responsive mobile layout with WhatsApp funnel...' },
+        { pct: '100%', step: '✨ 3D Luxury Website Prototype Ready!', detail: 'Finalizing live interactive viewport...' }
+      ];
+
+      let currentStep = 0;
+      const interval = setInterval(() => {
+        if (currentStep < steps.length) {
+          const s = steps[currentStep];
+          progressBar.style.width = s.pct;
+          if (stepText) stepText.textContent = s.step;
+          if (detailsText) detailsText.textContent = s.detail;
+          VoltaraHaptics.tick();
+          currentStep++;
+        } else {
+          clearInterval(interval);
+          setTimeout(() => {
+            hud.classList.add('hidden');
+            if (genBtn) genBtn.disabled = false;
+            updateSimPreview();
+            VoltaraHaptics.celebrate();
+            createSpark(window.innerWidth / 2, window.innerHeight / 2, 20, 2.5);
+          }, 350);
+        }
+      }, 350);
+    }
+
+    function claimSimulatedWebsite() {
+      VoltaraHaptics.bump();
+      const bizName = (document.getElementById('simBizName')?.value || 'My Business').trim();
+      const catSelect = document.getElementById('simCategory');
+      const catText = catSelect?.options[catSelect.selectedIndex]?.text || 'Luxury Business';
+      const city = (document.getElementById('simCity')?.value || 'Kanpur, UP').trim();
+
+      const message = `Hello Voltara Web Agency! 👋%0A%0AI just generated an AI 3D live prototype on your website and loved it!%0A%0A- *Business Name:* ${encodeURIComponent(bizName)}%0A- *Industry:* ${encodeURIComponent(catText)}%0A- *Theme Style:* ${encodeURIComponent(currentSimTheme.toUpperCase())}%0A- *Target City:* ${encodeURIComponent(city)}%0A%0ACan you build and launch this exact 3D website for me in 48 hours?`;
+      const url = `https://api.whatsapp.com/send?phone=919555838550&text=${message}`;
+      window.open(url, '_blank');
+    }
+
+    // Attach real-time input listeners to Simulator Inputs
+    ['simBizName', 'simCity'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => updateSimPreview());
+      }
+    });
+
+    // Mini 3D Geometric Torus Simulation for #sim3DCanvas
+    let simCanvasContext = null;
+    function initSim3DCanvas() {
+      const canvas = document.getElementById('sim3DCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      simCanvasContext = { activeColor: '#F59E0B' };
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      let angleX = 0;
+      let angleY = 0;
+      const points = [];
+      const numPoints = 60;
+      for (let i = 0; i < numPoints; i++) {
+        const u = (i / numPoints) * Math.PI * 2;
+        for (let j = 0; j < 8; j++) {
+          const v = (j / 8) * Math.PI * 2;
+          const R = 90;
+          const r = 35;
+          const x = (R + r * Math.cos(v)) * Math.cos(u);
+          const y = (R + r * Math.cos(v)) * Math.sin(u);
+          const z = r * Math.sin(v);
+          points.push({ x, y, z });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const cx = canvas.width * 0.75;
+        const cy = canvas.height * 0.5;
+
+        angleX += 0.008;
+        angleY += 0.012;
+
+        ctx.fillStyle = simCanvasContext.activeColor;
+        ctx.strokeStyle = simCanvasContext.activeColor;
+
+        for (let i = 0; i < points.length; i += 2) {
+          const p = points[i];
+          // Rotate Y
+          const cosY = Math.cos(angleY), sinY = Math.sin(angleY);
+          const x1 = p.x * cosY + p.z * sinY;
+          const z1 = -p.x * sinY + p.z * cosY;
+
+          // Rotate X
+          const cosX = Math.cos(angleX), sinX = Math.sin(angleX);
+          const y2 = p.y * cosX - z1 * sinX;
+          const z2 = p.y * sinX + z1 * cosX;
+
+          const fov = 260;
+          const scale = fov / (fov + z2 + 180);
+          const projX = cx + x1 * scale;
+          const projY = cy + y2 * scale;
+          const alpha = Math.max(0.1, Math.min(0.65, (z2 + 100) / 200));
+
+          ctx.beginPath();
+          ctx.arc(projX, projY, Math.max(1, 2.2 * scale), 0, Math.PI * 2);
+          ctx.globalAlpha = alpha;
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1.0;
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    }
+    setTimeout(initSim3DCanvas, 200);
+
+    /* ======================================================== */
+    /* UPGRADE 3.0: 10-SECOND SPEED & COMPETITOR ROASTER ENGINE */
+    /* ======================================================== */
+    let lastAuditedSite = 'sample-business.in';
+    let lastAuditedIndustry = 'E-Commerce';
+
+    function runSpeedRoastAudit() {
+      const urlInput = document.getElementById('auditUrlInput');
+      const indSelect = document.getElementById('auditIndustrySelect');
+      const hud = document.getElementById('auditProgressHud');
+      const results = document.getElementById('auditResultCard');
+      const statusText = document.getElementById('auditHudStatus');
+      const percentText = document.getElementById('auditHudPercent');
+      const bar = document.getElementById('auditHudBar');
+
+      if (!urlInput || !hud) return;
+
+      const rawUrl = urlInput.value.trim() || 'mybusiness.com';
+      const cleanUrl = sanitizeInput(rawUrl).replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/.*$/, '');
+      lastAuditedSite = cleanUrl;
+      lastAuditedIndustry = indSelect?.options[indSelect.selectedIndex]?.text || 'General Business';
+
+      VoltaraHaptics.bump();
+      hud.classList.remove('hidden');
+      if (results) results.classList.add('hidden');
+
+      const auditSteps = [
+        { pct: '25%', status: '🛰️ Pinging Global Edge Nodes (Kanpur, Mumbai, Dubai, London)...', m1: '⏳ TTFB: 1.84s (High Latency)' },
+        { pct: '50%', status: '📱 Simulating Mobile 4G/5G First Contentful Paint & CLS...', m2: '📱 Mobile LCP: 4.8s (Failed)' },
+        { pct: '75%', status: '✨ Evaluating 3D WebGL GPU Acceleration & Luxury UI Index...', m3: '✨ 3D Score: 0/100 (Flat 2D)' },
+        { pct: '100%', status: '💸 Calculating Lost Leads & WhatsApp Abandonment Rate...', m4: '💬 WhatsApp Trap: Missing' }
+      ];
+
+      let idx = 0;
+      const timer = setInterval(() => {
+        if (idx < auditSteps.length) {
+          const step = auditSteps[idx];
+          if (bar) bar.style.width = step.pct;
+          if (percentText) percentText.textContent = step.pct;
+          if (statusText) statusText.textContent = step.status;
+          const metricEl = document.getElementById(`auditMetric${idx + 1}`);
+          if (metricEl) {
+            metricEl.textContent = step[`m${idx + 1}`];
+            metricEl.className = 'p-2 rounded-lg bg-rose-950/60 border border-rose-800 text-rose-300';
+          }
+          VoltaraHaptics.tick();
+          idx++;
+        } else {
+          clearInterval(timer);
+          setTimeout(() => {
+            hud.classList.add('hidden');
+            if (results) {
+              results.classList.remove('hidden');
+              results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            // Populate specific audit results
+            const targetSiteName = document.getElementById('auditTargetSiteName');
+            if (targetSiteName) targetSiteName.textContent = cleanUrl;
+
+            // Generate realistic dynamic score
+            const hash = cleanUrl.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+            const score = 30 + (hash % 12); // score 30 - 41
+            const scoreEl = document.getElementById('auditScoreVal');
+            if (scoreEl) scoreEl.textContent = score;
+
+            const loadTime = (4.4 + (hash % 15) * 0.1).toFixed(1);
+            const loadEl = document.getElementById('auditLoadTimeText');
+            if (loadEl) loadEl.textContent = `${loadTime}s Mobile Load Time (Critical)`;
+
+            const revenueLeakValues = ['₹1,45,000 / month', '₹2,20,000 / month', '₹3,40,000 / month', '₹1,85,000 / month'];
+            const revEl = document.getElementById('auditLostRevenue');
+            if (revEl) revEl.textContent = revenueLeakValues[hash % revenueLeakValues.length];
+
+            VoltaraHaptics.celebrate();
+          }, 350);
+        }
+      }, 350);
+    }
+
+    function fixAuditedSiteOnWhatsApp() {
+      VoltaraHaptics.bump();
+      const message = `Hi Voltara Web Agency! 👋%0A%0AI just ran a 10-Second Website Speed & Conversion Audit on my website:%0A- *Website:* ${encodeURIComponent(lastAuditedSite)}%0A- *Industry:* ${encodeURIComponent(lastAuditedIndustry)}%0A- *Audit Result:* Grade F (Over 4.8s mobile load time & high bounce rate)%0A%0AI want to upgrade my website with Voltara's 0.6s instant load speed, 3D WebGL visuals, and 1-tap WhatsApp lead engine. Please help me fix it!`;
+      const url = `https://api.whatsapp.com/send?phone=919555838550&text=${message}`;
+      window.open(url, '_blank');
+    }
   </script>
 
   <!-- ======================================================== -->
