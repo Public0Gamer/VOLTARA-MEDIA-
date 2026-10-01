@@ -13,6 +13,13 @@
   <meta name="googlebot" content="index, follow">
   <link rel="canonical" href="https://www.voltarawebagency.com/">
 
+  <!-- Canonical Host Enforcement: Instant 0ms redirect from old .vercel.app and non-www to official www.voltarawebagency.com -->
+  <script>
+    if (window.location.hostname.endsWith('vercel.app') || window.location.hostname === 'voltarawebagency.com') {
+      window.location.replace('https://www.voltarawebagency.com' + window.location.pathname + window.location.search + window.location.hash);
+    }
+  </script>
+
   <!-- Global & Multi-Region Coverage -->
   <meta name="geo.region" content="IN-UP">
   <meta name="geo.placename" content="Kanpur, India">
@@ -1868,6 +1875,67 @@
               </div>
             </div>
 
+            <!-- ============================================== -->
+            <!-- REAL WORKING PROMO / META ADS COUPON SYSTEM -->
+            <!-- ============================================== -->
+            <div class="pt-2.5 pb-1 border-t border-indigo-100/90">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[10px] font-black uppercase text-indigo-800 tracking-wider flex items-center gap-1">
+                  <span>🏷️ Have A Meta Ad / Coupon Code?</span>
+                </span>
+                <span class="text-[10px] text-indigo-600 font-bold cursor-pointer hover:underline flex items-center gap-1" onclick="quickApplyAdCoupon('INSTA2000')">
+                  Tap <span class="bg-indigo-100/90 text-indigo-800 px-1.5 py-0.5 rounded font-mono font-black border border-indigo-200">INSTA2000</span>
+                </span>
+              </div>
+
+              <!-- Input Row -->
+              <div id="couponInputWrapper" class="flex gap-1.5 items-center">
+                <div class="relative flex-1">
+                  <input type="text" id="couponCodeInput" placeholder="Enter coupon (e.g. INSTA2000)" 
+                    onkeydown="if(event.key==='Enter') applyCouponCode()"
+                    class="w-full px-3 py-2 text-xs font-mono uppercase font-bold rounded-xl border border-indigo-200 bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none text-slate-800 placeholder-slate-400 uppercase tracking-wide" />
+                </div>
+                <button type="button" onclick="applyCouponCode()" 
+                  class="hover-target px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-black text-xs transition-all shadow-sm flex items-center gap-1">
+                  <span>Apply</span>
+                </button>
+              </div>
+
+              <!-- Success Card (Shown when live coupon is verified) -->
+              <div id="couponAppliedBox" class="hidden mt-1.5 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-1.5 text-xs text-emerald-900">
+                  <span class="text-base">🎉</span>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="font-black font-mono uppercase text-emerald-800 tracking-wide text-xs" id="appliedCouponTag">INSTA2000</span>
+                      <span class="px-1.5 py-0.2 rounded bg-emerald-200 text-emerald-900 text-[9px] font-black uppercase">Verified</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-emerald-700 block" id="appliedCouponDesc">₹2,000 Flat Discount Applied</span>
+                  </div>
+                </div>
+                <button type="button" onclick="removeCouponCode()" title="Remove Coupon" 
+                  class="text-[10px] font-black text-rose-600 hover:text-white hover:bg-rose-600 bg-rose-50 px-2 py-1 rounded-lg transition-all border border-rose-200">
+                  ✕ Remove
+                </button>
+              </div>
+
+              <!-- Error Alert (Shown when invalid or expired code entered) -->
+              <div id="couponErrorMsg" class="hidden mt-1.5 p-2 rounded-xl bg-rose-50 border border-rose-200 text-[10px] font-bold text-rose-700 flex items-center justify-between">
+                <span class="flex items-center gap-1">
+                  <span>⚠️</span> <span id="couponErrorText">Invalid coupon code.</span>
+                </span>
+                <span class="text-xs cursor-pointer text-rose-400 hover:text-rose-700" onclick="document.getElementById('couponErrorMsg').classList.add('hidden')">✕</span>
+              </div>
+            </div>
+
+            <!-- Active Promo Discount Line in Live Breakdown -->
+            <div id="couponDiscountRow" class="hidden py-1.5 px-2 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-between text-xs text-emerald-700 font-bold mb-1">
+              <span class="flex items-center gap-1">
+                <span>🏷️ Promo Voucher (<span id="couponRowTag" class="font-mono font-black">INSTA2000</span>):</span>
+              </span>
+              <span id="couponDiscountVal" class="font-black text-emerald-700">-₹2,000</span>
+            </div>
+
             <div class="pt-2.5 border-t border-indigo-100 flex items-baseline justify-between">
               <span class="text-xs text-slate-700 font-bold">Total Turnkey Cost:</span>
               <div class="text-right">
@@ -2627,8 +2695,169 @@
       const c3 = document.getElementById('calcTierPrice_ecommerce'); if (c3) c3.innerText = conf.tiers.ecommerce.display + ' (Store & Pay)';
       const c4 = document.getElementById('calcTierPrice_saas'); if (c4) c4.innerText = conf.tiers.saas.display + ' (Full-Stack Dev)';
 
+      refreshCouponBadge();
       updateCalculation();
     }
+
+    // =========================================================================
+    // REAL WORKING META ADS & PROMO COUPON SYSTEM
+    // =========================================================================
+    // Pawan can add, edit, or activate coupons right here anytime:
+    const LIVE_COUPONS = {
+      'INSTA2000': {
+        code: 'INSTA2000',
+        type: 'flat', // Flat discount
+        discounts: { INR: 2000, USD: 25, AED: 90 }, // Currency equivalent
+        description: 'Instagram Meta Ad: Flat ₹2,000 OFF',
+        minOrder: 5000,
+        active: true,
+        expiry: '2026-12-31'
+      },
+      'VOLTARA2K': {
+        code: 'VOLTARA2K',
+        type: 'flat',
+        discounts: { INR: 2000, USD: 25, AED: 90 },
+        description: 'VIP Launch Offer: Flat ₹2,000 OFF',
+        minOrder: 5000,
+        active: true,
+        expiry: '2026-12-31'
+      },
+      'PAWAN2000': {
+        code: 'PAWAN2000',
+        type: 'flat',
+        discounts: { INR: 2000, USD: 25, AED: 90 },
+        description: 'Founder Special Voucher: Flat ₹2,000 OFF',
+        minOrder: 5000,
+        active: true,
+        expiry: '2026-12-31'
+      },
+      'VIP15': {
+        code: 'VIP15',
+        type: 'percent', // Percentage discount
+        percent: 15,
+        description: 'VIP Exclusive: 15% Instant Discount',
+        minOrder: 5000,
+        active: true,
+        expiry: '2026-12-31'
+      }
+    };
+
+    let activeCoupon = null;
+
+    function applyCouponCode(manualCode) {
+      const input = document.getElementById('couponCodeInput');
+      const rawCode = (manualCode || (input ? input.value : '')).trim().toUpperCase();
+      const errorBox = document.getElementById('couponErrorMsg');
+      const errorText = document.getElementById('couponErrorText');
+      const appliedBox = document.getElementById('couponAppliedBox');
+      const inputWrapper = document.getElementById('couponInputWrapper');
+      const appliedTag = document.getElementById('appliedCouponTag');
+      const rowTag = document.getElementById('couponRowTag');
+
+      if (!rawCode) {
+        if (errorBox && errorText) {
+          errorText.innerText = 'Please enter a coupon code.';
+          errorBox.classList.remove('hidden');
+        }
+        return;
+      }
+
+      const coupon = LIVE_COUPONS[rawCode];
+
+      // Check if coupon exists and is currently active
+      if (!coupon || !coupon.active) {
+        if (errorBox && errorText) {
+          errorText.innerText = `❌ Invalid coupon "${rawCode}". Only active Meta Ad codes work.`;
+          errorBox.classList.remove('hidden');
+          if (input) {
+            input.classList.add('border-rose-400', 'bg-rose-50');
+            setTimeout(() => input.classList.remove('border-rose-400', 'bg-rose-50'), 2500);
+          }
+        }
+        return;
+      }
+
+      // Check coupon expiry
+      if (coupon.expiry && new Date(coupon.expiry) < new Date()) {
+        if (errorBox && errorText) {
+          errorText.innerText = `❌ Coupon "${rawCode}" has expired.`;
+          errorBox.classList.remove('hidden');
+        }
+        return;
+      }
+
+      // Verified and applied successfully!
+      activeCoupon = coupon;
+      if (errorBox) errorBox.classList.add('hidden');
+      if (inputWrapper) inputWrapper.classList.add('hidden');
+      if (appliedBox) {
+        appliedBox.classList.remove('hidden');
+        if (appliedTag) appliedTag.innerText = coupon.code;
+        if (rowTag) rowTag.innerText = coupon.code;
+        refreshCouponBadge();
+      }
+
+      updateCalculation();
+
+      // Mobile haptic feedback on successful coupon apply
+      if (navigator.vibrate) {
+        try { navigator.vibrate([30, 50, 40]); } catch(e) {}
+      }
+    }
+
+    function removeCouponCode() {
+      activeCoupon = null;
+      const errorBox = document.getElementById('couponErrorMsg');
+      const appliedBox = document.getElementById('couponAppliedBox');
+      const inputWrapper = document.getElementById('couponInputWrapper');
+      const input = document.getElementById('couponCodeInput');
+
+      if (errorBox) errorBox.classList.add('hidden');
+      if (appliedBox) appliedBox.classList.add('hidden');
+      if (inputWrapper) inputWrapper.classList.remove('hidden');
+      if (input) input.value = '';
+
+      updateCalculation();
+    }
+
+    function quickApplyAdCoupon(code) {
+      const input = document.getElementById('couponCodeInput');
+      if (input) input.value = code;
+      applyCouponCode(code);
+    }
+
+    function refreshCouponBadge() {
+      if (!activeCoupon) return;
+      const appliedDesc = document.getElementById('appliedCouponDesc');
+      const conf = CURRENCY_CONFIG[siteCurrency] || CURRENCY_CONFIG.INR;
+      if (appliedDesc) {
+        if (activeCoupon.type === 'flat') {
+          const disc = activeCoupon.discounts[siteCurrency] || activeCoupon.discounts.INR;
+          appliedDesc.innerText = `${conf.symbol}${disc.toLocaleString('en-US')}${conf.suffix} Flat Discount Applied`;
+        } else {
+          appliedDesc.innerText = `${activeCoupon.percent}% Instant Discount Applied`;
+        }
+      }
+    }
+
+    // Auto-detect ?coupon= or ?promo= or ?code= in URL from Instagram/Meta ads
+    function checkUrlForCoupon() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('coupon') || params.get('promo') || params.get('code') || params.get('ref');
+        if (code) {
+          const cleanCode = code.trim().toUpperCase();
+          if (LIVE_COUPONS[cleanCode]) {
+            setTimeout(() => {
+              quickApplyAdCoupon(cleanCode);
+            }, 600);
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', checkUrlForCoupon);
 
     function selectService(key) {
       currentTierKey = key;
@@ -2684,16 +2913,40 @@
       const tier = websiteTiers[currentTierKey];
       
       let rawTotal = Math.round(tierInfo.original);
-      let discountedTotal = Math.round(tierInfo.baseTotal * selectedMultiplier);
+      let basePackageTotal = Math.round(tierInfo.baseTotal * selectedMultiplier);
+      let couponDiscountAmount = 0;
+
+      if (activeCoupon) {
+        if (activeCoupon.type === 'flat') {
+          const disc = activeCoupon.discounts[siteCurrency] || activeCoupon.discounts.INR;
+          couponDiscountAmount = Math.min(disc, basePackageTotal - 1);
+        } else if (activeCoupon.type === 'percent') {
+          couponDiscountAmount = Math.round((basePackageTotal * activeCoupon.percent) / 100);
+        }
+      }
+
+      let finalPayable = Math.max(1, basePackageTotal - couponDiscountAmount);
 
       document.getElementById('summaryService').innerText = tier.name;
       document.getElementById('summarySpeed').innerText = selectedSpeedName;
 
       const formattedOrig = conf.symbol + rawTotal.toLocaleString('en-US') + conf.suffix;
-      const formattedDisc = conf.symbol + discountedTotal.toLocaleString('en-US') + conf.suffix;
+      const formattedFinal = conf.symbol + finalPayable.toLocaleString('en-US') + conf.suffix;
 
       document.getElementById('originalPrice').innerText = formattedOrig;
-      document.getElementById('finalPrice').innerText = formattedDisc;
+      document.getElementById('finalPrice').innerText = formattedFinal;
+
+      // Update discount row in invoice summary
+      const discRow = document.getElementById('couponDiscountRow');
+      const discVal = document.getElementById('couponDiscountVal');
+      if (discRow && discVal) {
+        if (activeCoupon && couponDiscountAmount > 0) {
+          discRow.classList.remove('hidden');
+          discVal.innerText = '-' + conf.symbol + couponDiscountAmount.toLocaleString('en-US') + conf.suffix;
+        } else {
+          discRow.classList.add('hidden');
+        }
+      }
     }
 
     function submitInstantDeal() {
@@ -2703,7 +2956,15 @@
       const phone = sanitizeInput(document.getElementById('clientPhone').value.trim()) || '';
       const finalPrice = document.getElementById('finalPrice').innerText;
 
-      const message = `Hello Voltara Web Agency! 👋%0A%0AI want to get a complete website built for my business:%0A- *Client / Business:* ${encodeURIComponent(name)}%0A- *Website Package:* ${encodeURIComponent(tier.name)} (Turnkey Complete)%0A- *Free Domain:* ${encodeURIComponent(selectedDomainName)} Included%0A- *Delivery Timeline:* ${encodeURIComponent(selectedSpeedName)}%0A- *Selected Currency & Cost:* ${encodeURIComponent(finalPrice)} (${siteCurrency})%0A- *My WhatsApp / Phone:* ${encodeURIComponent(phone)}%0A%0APlease connect with me to start building my website!`;
+      let couponLine = '';
+      if (activeCoupon) {
+        const disc = activeCoupon.type === 'flat' 
+          ? (activeCoupon.discounts[siteCurrency] || activeCoupon.discounts.INR)
+          : (activeCoupon.percent + '%');
+        couponLine = `%0A- *Meta Ad Promo Coupon:* ${encodeURIComponent(activeCoupon.code)} (Saved ${encodeURIComponent(conf.symbol + disc.toLocaleString('en-US') + conf.suffix)} OFF)`;
+      }
+
+      const message = `Hello Voltara Web Agency! 👋%0A%0AI want to get a complete website built for my business:%0A- *Client / Business:* ${encodeURIComponent(name)}%0A- *Website Package:* ${encodeURIComponent(tier.name)} (Turnkey Complete)%0A- *Free Domain:* ${encodeURIComponent(selectedDomainName)} Included%0A- *Delivery Timeline:* ${encodeURIComponent(selectedSpeedName)}${couponLine}%0A- *Final Discounted Cost:* ${encodeURIComponent(finalPrice)} (${siteCurrency})%0A- *My WhatsApp / Phone:* ${encodeURIComponent(phone)}%0A%0APlease connect with me to start building my website!`;
 
       const whatsappURL = `https://api.whatsapp.com/send?phone=919555838550&text=${message}`;
       window.open(whatsappURL, '_blank');
@@ -2742,8 +3003,21 @@
       const conf = CURRENCY_CONFIG[siteCurrency] || CURRENCY_CONFIG.INR;
       const tier = websiteTiers[currentTierKey];
       const tierInfo = conf.tiers[currentTierKey];
-      const discountedTotal = Math.round(tierInfo.baseTotal * selectedMultiplier);
-      const finalPriceStr = conf.symbol + discountedTotal.toLocaleString('en-US') + conf.suffix;
+      const basePackageTotal = Math.round(tierInfo.baseTotal * selectedMultiplier);
+
+      let couponDiscountAmount = 0;
+      if (activeCoupon) {
+        if (activeCoupon.type === 'flat') {
+          const disc = activeCoupon.discounts[siteCurrency] || activeCoupon.discounts.INR;
+          couponDiscountAmount = Math.min(disc, basePackageTotal - 1);
+        } else if (activeCoupon.type === 'percent') {
+          couponDiscountAmount = Math.round((basePackageTotal * activeCoupon.percent) / 100);
+        }
+      }
+
+      const finalPayable = Math.max(1, basePackageTotal - couponDiscountAmount);
+      const pkgPriceStr = conf.symbol + basePackageTotal.toLocaleString('en-US') + conf.suffix;
+      const finalPriceStr = conf.symbol + finalPayable.toLocaleString('en-US') + conf.suffix;
 
       const clientName = sanitizeInput(document.getElementById('clientName').value.trim()) || 'Valued Client';
       const clientPhone = sanitizeInput(document.getElementById('clientPhone').value.trim()) || '+91 Not Provided';
@@ -2753,10 +3027,24 @@
       document.getElementById('qClientName').innerText = clientName;
       document.getElementById('qClientPhone').innerText = clientPhone;
       document.getElementById('qPackageName').innerText = tier.name;
-      document.getElementById('qPackagePrice').innerText = finalPriceStr;
+      document.getElementById('qPackagePrice').innerText = pkgPriceStr;
       document.getElementById('qDomainName').innerText = selectedDomainName;
       document.getElementById('qSpeedName').innerText = selectedSpeedName;
       document.getElementById('qTotalPrice').innerText = finalPriceStr;
+
+      // Toggle coupon row in quotation table
+      const qCRow = document.getElementById('qCouponRow');
+      const qCLabel = document.getElementById('qCouponLabel');
+      const qCDiscount = document.getElementById('qCouponDiscount');
+      if (qCRow && qCLabel && qCDiscount) {
+        if (activeCoupon && couponDiscountAmount > 0) {
+          qCRow.classList.remove('hidden');
+          qCLabel.innerText = `🏷️ Promo Voucher (${activeCoupon.code})`;
+          qCDiscount.innerText = `-${conf.symbol}${couponDiscountAmount.toLocaleString('en-US')}${conf.suffix}`;
+        } else {
+          qCRow.classList.add('hidden');
+        }
+      }
 
       const modal = document.getElementById('quoteModal');
       modal.classList.remove('hidden');
@@ -2775,7 +3063,12 @@
       const name = document.getElementById('qClientName').innerText;
       const pkg = document.getElementById('qPackageName').innerText;
 
-      const msg = `Hello Voltara! I am reviewing Official Quotation ${quoteId}.%0A- Client: ${encodeURIComponent(name)}%0A- Scope: ${encodeURIComponent(pkg)}%0A- Approved Budget: ${encodeURIComponent(price)}%0A%0AI approve this scope. Please initiate project kickoff!`;
+      let couponDetail = '';
+      if (activeCoupon) {
+        couponDetail = `%0A- Promo Coupon: ${encodeURIComponent(activeCoupon.code)} Applied`;
+      }
+
+      const msg = `Hello Voltara! I am reviewing Official Quotation ${quoteId}.%0A- Client: ${encodeURIComponent(name)}%0A- Scope: ${encodeURIComponent(pkg)}${couponDetail}%0A- Approved Budget: ${encodeURIComponent(price)}%0A%0AI approve this scope. Please initiate project kickoff!`;
       window.open(`https://api.whatsapp.com/send?phone=919555838550&text=${msg}`, '_blank');
     }
 
@@ -4158,6 +4451,11 @@
               <td class="p-3 font-semibold text-slate-700">Delivery Sprint</td>
               <td class="p-3 text-indigo-600 font-bold" id="qSpeedName">⚡ Express 48 Hours Sprint</td>
               <td class="p-3 text-right font-bold text-slate-700">Guaranteed</td>
+            </tr>
+            <tr id="qCouponRow" class="hidden text-emerald-800 bg-emerald-50/80 font-semibold border-t border-emerald-100">
+              <td class="p-3 font-bold" id="qCouponLabel">🏷️ Promo Voucher (INSTA2000)</td>
+              <td class="p-3 text-slate-600" id="qCouponDesc">Special Instagram Meta Ad Discount</td>
+              <td class="p-3 text-right font-black text-emerald-600" id="qCouponDiscount">-₹2,000</td>
             </tr>
           </tbody>
           <tfoot class="bg-indigo-50/60 border-t border-slate-200">

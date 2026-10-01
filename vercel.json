@@ -2,6 +2,32 @@
   "routes": [
     {
       "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "status": 308,
+      "headers": {
+        "Location": "https://www.voltarawebagency.com/$1"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "^voltarawebagency\\.com$"
+        }
+      ],
+      "status": 308,
+      "headers": {
+        "Location": "https://www.voltarawebagency.com/$1"
+      }
+    },
+    {
+      "src": "/(.*)",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "X-Content-Type-Options": "nosniff",
