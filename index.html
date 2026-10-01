@@ -795,7 +795,7 @@
               ⚡ Cyberpunk Neon WebGL
             </button>
             <button type="button" onclick="setSimTheme('minimal')" id="simThemeBtn_minimal" class="sim-theme-btn p-2 rounded-xl border border-slate-200 bg-white font-bold text-slate-700 text-left transition-all">
-              🍏 Silicon Apple Minimal
+              🍏 Silicon Apple Minimal (Light)
             </button>
             <button type="button" onclick="setSimTheme('emerald')" id="simThemeBtn_emerald" class="sim-theme-btn p-2 rounded-xl border border-slate-200 bg-white font-bold text-slate-700 text-left transition-all">
               🌿 Emerald Executive
@@ -821,75 +821,93 @@
         <div class="crystal-card rounded-3xl p-3 sm:p-4 border border-indigo-100 shadow-2xl space-y-2 text-left relative overflow-hidden">
           
           <!-- MacBook Pro Mockup Window Frame -->
-          <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl relative">
+          <div id="simMockupFrame" class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl relative transition-all duration-500">
             
             <!-- Window Titlebar & Domain -->
-            <div class="bg-slate-900/90 px-4 py-2.5 flex items-center justify-between border-b border-slate-800">
+            <div id="simTitlebar" class="bg-slate-900/90 px-4 py-2.5 flex items-center justify-between border-b border-slate-800 transition-all duration-500">
               <div class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-rose-500 inline-block shadow-sm"></span>
                 <span class="w-3 h-3 rounded-full bg-amber-500 inline-block shadow-sm"></span>
                 <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block shadow-sm"></span>
               </div>
-              <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-[10px] font-mono text-slate-300">
+              <div id="simUrlBarContainer" class="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-[10px] font-mono text-slate-300 transition-all duration-500">
                 <span class="text-emerald-400">🔒</span>
                 <span id="simUrlBar">https://royal-diamond.voltara.luxury</span>
               </div>
-              <span class="text-[10px] font-bold text-indigo-400">LIVE PREVIEW</span>
+              <span id="simLiveBadge" class="text-[10px] font-bold text-indigo-400">LIVE PREVIEW</span>
             </div>
 
             <!-- Virtual Screen Viewport -->
-            <div id="simScreen" class="relative min-h-[380px] sm:min-h-[420px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 bg-slate-950 text-white">
+            <div id="simScreen" class="relative min-h-[400px] sm:min-h-[440px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 bg-slate-950 text-white">
               
               <!-- Interactive Mini 3D Canvas Background -->
               <canvas id="sim3DCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
               <!-- Top Mockup Navigation -->
-              <div class="relative z-10 flex items-center justify-between border-b border-white/10 pb-3">
+              <div id="simNav" class="relative z-10 flex items-center justify-between border-b border-white/10 pb-3 transition-all duration-500">
                 <div class="flex items-center gap-2">
-                  <span id="simLogoIcon" class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md">💎</span>
-                  <span id="simBrandDisplay" class="font-display font-black text-sm tracking-tight text-white">Royal Diamond Jewellers</span>
+                  <span id="simLogoIcon" class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md transition-all">💎</span>
+                  <span id="simBrandDisplay" class="font-display font-black text-sm tracking-tight text-white transition-all">Royal Diamond Jewellers</span>
                 </div>
-                <div class="hidden sm:flex items-center gap-4 text-[10px] font-bold text-slate-300">
+                <div id="simNavLinks" class="hidden sm:flex items-center gap-4 text-[10px] font-bold text-slate-300 transition-all">
                   <span>Home</span>
                   <span>Collection</span>
                   <span>VIP Lounge</span>
-                  <span class="px-2 py-0.5 rounded-full bg-white/20 text-white">48h Live</span>
+                  <span class="px-2 py-0.5 rounded-full bg-white/20 text-white" id="simNavTag">48h Live</span>
                 </div>
               </div>
 
-              <!-- Main Hero Mockup Content -->
-              <div class="relative z-10 py-6 space-y-3 max-w-lg">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-black text-amber-300">
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
-                  <span id="simBadgeText">✨ Premier Handcrafted Luxury Collection</span>
+              <!-- Main Hero Mockup Content: 2-Column Responsive Layout -->
+              <div class="relative z-10 py-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                
+                <!-- Left Hero Details -->
+                <div class="md:col-span-8 space-y-3">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-black text-amber-300 transition-all" id="simBadgeContainer">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" id="simBadgeDot"></span>
+                    <span id="simBadgeText">✨ Premier Handcrafted Luxury Collection</span>
+                  </div>
+
+                  <h3 id="simHeroTitle" class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight transition-all">
+                    Elegance Redefined In <br/>
+                    <span id="simHighlightText" class="text-amber-400 font-display transition-all">Pure Gold &amp; Diamonds.</span>
+                  </h3>
+
+                  <p id="simHeroDesc" class="text-xs text-slate-300 leading-relaxed font-medium transition-all">
+                    Experience timeless luxury with certified gold, solitaires, and bespoke heritage ornaments designed for royalty in <span id="simCityText" class="text-white font-bold">Kanpur, India</span>.
+                  </p>
+
+                  <!-- 3 Highlights Pills -->
+                  <div class="flex flex-wrap gap-1.5 pt-2" id="simFeaturePills">
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ 100% BIS Hallmarked</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ 3D Virtual Try-On</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ WhatsApp VIP Catalog</span>
+                  </div>
                 </div>
 
-                <h3 id="simHeroTitle" class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight">
-                  Elegance Redefined In <br/>
-                  <span id="simHighlightText" class="text-amber-400 font-display">Pure Gold &amp; Diamonds.</span>
-                </h3>
-
-                <p id="simHeroDesc" class="text-xs text-slate-300 leading-relaxed font-medium">
-                  Experience timeless luxury with certified gold, solitaires, and bespoke heritage ornaments designed for royalty in <span id="simCityText" class="text-white font-bold">Kanpur, India</span>.
-                </p>
-
-                <!-- 3 Highlights Pills -->
-                <div class="flex flex-wrap gap-1.5 pt-2" id="simFeaturePills">
-                  <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ 100% BIS Hallmarked</span>
-                  <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ 3D Virtual Try-On</span>
-                  <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">✓ WhatsApp VIP Catalog</span>
+                <!-- Right Hero: 3D Object Holographic Card -->
+                <div class="hidden md:flex md:col-span-4 flex-col items-center justify-center p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl text-center space-y-2 relative overflow-hidden group hover:scale-105 transition-all" id="simHeroObjectCard">
+                  <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shadow-inner relative transition-all" id="simObjectIconBox">
+                    <span id="simObjectEmoji">💎</span>
+                  </div>
+                  <div class="text-[11px] font-black text-white transition-all" id="simObjectName">3D Diamond Model</div>
+                  <div class="text-[9px] font-mono text-slate-400 transition-all" id="simObjectStatus">GPU 60 FPS • Real-Time</div>
+                  <div class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[9px] font-bold text-white flex items-center gap-1.5 transition-all" id="simObjectBadgeContainer">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span id="simObjectBadge">Rotate &amp; Interact</span>
+                  </div>
                 </div>
+
               </div>
 
               <!-- Mockup Bottom Action Strip -->
-              <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-3">
+              <div id="simBottomBar" class="relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-3 transition-all duration-500">
                 <div class="text-[10px] text-slate-400 font-medium">
-                  Architecture: <span id="simThemeTag" class="text-amber-400 font-bold">3D WebGL Gold Physics</span>
+                  Architecture: <span id="simThemeTag" class="text-amber-400 font-bold transition-all">3D WebGL Gold Physics</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="px-3 py-1 rounded-xl bg-emerald-500 text-white font-black text-xs shadow-md">
+                  <button type="button" id="simCtaBtn" onclick="claimSimulatedWebsite()" class="px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs shadow-md transition-all cursor-pointer">
                     💬 WhatsApp Booking Live
-                  </span>
+                  </button>
                 </div>
               </div>
 
@@ -968,12 +986,33 @@
             <span class="text-[9px] font-mono text-slate-400">luxehaven-dubai.ae</span>
             <span class="text-[9px] font-bold text-amber-400">🇦🇪 Dubai</span>
           </div>
-          <!-- Project Visual Banner -->
-          <div class="h-44 bg-gradient-to-tr from-slate-950 via-indigo-950 to-cyan-900 relative p-5 flex flex-col justify-between overflow-hidden">
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-cyan-500/20 blur-xl"></div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-cyan-200 self-start">3D WebGL Physics</span>
-            <div class="text-3xl">🏰</div>
-            <div class="text-white text-xs font-bold z-10">Luxe Haven Real Estate • Downtown Dubai</div>
+          <!-- Project Visual Banner: High-Res Real Website Preview -->
+          <div class="h-48 relative overflow-hidden group">
+            <img 
+              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" 
+              alt="Luxe Haven Villas Dubai 3D Website Preview" 
+              class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/20"></div>
+            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-cyan-400/40 text-[10px] font-black text-cyan-300 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+                <span>✨ 3D WebGL Physics</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/90 backdrop-blur-md text-[10px] font-bold text-white shadow-sm">
+                Live Preview
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between z-10">
+              <div>
+                <span class="text-[10px] font-mono text-cyan-300 block font-bold">LUXE HAVEN • DUBAI</span>
+                <span class="text-white text-xs font-black drop-shadow-md">Ultra-Luxury Smart Villas &amp; 3D Penthouse</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-lg bg-white/20 backdrop-blur-md text-white font-bold border border-white/20 shadow-sm">
+                ₹45 Cr+
+              </span>
+            </div>
           </div>
           <!-- Project Info -->
           <div class="p-5 space-y-2">
@@ -1006,12 +1045,33 @@
             <span class="text-[9px] font-mono text-slate-400">karanjewels.com</span>
             <span class="text-[9px] font-bold text-indigo-400">🇮🇳 India</span>
           </div>
-          <!-- Project Visual Banner -->
-          <div class="h-44 bg-gradient-to-tr from-amber-950 via-slate-950 to-yellow-950 relative p-5 flex flex-col justify-between overflow-hidden">
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-amber-500/20 blur-xl"></div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-amber-200 self-start">E-Commerce &amp; 3D</span>
-            <div class="text-3xl">💎</div>
-            <div class="text-white text-xs font-bold z-10">Karan Fine Jewels • Gold &amp; Diamond</div>
+          <!-- Project Visual Banner: High-Res Real Website Preview -->
+          <div class="h-48 relative overflow-hidden group">
+            <img 
+              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80" 
+              alt="Karan Fine Jewels Gold & Diamond E-Commerce Website Preview" 
+              class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/20"></div>
+            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-amber-400/40 text-[10px] font-black text-amber-300 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+                <span>💎 3D Diamond Try-On</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-amber-500/90 backdrop-blur-md text-[10px] font-black text-slate-950 shadow-sm">
+                BIS 916 Gold
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between z-10">
+              <div>
+                <span class="text-[10px] font-mono text-amber-300 block font-bold">KARAN FINE JEWELS</span>
+                <span class="text-white text-xs font-black drop-shadow-md">Solitaire Diamonds &amp; Heritage Gold</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-lg bg-amber-500/20 backdrop-blur-md text-amber-200 font-bold border border-amber-400/30 shadow-sm">
+                ₹18.5L Sales
+              </span>
+            </div>
           </div>
           <!-- Project Info -->
           <div class="p-5 space-y-2">
@@ -1044,12 +1104,33 @@
             <span class="text-[9px] font-mono text-slate-400">novastream.ai</span>
             <span class="text-[9px] font-bold text-sky-400">🇺🇸 San Francisco, USA</span>
           </div>
-          <!-- Project Visual Banner -->
-          <div class="h-44 bg-gradient-to-tr from-purple-950 via-slate-950 to-indigo-950 relative p-5 flex flex-col justify-between overflow-hidden">
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-purple-500/20 blur-xl"></div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-purple-200 self-start">SaaS Platform</span>
-            <div class="text-3xl">⚡</div>
-            <div class="text-white text-xs font-bold z-10">Novastream AI • Enterprise Portal</div>
+          <!-- Project Visual Banner: High-Res Real Website Preview -->
+          <div class="h-48 relative overflow-hidden group">
+            <img 
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
+              alt="Novastream AI Platform SaaS Website Preview" 
+              class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/20"></div>
+            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-purple-400/40 text-[10px] font-black text-purple-300 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping"></span>
+                <span>⚡ Real-Time API Dashboard</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-sky-500/90 backdrop-blur-md text-[10px] font-bold text-white shadow-sm">
+                0.4s Latency
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between z-10">
+              <div>
+                <span class="text-[10px] font-mono text-purple-300 block font-bold">NOVASTREAM • SF, USA</span>
+                <span class="text-white text-xs font-black drop-shadow-md">Enterprise AI Analytics &amp; Vector API</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-lg bg-purple-500/20 backdrop-blur-md text-purple-200 font-bold border border-purple-400/30 shadow-sm">
+                $2.4M Seed
+              </span>
+            </div>
           </div>
           <!-- Project Info -->
           <div class="p-5 space-y-2">
@@ -1082,12 +1163,33 @@
             <span class="text-[9px] font-mono text-slate-400">thehivesalon.in</span>
             <span class="text-[9px] font-bold text-pink-400">🇮🇳 Kanpur</span>
           </div>
-          <!-- Project Visual Banner -->
-          <div class="h-44 bg-gradient-to-tr from-pink-950 via-slate-950 to-rose-950 relative p-5 flex flex-col justify-between overflow-hidden">
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-pink-500/20 blur-xl"></div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-pink-200 self-start">Appointment Funnel</span>
-            <div class="text-3xl">✂️</div>
-            <div class="text-white text-xs font-bold z-10">The Hive Unisex Salon &amp; Spa</div>
+          <!-- Project Visual Banner: High-Res Real Website Preview -->
+          <div class="h-48 relative overflow-hidden group">
+            <img 
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" 
+              alt="The Hive Unisex Luxury Salon Website Preview" 
+              class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/20"></div>
+            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-pink-400/40 text-[10px] font-black text-pink-300 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-ping"></span>
+                <span>✂️ VIP 1-Tap Booking</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/90 backdrop-blur-md text-[10px] font-bold text-white shadow-sm">
+                45+ Bookings/Day
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between z-10">
+              <div>
+                <span class="text-[10px] font-mono text-pink-300 block font-bold">THE HIVE • KANPUR</span>
+                <span class="text-white text-xs font-black drop-shadow-md">Luxury Unisex Hair, Skin &amp; Spa Studio</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-lg bg-pink-500/20 backdrop-blur-md text-pink-200 font-bold border border-pink-400/30 shadow-sm">
+                5★ Rated
+              </span>
+            </div>
           </div>
           <!-- Project Info -->
           <div class="p-5 space-y-2">
@@ -1120,12 +1222,33 @@
             <span class="text-[9px] font-mono text-slate-400">auraparfum.com</span>
             <span class="text-[9px] font-bold text-emerald-400">🇫🇷 Paris &amp; Dubai</span>
           </div>
-          <!-- Project Visual Banner -->
-          <div class="h-44 bg-gradient-to-tr from-emerald-950 via-slate-950 to-teal-950 relative p-5 flex flex-col justify-between overflow-hidden">
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-emerald-500/20 blur-xl"></div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-emerald-200 self-start">Global D2C Store</span>
-            <div class="text-3xl">🌸</div>
-            <div class="text-white text-xs font-bold z-10">Aura Luxury Perfumes</div>
+          <!-- Project Visual Banner: High-Res Real Website Preview -->
+          <div class="h-48 relative overflow-hidden group">
+            <img 
+              src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80" 
+              alt="Aura Luxury Perfumes Paris & Dubai Website Preview" 
+              class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/20"></div>
+            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-emerald-400/40 text-[10px] font-black text-emerald-300 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>🌸 3D Fragrance Pyramid</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/90 backdrop-blur-md text-[10px] font-bold text-white shadow-sm">
+                Global D2C
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between z-10">
+              <div>
+                <span class="text-[10px] font-mono text-emerald-300 block font-bold">AURA PARFUM • PARIS &amp; DUBAI</span>
+                <span class="text-white text-xs font-black drop-shadow-md">Haute Fragrance &amp; Artisanal Oud Store</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-lg bg-emerald-500/20 backdrop-blur-md text-emerald-200 font-bold border border-emerald-400/30 shadow-sm">
+                4.8x ROAS
+              </span>
+            </div>
           </div>
           <!-- Project Info -->
           <div class="p-5 space-y-2">
@@ -1158,12 +1281,33 @@
             <span class="text-[9px] font-mono text-slate-400">medcare-clinics.co.uk</span>
             <span class="text-[9px] font-bold text-sky-400">🇬🇧 London, UK</span>
           </div>
-          <!-- Project Visual Banner -->
-          <div class="h-44 bg-gradient-to-tr from-sky-950 via-slate-950 to-blue-950 relative p-5 flex flex-col justify-between overflow-hidden">
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-sky-500/20 blur-xl"></div>
-            <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black text-sky-200 self-start">Healthcare Portal</span>
-            <div class="text-3xl">🩺</div>
-            <div class="text-white text-xs font-bold z-10">MedCare Multi-Specialty Clinic</div>
+          <!-- Project Visual Banner: High-Res Real Website Preview -->
+          <div class="h-48 relative overflow-hidden group">
+            <img 
+              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" 
+              alt="MedCare Multi-Specialty Clinic London Website Preview" 
+              class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" 
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/20"></div>
+            <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-sky-400/40 text-[10px] font-black text-sky-300 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping"></span>
+                <span>🩺 Telehealth &amp; OPD</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full bg-blue-500/90 backdrop-blur-md text-[10px] font-bold text-white shadow-sm">
+                NABH / NHS Ready
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between z-10">
+              <div>
+                <span class="text-[10px] font-mono text-sky-300 block font-bold">MEDCARE • LONDON, UK</span>
+                <span class="text-white text-xs font-black drop-shadow-md">Multi-Specialty Clinic &amp; Encrypted OPD</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-lg bg-sky-500/20 backdrop-blur-md text-sky-200 font-bold border border-sky-400/30 shadow-sm">
+                98% Score
+              </span>
+            </div>
           </div>
           <!-- Project Info -->
           <div class="p-5 space-y-2">
@@ -2995,9 +3139,14 @@
         title: 'Elegance Redefined In',
         highlight: 'Pure Gold & Diamonds.',
         desc: 'Experience timeless luxury with certified gold, solitaires, and bespoke heritage ornaments designed for royalty in {city}.',
-        pills: ['✓ 100% BIS Hallmarked', '✓ 3D Virtual Try-On', '✓ WhatsApp VIP Catalog'],
+        pills: ['✓ 100% BIS Hallmarked', '✓ 3D Diamond Try-On', '✓ WhatsApp VIP Catalog'],
         domain: 'royal-diamond.voltara.luxury',
-        defaultName: 'Royal Diamond Jewellers'
+        defaultName: 'Royal Diamond Jewellers',
+        geometryType: 'diamond',
+        objectEmoji: '💎',
+        objectName: '3D Diamond Solitaire',
+        objectStatus: 'Facet Refraction • 60 FPS',
+        objectBadge: 'Interactive 360° Try-On'
       },
       realestate: {
         logo: '🏰',
@@ -3005,9 +3154,14 @@
         title: 'Architectural Icons Crafted For',
         highlight: 'Generational Wealth.',
         desc: 'Explore ultra-luxury penthouses, modern smart villas, and prime commercial developments in {city}.',
-        pills: ['✓ 3D Interactive Virtual Walkthrough', '✓ Direct Builder Pricing', '✓ Instant Brochure on WhatsApp'],
+        pills: ['✓ 3D Virtual Walkthrough', '✓ Direct Builder Pricing', '✓ Instant Brochure on WhatsApp'],
         domain: 'signature-estates.voltara.luxury',
-        defaultName: 'Signature Skyline Realty'
+        defaultName: 'Signature Skyline Realty',
+        geometryType: 'building',
+        objectEmoji: '🏰',
+        objectName: '3D Villa & Penthouse',
+        objectStatus: 'Architectural Elevation Grid',
+        objectBadge: 'Virtual 3D Walkthrough'
       },
       clinic: {
         logo: '🩺',
@@ -3017,7 +3171,12 @@
         desc: 'Book doctor appointments, check 24/7 emergency services, and view certified specialist profiles in {city}.',
         pills: ['✓ 1-Tap WhatsApp Appointment', '✓ NABH Accredited Standards', '✓ Instant Digital Rx Handover'],
         domain: 'apex-care.voltara.health',
-        defaultName: 'Apex Super Specialty Hospital'
+        defaultName: 'Apex Super Specialty Hospital',
+        geometryType: 'dna',
+        objectEmoji: '🧬',
+        objectName: '3D DNA & Health Portal',
+        objectStatus: 'Biometric Telehealth Sync',
+        objectBadge: 'Encrypted OPD System'
       },
       salon: {
         logo: '✂️',
@@ -3027,7 +3186,12 @@
         desc: 'Pamper yourself with premium hair design, organic skin therapies, and bridal glow packages in {city}.',
         pills: ['✓ 100% VIP Private Suites', '✓ Organic European Products', '✓ Instant WhatsApp Slot Booking'],
         domain: 'luxe-glow.voltara.salon',
-        defaultName: 'Luxe Glow Studio & Spa'
+        defaultName: 'Luxe Glow Studio & Spa',
+        geometryType: 'ribbon',
+        objectEmoji: '✨',
+        objectName: '3D Aesthetic Silk Wave',
+        objectStatus: 'Organic Flow Physics',
+        objectBadge: 'VIP Studio Booking'
       },
       restaurant: {
         logo: '🍽️',
@@ -3035,9 +3199,14 @@
         title: 'An Unforgettable Culinary Symphony &',
         highlight: 'Signature Flavors.',
         desc: 'Enjoy artisanal cuisine, handcrafted mocktails, and live ambient music in the heart of {city}.',
-        pills: ['✓ 1-Click WhatsApp Table Reservation', '✓ Interactive QR Digital Menu', '✓ Private Event Booking'],
+        pills: ['✓ 1-Click Table Reservation', '✓ Interactive QR Digital Menu', '✓ Private Event Booking'],
         domain: 'amber-room.voltara.dining',
-        defaultName: 'The Amber Room Bistro'
+        defaultName: 'The Amber Room Bistro',
+        geometryType: 'torus',
+        objectEmoji: '🥂',
+        objectName: '3D Celestial Table Lounge',
+        objectStatus: 'Ambient Effervescence',
+        objectBadge: '1-Click Digital Menu'
       },
       tech: {
         logo: '⚡',
@@ -3047,7 +3216,12 @@
         desc: 'Accelerate revenue pipelines, automate operations, and scale globally from {city} with 99.99% uptime.',
         pills: ['✓ 0.4s Sub-Second Cloud Latency', '✓ Enterprise SOC-2 Security', '✓ WhatsApp Developer Onboarding'],
         domain: 'hyperscale-ai.voltara.tech',
-        defaultName: 'HyperScale AI Systems'
+        defaultName: 'HyperScale AI Systems',
+        geometryType: 'neural',
+        objectEmoji: '⚡',
+        objectName: '3D Neural Synapse Mesh',
+        objectStatus: 'Sub-Second Latency 0.4s',
+        objectBadge: 'Autonomous AI Engine'
       },
       corporate: {
         logo: '🏢',
@@ -3057,38 +3231,139 @@
         desc: 'Providing boardroom consultancy, tax architecture, and cross-border corporate solutions in {city}.',
         pills: ['✓ 15+ Years Industry Experience', '✓ Confidential 1-on-1 Consultation', '✓ WhatsApp Direct Partner Line'],
         domain: 'apex-vanguard.voltara.corp',
-        defaultName: 'Apex Vanguard Partners'
+        defaultName: 'Apex Vanguard Partners',
+        geometryType: 'tesseract',
+        objectEmoji: '⚖️',
+        objectName: '3D Precision Hypercube',
+        objectStatus: 'Institutional Governance',
+        objectBadge: 'Global Boardroom Access'
       }
     };
 
     const simThemeConfigs = {
+      minimal: {
+        frameClass: 'rounded-2xl overflow-hidden border border-slate-300 bg-slate-100 shadow-2xl relative transition-all duration-500',
+        titlebarClass: 'bg-slate-200/95 px-4 py-2.5 flex items-center justify-between border-b border-slate-300 text-slate-800 transition-all duration-500',
+        urlBarClass: 'flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-300/80 text-[10px] font-mono text-slate-800 shadow-sm transition-all duration-500',
+        liveBadgeClass: 'text-[10px] font-bold text-indigo-600',
+        screenClass: 'relative min-h-[400px] sm:min-h-[440px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 bg-gradient-to-br from-slate-100 via-white to-slate-200 text-slate-900 border-slate-200',
+        navClass: 'relative z-10 flex items-center justify-between border-b border-slate-200 pb-3 transition-all duration-500',
+        navLinksClass: 'hidden sm:flex items-center gap-4 text-[10px] font-bold text-slate-600 transition-all',
+        navTagClass: 'px-2 py-0.5 rounded-full bg-slate-900 text-white font-bold',
+        brandDisplayClass: 'font-display font-black text-sm tracking-tight text-slate-950 transition-all',
+        logoIconClass: 'w-7 h-7 rounded-lg bg-slate-950 text-white flex items-center justify-center font-black text-xs shadow-sm transition-all',
+        badgeContainerClass: 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-[10px] font-black text-indigo-700 shadow-sm transition-all',
+        badgeDotClass: 'w-1.5 h-1.5 rounded-full bg-indigo-600 animate-ping',
+        badgeTextClass: 'text-indigo-700 font-black',
+        heroTitleClass: 'text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-slate-950 transition-all',
+        highlightClass: 'text-indigo-600 font-display underline decoration-indigo-300 transition-all',
+        heroDescClass: 'text-xs text-slate-600 leading-relaxed font-medium transition-all',
+        cityTextClass: 'text-slate-950 font-black',
+        pillClass: 'px-2.5 py-1 rounded-lg bg-white/95 border border-slate-200 text-[10px] font-semibold text-slate-800 shadow-sm',
+        objectCardClass: 'hidden md:flex md:col-span-4 flex-col items-center justify-center p-4 rounded-2xl bg-white/90 border border-slate-200 shadow-md text-center space-y-2 relative overflow-hidden group hover:scale-105 transition-all',
+        objectNameClass: 'text-[11px] font-black text-slate-900 transition-all',
+        objectStatusClass: 'text-[9px] font-mono text-slate-500 transition-all',
+        objectBadgeContainerClass: 'px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-200 text-[9px] font-bold text-indigo-700 flex items-center gap-1.5 transition-all',
+        bottomBarClass: 'relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-3 transition-all duration-500',
+        tagText: 'Silicon Apple Minimal (Pure Light Luxury)',
+        tagClass: 'text-indigo-600 font-black',
+        ctaBtnClass: 'px-3.5 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-white font-black text-xs shadow-md transition-all cursor-pointer',
+        canvasColor: '#4F46E5',
+        secondaryColor: '#0284C7',
+        isLight: true
+      },
       gold: {
-        badgeClass: 'bg-amber-400/20 text-amber-300 border-amber-400/30',
-        highlightClass: 'text-amber-400',
-        tagText: '3D WebGL Gold Physics',
-        tagClass: 'text-amber-400',
-        canvasColor: '#F59E0B'
+        frameClass: 'rounded-2xl overflow-hidden border border-amber-900/40 bg-slate-950 shadow-2xl relative transition-all duration-500',
+        titlebarClass: 'bg-zinc-950/95 px-4 py-2.5 flex items-center justify-between border-b border-amber-900/40 text-amber-300 transition-all duration-500',
+        urlBarClass: 'flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-amber-500/30 text-[10px] font-mono text-amber-200 transition-all duration-500',
+        liveBadgeClass: 'text-[10px] font-bold text-amber-400',
+        screenClass: 'relative min-h-[400px] sm:min-h-[440px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 bg-gradient-to-br from-black via-zinc-950 to-amber-950/40 text-amber-50',
+        navClass: 'relative z-10 flex items-center justify-between border-b border-amber-500/20 pb-3 transition-all duration-500',
+        navLinksClass: 'hidden sm:flex items-center gap-4 text-[10px] font-bold text-amber-200/80 transition-all',
+        navTagClass: 'px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold',
+        brandDisplayClass: 'font-display font-black text-sm tracking-tight text-white transition-all',
+        logoIconClass: 'w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md transition-all',
+        badgeContainerClass: 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-[10px] font-black text-amber-300 transition-all',
+        badgeDotClass: 'w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping',
+        badgeTextClass: 'text-amber-300 font-black',
+        heroTitleClass: 'text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white transition-all',
+        highlightClass: 'text-amber-400 font-display drop-shadow-[0_0_12px_rgba(245,158,11,0.5)] transition-all',
+        heroDescClass: 'text-xs text-zinc-300 leading-relaxed font-medium transition-all',
+        cityTextClass: 'text-amber-300 font-black',
+        pillClass: 'px-2.5 py-1 rounded-lg bg-zinc-900/90 border border-amber-500/30 text-[10px] font-bold text-amber-200',
+        objectCardClass: 'hidden md:flex md:col-span-4 flex-col items-center justify-center p-4 rounded-2xl bg-zinc-950/80 border border-amber-500/30 shadow-xl text-center space-y-2 relative overflow-hidden group hover:scale-105 transition-all',
+        objectNameClass: 'text-[11px] font-black text-amber-300 transition-all',
+        objectStatusClass: 'text-[9px] font-mono text-amber-200/60 transition-all',
+        objectBadgeContainerClass: 'px-2.5 py-1 rounded-lg bg-amber-500/20 border border-amber-400/30 text-[9px] font-bold text-amber-300 flex items-center gap-1.5 transition-all',
+        bottomBarClass: 'relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-amber-900/30 pt-3 transition-all duration-500',
+        tagText: 'Royal Obsidian Gold (24K Lighting)',
+        tagClass: 'text-amber-400 font-bold',
+        ctaBtnClass: 'px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-xs shadow-lg shadow-amber-500/20 transition-all cursor-pointer',
+        canvasColor: '#F59E0B',
+        secondaryColor: '#FDE68A',
+        isLight: false
       },
       neon: {
-        badgeClass: 'bg-cyan-400/20 text-cyan-300 border-cyan-400/30',
-        highlightClass: 'text-cyan-400',
-        tagText: 'Cyberpunk WebGL Shader',
-        tagClass: 'text-cyan-400',
-        canvasColor: '#06B6D4'
-      },
-      minimal: {
-        badgeClass: 'bg-white/10 text-white border-white/20',
-        highlightClass: 'text-white underline decoration-indigo-400',
-        tagText: 'Apple Cupertino Glassmorphism',
-        tagClass: 'text-slate-200',
-        canvasColor: '#CBD5E1'
+        frameClass: 'rounded-2xl overflow-hidden border border-cyan-500/40 bg-black shadow-2xl relative transition-all duration-500',
+        titlebarClass: 'bg-slate-950 px-4 py-2.5 flex items-center justify-between border-b border-cyan-500/40 text-cyan-300 transition-all duration-500',
+        urlBarClass: 'flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-cyan-500/50 text-[10px] font-mono text-cyan-300 transition-all duration-500',
+        liveBadgeClass: 'text-[10px] font-bold text-cyan-400',
+        screenClass: 'relative min-h-[400px] sm:min-h-[440px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 bg-gradient-to-br from-black via-slate-950 to-indigo-950 text-white',
+        navClass: 'relative z-10 flex items-center justify-between border-b border-cyan-500/30 pb-3 transition-all duration-500',
+        navLinksClass: 'hidden sm:flex items-center gap-4 text-[10px] font-bold text-cyan-200/70 transition-all',
+        navTagClass: 'px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold',
+        brandDisplayClass: 'font-display font-black text-sm tracking-tight text-cyan-100 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all',
+        logoIconClass: 'w-7 h-7 rounded-lg bg-cyan-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-[0_0_12px_rgba(6,182,212,0.8)] transition-all',
+        badgeContainerClass: 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400 text-[10px] font-black text-cyan-200 shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all',
+        badgeDotClass: 'w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping',
+        badgeTextClass: 'text-cyan-200 font-black',
+        heroTitleClass: 'text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white transition-all',
+        highlightClass: 'text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-400 to-indigo-400 font-display drop-shadow-[0_0_15px_rgba(236,72,153,0.6)] transition-all',
+        heroDescClass: 'text-xs text-slate-300 leading-relaxed font-medium transition-all',
+        cityTextClass: 'text-cyan-300 font-black',
+        pillClass: 'px-2.5 py-1 rounded-lg bg-slate-900/90 border border-cyan-500/40 text-[10px] font-bold text-cyan-200',
+        objectCardClass: 'hidden md:flex md:col-span-4 flex-col items-center justify-center p-4 rounded-2xl bg-slate-950/80 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)] text-center space-y-2 relative overflow-hidden group hover:scale-105 transition-all',
+        objectNameClass: 'text-[11px] font-black text-cyan-300 transition-all',
+        objectStatusClass: 'text-[9px] font-mono text-cyan-200/60 transition-all',
+        objectBadgeContainerClass: 'px-2.5 py-1 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-[9px] font-bold text-cyan-200 flex items-center gap-1.5 transition-all',
+        bottomBarClass: 'relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-cyan-900/40 pt-3 transition-all duration-500',
+        tagText: 'Cyberpunk Neon WebGL (Laser Physics)',
+        tagClass: 'text-cyan-400 font-bold',
+        ctaBtnClass: 'px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-black text-xs shadow-lg shadow-cyan-500/30 transition-all cursor-pointer',
+        canvasColor: '#06B6D4',
+        secondaryColor: '#EC4899',
+        isLight: false
       },
       emerald: {
-        badgeClass: 'bg-emerald-400/20 text-emerald-300 border-emerald-400/30',
-        highlightClass: 'text-emerald-400',
-        tagText: 'Emerald Enterprise GPU Engine',
-        tagClass: 'text-emerald-400',
-        canvasColor: '#10B981'
+        frameClass: 'rounded-2xl overflow-hidden border border-emerald-500/30 bg-slate-950 shadow-2xl relative transition-all duration-500',
+        titlebarClass: 'bg-slate-950 px-4 py-2.5 flex items-center justify-between border-b border-emerald-500/30 text-emerald-300 transition-all duration-500',
+        urlBarClass: 'flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-emerald-500/40 text-[10px] font-mono text-emerald-300 transition-all duration-500',
+        liveBadgeClass: 'text-[10px] font-bold text-emerald-400',
+        screenClass: 'relative min-h-[400px] sm:min-h-[440px] p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 bg-gradient-to-br from-slate-950 via-emerald-950/60 to-teal-950 text-emerald-50',
+        navClass: 'relative z-10 flex items-center justify-between border-b border-emerald-500/30 pb-3 transition-all duration-500',
+        navLinksClass: 'hidden sm:flex items-center gap-4 text-[10px] font-bold text-emerald-200/70 transition-all',
+        navTagClass: 'px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold',
+        brandDisplayClass: 'font-display font-black text-sm tracking-tight text-white transition-all',
+        logoIconClass: 'w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md transition-all',
+        badgeContainerClass: 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-[10px] font-black text-emerald-200 transition-all',
+        badgeDotClass: 'w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping',
+        badgeTextClass: 'text-emerald-200 font-black',
+        heroTitleClass: 'text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-white transition-all',
+        highlightClass: 'text-emerald-400 font-display drop-shadow-[0_0_12px_rgba(16,185,129,0.5)] transition-all',
+        heroDescClass: 'text-xs text-emerald-100/80 leading-relaxed font-medium transition-all',
+        cityTextClass: 'text-emerald-200 font-black',
+        pillClass: 'px-2.5 py-1 rounded-lg bg-slate-900/90 border border-emerald-500/30 text-[10px] font-bold text-emerald-200',
+        objectCardClass: 'hidden md:flex md:col-span-4 flex-col items-center justify-center p-4 rounded-2xl bg-slate-950/80 border border-emerald-500/40 shadow-xl text-center space-y-2 relative overflow-hidden group hover:scale-105 transition-all',
+        objectNameClass: 'text-[11px] font-black text-emerald-300 transition-all',
+        objectStatusClass: 'text-[9px] font-mono text-emerald-200/60 transition-all',
+        objectBadgeContainerClass: 'px-2.5 py-1 rounded-lg bg-emerald-500/20 border border-emerald-400/40 text-[9px] font-bold text-emerald-200 flex items-center gap-1.5 transition-all',
+        bottomBarClass: 'relative z-10 flex flex-wrap items-center justify-between gap-3 border-t border-emerald-900/40 pt-3 transition-all duration-500',
+        tagText: 'Emerald Executive (Imperial GPU)',
+        tagClass: 'text-emerald-400 font-bold',
+        ctaBtnClass: 'px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black text-xs shadow-lg shadow-emerald-500/20 transition-all cursor-pointer',
+        canvasColor: '#10B981',
+        secondaryColor: '#34D399',
+        isLight: false
       }
     };
 
@@ -3129,15 +3404,34 @@
 
       const heroDesc = document.getElementById('simHeroDesc');
       if (heroDesc) {
-        heroDesc.innerHTML = data.desc.replace('{city}', `<span id="simCityText" class="text-white font-bold">${city}</span>`);
+        heroDesc.innerHTML = data.desc.replace('{city}', `<span id="simCityText" class="font-bold">${city}</span>`);
       }
 
+      // Update 3D Object Card
+      const objectEmoji = document.getElementById('simObjectEmoji');
+      if (objectEmoji) objectEmoji.textContent = data.objectEmoji;
+
+      const objectName = document.getElementById('simObjectName');
+      if (objectName) objectName.textContent = data.objectName;
+
+      const objectStatus = document.getElementById('simObjectStatus');
+      if (objectStatus) objectStatus.textContent = data.objectStatus;
+
+      const objectBadge = document.getElementById('simObjectBadge');
+      if (objectBadge) objectBadge.textContent = data.objectBadge;
+
       // Update feature pills
+      const cfg = simThemeConfigs[currentSimTheme] || simThemeConfigs.gold;
       const pillsContainer = document.getElementById('simFeaturePills');
       if (pillsContainer) {
         pillsContainer.innerHTML = data.pills.map(p => `
-          <span class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 text-[10px] font-bold text-white">${p}</span>
+          <span class="${cfg.pillClass}">${p}</span>
         `).join('');
+      }
+
+      // Update 3D canvas geometry
+      if (simCanvasContext) {
+        simCanvasContext.geometryType = data.geometryType;
       }
 
       // Re-apply theme highlight styling
@@ -3166,20 +3460,98 @@
 
     function applySimThemeStyles() {
       const cfg = simThemeConfigs[currentSimTheme] || simThemeConfigs.gold;
+
+      const frame = document.getElementById('simMockupFrame');
+      if (frame) frame.className = cfg.frameClass;
+
+      const titlebar = document.getElementById('simTitlebar');
+      if (titlebar) titlebar.className = cfg.titlebarClass;
+
+      const urlBar = document.getElementById('simUrlBarContainer');
+      if (urlBar) urlBar.className = cfg.urlBarClass;
+
+      const liveBadge = document.getElementById('simLiveBadge');
+      if (liveBadge) liveBadge.className = cfg.liveBadgeClass;
+
+      const screen = document.getElementById('simScreen');
+      if (screen) screen.className = cfg.screenClass;
+
+      const nav = document.getElementById('simNav');
+      if (nav) nav.className = cfg.navClass;
+
+      const navLinks = document.getElementById('simNavLinks');
+      if (navLinks) navLinks.className = cfg.navLinksClass;
+
+      const navTag = document.getElementById('simNavTag');
+      if (navTag) navTag.className = cfg.navTagClass;
+
+      const brandDisplay = document.getElementById('simBrandDisplay');
+      if (brandDisplay) brandDisplay.className = cfg.brandDisplayClass;
+
+      const logoIcon = document.getElementById('simLogoIcon');
+      if (logoIcon) logoIcon.className = cfg.logoIconClass;
+
+      const badgeContainer = document.getElementById('simBadgeContainer');
+      if (badgeContainer) badgeContainer.className = cfg.badgeContainerClass;
+
+      const badgeDot = document.getElementById('simBadgeDot');
+      if (badgeDot) badgeDot.className = cfg.badgeDotClass;
+
+      const badgeText = document.getElementById('simBadgeText');
+      if (badgeText) badgeText.className = cfg.badgeTextClass;
+
+      const heroTitle = document.getElementById('simHeroTitle');
+      if (heroTitle) heroTitle.className = cfg.heroTitleClass;
+
       const highlight = document.getElementById('simHighlightText');
-      if (highlight) {
-        highlight.className = `${cfg.highlightClass} font-display`;
-      }
+      if (highlight) highlight.className = cfg.highlightClass;
+
+      const heroDesc = document.getElementById('simHeroDesc');
+      if (heroDesc) heroDesc.className = cfg.heroDescClass;
+
+      const cityText = document.getElementById('simCityText');
+      if (cityText) cityText.className = cfg.cityTextClass;
+
+      const objectCard = document.getElementById('simHeroObjectCard');
+      if (objectCard) objectCard.className = cfg.objectCardClass;
+
+      const objectName = document.getElementById('simObjectName');
+      if (objectName) objectName.className = cfg.objectNameClass;
+
+      const objectStatus = document.getElementById('simObjectStatus');
+      if (objectStatus) objectStatus.className = cfg.objectStatusClass;
+
+      const objectBadgeContainer = document.getElementById('simObjectBadgeContainer');
+      if (objectBadgeContainer) objectBadgeContainer.className = cfg.objectBadgeContainerClass;
+
+      const bottomBar = document.getElementById('simBottomBar');
+      if (bottomBar) bottomBar.className = cfg.bottomBarClass;
 
       const tag = document.getElementById('simThemeTag');
       if (tag) {
         tag.textContent = cfg.tagText;
-        tag.className = `${cfg.tagClass} font-bold`;
+        tag.className = cfg.tagClass;
       }
 
-      // Set mini canvas color
+      const ctaBtn = document.getElementById('simCtaBtn');
+      if (ctaBtn) ctaBtn.className = cfg.ctaBtnClass;
+
+      // Update pills
+      const catSelect = document.getElementById('simCategory');
+      const catKey = catSelect?.value || 'jewel';
+      const data = simVerticalData[catKey] || simVerticalData.jewel;
+      const pillsContainer = document.getElementById('simFeaturePills');
+      if (pillsContainer) {
+        pillsContainer.innerHTML = data.pills.map(p => `
+          <span class="${cfg.pillClass}">${p}</span>
+        `).join('');
+      }
+
+      // Update canvas context
       if (simCanvasContext) {
         simCanvasContext.activeColor = cfg.canvasColor;
+        simCanvasContext.secondaryColor = cfg.secondaryColor;
+        simCanvasContext.isLight = cfg.isLight;
       }
     }
 
@@ -3245,13 +3617,20 @@
       }
     });
 
-    // Mini 3D Geometric Torus Simulation for #sim3DCanvas
+    // Real-Time Multi-Geometry 3D Simulation Engine for #sim3DCanvas
     let simCanvasContext = null;
     function initSim3DCanvas() {
       const canvas = document.getElementById('sim3DCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      simCanvasContext = { activeColor: '#F59E0B' };
+      const screenEl = document.getElementById('simScreen');
+
+      simCanvasContext = {
+        activeColor: '#F59E0B',
+        secondaryColor: '#FDE68A',
+        geometryType: 'diamond',
+        isLight: false
+      };
 
       function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -3261,63 +3640,362 @@
       resize();
       window.addEventListener('resize', resize);
 
-      let angleX = 0;
+      let angleX = 0.2;
       let angleY = 0;
-      const points = [];
-      const numPoints = 60;
-      for (let i = 0; i < numPoints; i++) {
-        const u = (i / numPoints) * Math.PI * 2;
-        for (let j = 0; j < 8; j++) {
-          const v = (j / 8) * Math.PI * 2;
-          const R = 90;
-          const r = 35;
-          const x = (R + r * Math.cos(v)) * Math.cos(u);
-          const y = (R + r * Math.cos(v)) * Math.sin(u);
-          const z = r * Math.sin(v);
-          points.push({ x, y, z });
-        }
+      let velX = 0.006;
+      let velY = 0.012;
+
+      // Mouse and Touch interactivity inside simScreen
+      if (screenEl) {
+        screenEl.addEventListener('mousemove', (e) => {
+          const rect = screenEl.getBoundingClientRect();
+          const mx = (e.clientX - rect.left) / rect.width - 0.5;
+          const my = (e.clientY - rect.top) / rect.height - 0.5;
+          angleY += mx * 0.04;
+          angleX += my * 0.03;
+        });
+
+        screenEl.addEventListener('touchmove', (e) => {
+          if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            const rect = screenEl.getBoundingClientRect();
+            const mx = (touch.clientX - rect.left) / rect.width - 0.5;
+            angleY += mx * 0.05;
+          }
+        }, { passive: true });
+      }
+
+      // Sparkles pool
+      const sparkles = [];
+      for (let s = 0; s < 30; s++) {
+        sparkles.push({
+          x: (Math.random() - 0.5) * 200,
+          y: (Math.random() - 0.5) * 200,
+          z: (Math.random() - 0.5) * 200,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.02 + Math.random() * 0.03
+        });
+      }
+
+      function project(x, y, z, cx, cy) {
+        const cosY = Math.cos(angleY), sinY = Math.sin(angleY);
+        const x1 = x * cosY + z * sinY;
+        const z1 = -p_sin(angleY) ? 0 : 0; // helper
+        const rotZ1 = -x * sinY + z * cosY;
+
+        const cosX = Math.cos(angleX), sinX = Math.sin(angleX);
+        const y2 = y * cosX - rotZ1 * sinX;
+        const z2 = y * sinX + rotZ1 * cosX;
+
+        const fov = 320;
+        const scale = fov / (fov + z2 + 200);
+        return {
+          px: cx + x1 * scale,
+          py: cy + y2 * scale,
+          z: z2,
+          scale: scale
+        };
       }
 
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const cx = canvas.width * 0.75;
+        const cx = canvas.width > 768 ? canvas.width * 0.8 : canvas.width * 0.5;
         const cy = canvas.height * 0.5;
 
-        angleX += 0.008;
-        angleY += 0.012;
+        angleX += velX;
+        angleY += velY;
 
-        ctx.fillStyle = simCanvasContext.activeColor;
-        ctx.strokeStyle = simCanvasContext.activeColor;
+        const geom = simCanvasContext.geometryType || 'diamond';
+        const primary = simCanvasContext.activeColor || '#F59E0B';
+        const secondary = simCanvasContext.secondaryColor || '#FDE68A';
+        const isLight = simCanvasContext.isLight || false;
 
-        for (let i = 0; i < points.length; i += 2) {
-          const p = points[i];
-          // Rotate Y
-          const cosY = Math.cos(angleY), sinY = Math.sin(angleY);
-          const x1 = p.x * cosY + p.z * sinY;
-          const z1 = -p.x * sinY + p.z * cosY;
+        ctx.lineWidth = isLight ? 1.6 : 1.3;
 
-          // Rotate X
-          const cosX = Math.cos(angleX), sinX = Math.sin(angleX);
-          const y2 = p.y * cosX - z1 * sinX;
-          const z2 = p.y * sinX + z1 * cosX;
+        // 1. GEOMETRY: DIAMOND (Jewellery)
+        if (geom === 'diamond') {
+          const apex = project(0, -65, 0, cx, cy);
+          const culet = project(0, 70, 0, cx, cy);
+          const crown = [];
+          const girdle = [];
 
-          const fov = 260;
-          const scale = fov / (fov + z2 + 180);
-          const projX = cx + x1 * scale;
-          const projY = cy + y2 * scale;
-          const alpha = Math.max(0.1, Math.min(0.65, (z2 + 100) / 200));
+          for (let i = 0; i < 8; i++) {
+            const rad = (i / 8) * Math.PI * 2;
+            crown.push(project(32 * Math.cos(rad), -30, 32 * Math.sin(rad), cx, cy));
+            girdle.push(project(56 * Math.cos(rad), 5, 56 * Math.sin(rad), cx, cy));
+          }
+
+          ctx.strokeStyle = primary;
+          ctx.fillStyle = primary;
+
+          for (let i = 0; i < 8; i++) {
+            const next = (i + 1) % 8;
+            ctx.beginPath();
+            ctx.moveTo(apex.px, apex.py);
+            ctx.lineTo(crown[i].px, crown[i].py);
+            ctx.globalAlpha = 0.65;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(crown[i].px, crown[i].py);
+            ctx.lineTo(crown[next].px, crown[next].py);
+            ctx.globalAlpha = 0.8;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(crown[i].px, crown[i].py);
+            ctx.lineTo(girdle[i].px, girdle[i].py);
+            ctx.lineTo(crown[next].px, crown[next].py);
+            ctx.globalAlpha = 0.65;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(girdle[i].px, girdle[i].py);
+            ctx.lineTo(girdle[next].px, girdle[next].py);
+            ctx.globalAlpha = 0.9;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(girdle[i].px, girdle[i].py);
+            ctx.lineTo(culet.px, culet.py);
+            ctx.globalAlpha = 0.75;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(girdle[i].px, girdle[i].py, 2.5 * girdle[i].scale, 0, Math.PI * 2);
+            ctx.globalAlpha = 0.9;
+            ctx.fill();
+          }
 
           ctx.beginPath();
-          ctx.arc(projX, projY, Math.max(1, 2.2 * scale), 0, Math.PI * 2);
-          ctx.globalAlpha = alpha;
+          ctx.arc(apex.px, apex.py, 3 * apex.scale, 0, Math.PI * 2);
+          ctx.arc(culet.px, culet.py, 3 * culet.scale, 0, Math.PI * 2);
           ctx.fill();
         }
+
+        // 2. GEOMETRY: BUILDING & PENTHOUSE (Real Estate)
+        else if (geom === 'building') {
+          const floors = [-75, -40, -5, 30, 65];
+          const slabPoints = [];
+
+          floors.forEach(fy => {
+            const slab = [];
+            const r = 45;
+            slab.push(project(-r, fy, -r, cx, cy));
+            slab.push(project(r, fy, -r, cx, cy));
+            slab.push(project(r, fy, r, cx, cy));
+            slab.push(project(-r, fy, r, cx, cy));
+            slabPoints.push(slab);
+
+            ctx.strokeStyle = primary;
+            ctx.globalAlpha = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(slab[0].px, slab[0].py);
+            for (let k = 1; k < 4; k++) ctx.lineTo(slab[k].px, slab[k].py);
+            ctx.closePath();
+            ctx.stroke();
+          });
+
+          ctx.strokeStyle = secondary;
+          ctx.globalAlpha = 0.8;
+          for (let corner = 0; corner < 4; corner++) {
+            ctx.beginPath();
+            ctx.moveTo(slabPoints[0][corner].px, slabPoints[0][corner].py);
+            for (let f = 1; f < floors.length; f++) {
+              ctx.lineTo(slabPoints[f][corner].px, slabPoints[f][corner].py);
+            }
+            ctx.stroke();
+          }
+
+          const topSpire = project(0, -100, 0, cx, cy);
+          ctx.fillStyle = primary;
+          ctx.beginPath();
+          ctx.arc(topSpire.px, topSpire.py, 4 * topSpire.scale, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // 3. GEOMETRY: DNA DOUBLE HELIX (Clinic & Doctors)
+        else if (geom === 'dna') {
+          const pairs = 16;
+          for (let i = 0; i < pairs; i++) {
+            const t = (i / pairs) * Math.PI * 2.5 + angleY;
+            const y = (i - pairs / 2) * 10;
+            const r = 40;
+            const p1 = project(r * Math.cos(t), y, r * Math.sin(t), cx, cy);
+            const p2 = project(-r * Math.cos(t), y, -r * Math.sin(t), cx, cy);
+
+            ctx.strokeStyle = secondary;
+            ctx.globalAlpha = 0.55;
+            ctx.beginPath();
+            ctx.moveTo(p1.px, p1.py);
+            ctx.lineTo(p2.px, p2.py);
+            ctx.stroke();
+
+            ctx.fillStyle = primary;
+            ctx.globalAlpha = 0.9;
+            ctx.beginPath();
+            ctx.arc(p1.px, p1.py, 3.5 * p1.scale, 0, Math.PI * 2);
+            ctx.arc(p2.px, p2.py, 3.5 * p2.scale, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // 4. GEOMETRY: MÖBIUS SILK RIBBON (Salon & Beauty)
+        else if (geom === 'ribbon') {
+          const steps = 40;
+          ctx.strokeStyle = primary;
+          ctx.fillStyle = secondary;
+
+          for (let i = 0; i < steps; i++) {
+            const u = (i / steps) * Math.PI * 2;
+            const nextU = ((i + 1) / steps) * Math.PI * 2;
+            const R = 55;
+            const r = 20;
+
+            const p1 = project((R + r * Math.cos(u * 2)) * Math.cos(u), (R + r * Math.cos(u * 2)) * Math.sin(u), r * Math.sin(u * 2), cx, cy);
+            const p2 = project((R + r * Math.cos(nextU * 2)) * Math.cos(nextU), (R + r * Math.cos(nextU * 2)) * Math.sin(nextU), r * Math.sin(nextU * 2), cx, cy);
+
+            ctx.globalAlpha = 0.75;
+            ctx.beginPath();
+            ctx.moveTo(p1.px, p1.py);
+            ctx.lineTo(p2.px, p2.py);
+            ctx.stroke();
+
+            if (i % 3 === 0) {
+              ctx.beginPath();
+              ctx.arc(p1.px, p1.py, 2.2 * p1.scale, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+
+        // 5. GEOMETRY: CELESTIAL TORUS KNOT (Restaurant & Dining)
+        else if (geom === 'torus') {
+          const steps = 60;
+          ctx.strokeStyle = primary;
+          ctx.fillStyle = secondary;
+
+          for (let i = 0; i < steps; i++) {
+            const t = (i / steps) * Math.PI * 2;
+            const nextT = ((i + 1) / steps) * Math.PI * 2;
+            const p = 2, q = 3;
+            const R = 45;
+
+            const x = R * (2 + Math.cos(q * t)) * 0.4 * Math.cos(p * t);
+            const y = R * (2 + Math.cos(q * t)) * 0.4 * Math.sin(p * t);
+            const z = R * Math.sin(q * t) * 0.5;
+
+            const nx = R * (2 + Math.cos(q * nextT)) * 0.4 * Math.cos(p * nextT);
+            const ny = R * (2 + Math.cos(q * nextT)) * 0.4 * Math.sin(p * nextT);
+            const nz = R * Math.sin(q * nextT) * 0.5;
+
+            const pt1 = project(x, y, z, cx, cy);
+            const pt2 = project(nx, ny, nz, cx, cy);
+
+            ctx.globalAlpha = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(pt1.px, pt1.py);
+            ctx.lineTo(pt2.px, pt2.py);
+            ctx.stroke();
+
+            if (i % 4 === 0) {
+              ctx.beginPath();
+              ctx.arc(pt1.px, pt1.py, 2 * pt1.scale, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+
+        // 6. GEOMETRY: NEURAL NETWORK SPHERE (Tech AI & SaaS)
+        else if (geom === 'neural') {
+          const nodeCount = 14;
+          const nodes = [];
+          for (let i = 0; i < nodeCount; i++) {
+            const phi = Math.acos(-1 + (2 * i) / nodeCount);
+            const theta = Math.sqrt(nodeCount * Math.PI) * phi;
+            const rad = 55;
+            nodes.push(project(rad * Math.cos(theta) * Math.sin(phi), rad * Math.sin(theta) * Math.sin(phi), rad * Math.cos(phi), cx, cy));
+          }
+
+          ctx.strokeStyle = primary;
+          ctx.fillStyle = secondary;
+          for (let i = 0; i < nodeCount; i++) {
+            for (let j = i + 1; j < nodeCount; j++) {
+              const dx = nodes[i].px - nodes[j].px;
+              const dy = nodes[i].py - nodes[j].py;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 80) {
+                ctx.globalAlpha = Math.max(0.15, 1 - dist / 80);
+                ctx.beginPath();
+                ctx.moveTo(nodes[i].px, nodes[i].py);
+                ctx.lineTo(nodes[j].px, nodes[j].py);
+                ctx.stroke();
+              }
+            }
+            ctx.globalAlpha = 0.9;
+            ctx.beginPath();
+            ctx.arc(nodes[i].px, nodes[i].py, 3.2 * nodes[i].scale, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // 7. GEOMETRY: 4D HYPERCUBE TESSERACT (Corporate & Finance)
+        else {
+          const innerSize = 25;
+          const outerSize = 55;
+          const innerVerts = [];
+          const outerVerts = [];
+
+          [-1, 1].forEach(x => {
+            [-1, 1].forEach(y => {
+              [-1, 1].forEach(z => {
+                innerVerts.push(project(x * innerSize, y * innerSize, z * innerSize, cx, cy));
+                outerVerts.push(project(x * outerSize, y * outerSize, z * outerSize, cx, cy));
+              });
+            });
+          });
+
+          ctx.strokeStyle = primary;
+          ctx.fillStyle = secondary;
+
+          for (let i = 0; i < 8; i++) {
+            ctx.globalAlpha = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(innerVerts[i].px, innerVerts[i].py);
+            ctx.lineTo(outerVerts[i].px, outerVerts[i].py);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(innerVerts[i].px, innerVerts[i].py, 2.5 * innerVerts[i].scale, 0, Math.PI * 2);
+            ctx.arc(outerVerts[i].px, outerVerts[i].py, 2.8 * outerVerts[i].scale, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Floating Ambient Sparkles
+        sparkles.forEach(sp => {
+          sp.phase += sp.speed;
+          const alpha = 0.3 + 0.5 * Math.sin(sp.phase);
+          if (alpha > 0.05) {
+            const p = project(sp.x, sp.y, sp.z, cx, cy);
+            ctx.fillStyle = secondary;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(p.px, p.py, 1.6 * p.scale, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+
         ctx.globalAlpha = 1.0;
         requestAnimationFrame(draw);
       }
       requestAnimationFrame(draw);
     }
-    setTimeout(initSim3DCanvas, 200);
+    setTimeout(() => {
+      initSim3DCanvas();
+      updateSimPreview();
+      setSimTheme('gold');
+    }, 150);
 
     /* ======================================================== */
     /* UPGRADE 3.0: 10-SECOND SPEED & COMPETITOR ROASTER ENGINE */
