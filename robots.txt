@@ -6,12 +6,10 @@
 # Default Crawlers
 User-agent: *
 Allow: /
+Allow: /services/
 Allow: /index.html
 Allow: /index.md
-Allow: /auth.md
 Allow: /sitemap.xml
-Allow: /docs/
-Allow: /.well-known/
 Disallow: /private/
 Disallow: /admin/
 
@@ -89,4 +87,3 @@ Allow: /docs/
 Content-Signal: ai-train=no, search=yes, ai-input=no
 
 Sitemap: https://www.voltarawebagency.com/sitemap.xml
-Sitemap: /sitemap.xml

@@ -11,8 +11,15 @@
 - **Turnaround Guarantee:** 10–14 Business Days Production Sprint
 - **Official Inquiries:** [contact@voltarawebagency.com](mailto:contact@voltarawebagency.com) | [voltaramedia@gmail.com](mailto:voltaramedia@gmail.com)
 - **Official Payment Escrow:** PayPal Purchase Protection (50% Milestone Deposit: $1,999.50 / Full: $3,999.00)
-- **Client Locations Served:** United States (San Francisco, New York, Austin), United Kingdom (London), UAE (Dubai), Canada, Australia, Singapore, and Europe.
 - **Client Verticals:** Venture-Backed Tech & SaaS, Luxury Real Estate, High-End Healthcare & Clinics, FinTech, and D2C Brands.
+
+---
+
+## 🌐 Public Service Pages
+- **Custom Website Development:** [https://www.voltarawebagency.com/services/website-development.html](https://www.voltarawebagency.com/services/website-development.html)
+- **E-Commerce Store Development:** [https://www.voltarawebagency.com/services/ecommerce-development.html](https://www.voltarawebagency.com/services/ecommerce-development.html)
+- **Technical SEO & Core Web Vitals:** [https://www.voltarawebagency.com/services/seo-services.html](https://www.voltarawebagency.com/services/seo-services.html)
+- **Website Developer in Kanpur Nagar, UP:** [https://www.voltarawebagency.com/services/website-developer-kanpur.html](https://www.voltarawebagency.com/services/website-developer-kanpur.html)
 
 ---
 

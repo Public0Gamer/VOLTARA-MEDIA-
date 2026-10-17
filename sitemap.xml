@@ -3,104 +3,43 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- Homepage -->
+  <!-- 1. Primary Homepage -->
   <url>
     <loc>https://www.voltarawebagency.com/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- 2. Core Service: Website Development -->
   <url>
-    <loc>https://www.voltarawebagency.com/index.html</loc>
-    <lastmod>2026-10-01</lastmod>
+    <loc>https://www.voltarawebagency.com/services/website-development.html</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Markdown for AI Agents -->
+  <!-- 3. Core Service: E-Commerce Store Development -->
   <url>
-    <loc>https://www.voltarawebagency.com/index.md</loc>
-    <lastmod>2026-10-01</lastmod>
+    <loc>https://www.voltarawebagency.com/services/ecommerce-development.html</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Agent Authentication & Instructions -->
+  <!-- 4. Core Service: Technical SEO & Core Web Vitals -->
   <url>
-    <loc>https://www.voltarawebagency.com/auth.md</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.voltarawebagency.com/services/seo-services.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Interactive API Documentation -->
+  <!-- 5. Local Service: Website Developer in Kanpur Nagar, UP -->
   <url>
-    <loc>https://www.voltarawebagency.com/docs/api.html</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/docs/openapi.json</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/docs/dns-aid.md</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Well-Known Agent Discovery Endpoints -->
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/api-catalog</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/ai-catalog.json</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/mcp/server-card.json</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/agent-skills/index.json</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/agent-card.json</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/oauth-protected-resource</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/openid-configuration</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.voltarawebagency.com/.well-known/oauth-authorization-server</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.voltarawebagency.com/services/website-developer-kanpur.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
-
